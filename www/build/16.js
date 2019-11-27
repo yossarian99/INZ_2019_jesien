@@ -1,14 +1,14 @@
 webpackJsonp([16],{
 
-/***/ 432:
+/***/ 430:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EducationPorfilPageModule", function() { return EducationPorfilPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ExperienceProfillPageModule", function() { return ExperienceProfillPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__education_porfil__ = __webpack_require__(456);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__experience_profill__ = __webpack_require__(454);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,33 +18,33 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var EducationPorfilPageModule = /** @class */ (function () {
-    function EducationPorfilPageModule() {
+var ExperienceProfillPageModule = /** @class */ (function () {
+    function ExperienceProfillPageModule() {
     }
-    EducationPorfilPageModule = __decorate([
+    ExperienceProfillPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__education_porfil__["a" /* EducationPorfilPage */],
+                __WEBPACK_IMPORTED_MODULE_2__experience_profill__["a" /* ExperienceProfillPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__education_porfil__["a" /* EducationPorfilPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__experience_profill__["a" /* ExperienceProfillPage */]),
             ],
         })
-    ], EducationPorfilPageModule);
-    return EducationPorfilPageModule;
+    ], ExperienceProfillPageModule);
+    return ExperienceProfillPageModule;
 }());
 
-//# sourceMappingURL=education-porfil.module.js.map
+//# sourceMappingURL=experience-profill.module.js.map
 
 /***/ }),
 
-/***/ 456:
+/***/ 454:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EducationPorfilPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExperienceProfillPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -57,32 +57,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /**
- * Generated class for the EducationPorfilPage page.
+ * Generated class for the ExperienceProfillPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var EducationPorfilPage = /** @class */ (function () {
-    function EducationPorfilPage(nav, navParams) {
+var ExperienceProfillPage = /** @class */ (function () {
+    function ExperienceProfillPage(nav, navParams) {
         this.nav = nav;
         this.navParams = navParams;
     }
-    EducationPorfilPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad EducationPorfilPage');
+    ExperienceProfillPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ExperienceProfillPage');
     };
-    EducationPorfilPage.prototype.backtoprofiles = function () {
+    ExperienceProfillPage.prototype.backtoprofiles = function () {
         this.nav.pop();
     };
-    EducationPorfilPage = __decorate([
+    ExperienceProfillPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-education-porfil',template:/*ion-inline-start:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\education-porfil\education-porfil.html"*/'<!--\n  Generated template for the EducationPorfilPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title>EducationPorfil</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <button ion-button (click)="backtoprofiles" >\n    <ion-icon ios="ios-undo" md="md-undo"></ion-icon>\n\n  </button>\n</ion-content>\n'/*ion-inline-end:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\education-porfil\education-porfil.html"*/,
+            selector: 'page-experience-profill',template:/*ion-inline-start:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\experience-profill\experience-profill.html"*/'<!--\n  Generated template for the ExperienceProfillPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title>ExperienceProfill</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <button ion-button (click)="backtoprofiles" >\n    <ion-icon ios="ios-undo" md="md-undo"></ion-icon>\n\n  </button>\n</ion-content>\n'/*ion-inline-end:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\experience-profill\experience-profill.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
-    ], EducationPorfilPage);
-    return EducationPorfilPage;
+    ], ExperienceProfillPage);
+    return ExperienceProfillPage;
 }());
 
-//# sourceMappingURL=education-porfil.js.map
+//# sourceMappingURL=experience-profill.js.map
 
 /***/ })
 

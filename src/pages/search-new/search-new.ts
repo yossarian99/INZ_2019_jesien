@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {SearchServiceProvider} from "../../providers/search-service/search-service";
 import {ConfigServce} from "../../providers/config-service/config-service";
-import {UserProfile} from "../../models/UserProfile-model";
+
 import {ProfileListService} from "../../services/Pfofile-list";
 import {ProfileService} from "../../api/profile.service";
 import {ProfileOut} from "../../model/profileOut";
 import {TrainerService} from "../../api/trainer.service";
 import {ProfilViewMenuPage} from "../profil-view-menu/profil-view-menu";
+import {DyscyplineService} from "../../api/dyscypline.service";
+import {Disciplines} from "../../model/disciplines";
+import {FormControl, FormGroup} from "@angular/forms";
+
 // import {ViewprofilPage} from "../viewprofil/viewprofil";
 //
 /**
@@ -23,15 +27,44 @@ import {ProfilViewMenuPage} from "../profil-view-menu/profil-view-menu";
   templateUrl: 'search-new.html',
 })
 export class SearchNewPage {
-
-  constructor(public trenersearch :TrainerService,public rest :ProfileService,public nav: NavController, public navParams: NavParams, private sea: SearchServiceProvider, private configServce: ConfigServce,private provilconfig: SearchServiceProvider, private  service :ProfileListService  ) {
+structure:any;
+structure2:any;
+showFilters:boolean;
+  constructor(public restdyscyp:DyscyplineService,public trenersearch :TrainerService,public rest :ProfileService,public nav: NavController, public navParams: NavParams, private sea: SearchServiceProvider, private configServce: ConfigServce,private provilconfig: SearchServiceProvider, private  service :ProfileListService ,public alertCtrl: AlertController ) {
     this.change_rating(4);
     this.showForm();
+    this.showFilters=false;
+    this.getDyscp();
+    this.Idform();
+    this.structure={
+      lower: 30, upper: 60
+
+    };  this.structure2={
+      lower: 30, upper: 250
+
+    };
+  }
+  Dysciplines: Array<Disciplines>=[];
+  dyscyplina:Disciplines;
+  Town:any;
+  idforms = new FormGroup({Town:new FormControl()});
+  public getDyscp() {
+    this.restdyscyp.getDyscyplines().subscribe(result => {
+
+      Object.assign(this.Dysciplines, result);
+
+
+      //  for(var i=0;i<result.length;++i){
+      //    this.Dyscyplines[i]=result[i].Name;
+      // }
+      console.log("wczytane profils w wyszukiwaniu :");
+
+      console.log("list of dysc =", this.Dysciplines);
+
+
+    });
   }
 
-  ionViewDidLoad() {
-
-  }
 
   rating: any;
 
@@ -52,6 +85,8 @@ ProfilOpinie:number;
   showsearch: boolean;
   showresult: boolean = true;
   profiles: ProfileOut[] = [];
+  profilesFiltered:ProfileOut[]=[];
+  prifilFiltered:ProfileOut;
   profil:ProfileOut;
   BASE_URL:string;
   GET_PROFILE:string;
@@ -125,6 +160,113 @@ console.log("w srodku servisu");
     this.nav.push('ProfilViewMenuPage');
 
 }
+  dualValue2:number;
+  genders=["kobieta","meżczyzna"];
+  plec:string;
+  gender :any;
+  testRadioOpen:boolean;
+  testRadioResult:any;
 
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad Search2Page');
+  }
+  showRadio() {
+    let alert = this.alertCtrl.create();
+    alert.setTitle('Płeć');
+
+    alert.addInput({
+      type: 'radio',
+      label: 'kobieta',
+      value: 'K',
+      checked: true,
+
+    });
+
+    alert.addInput({
+      type: 'radio',
+      label: 'Meżczyzna',
+      value: 'M'
+    });
+    alert.addButton('Cancel');
+    alert.addButton({
+      text: 'OK',
+      handler: data => {
+        this.testRadioOpen = false;
+        this.testRadioResult = data;
+      }
+    });
+    alert.present();
+  }
+  knobValues:{
+    upper:100,
+    lower:50
+  }
+   getAgeStr (dateString) {
+    var myDate = new Date(dateString),
+      now = new Date(),
+      month_of_birth=myDate.getMonth(),
+      day_of_birht=myDate.getDay(),
+      year_of_birth=myDate.getFullYear(),
+      now_month = now.getMonth(),
+      now_day = now.getDay(),
+      now_year = now.getFullYear(),
+      age = now_year - year_of_birth;
+    if (now_month < month_of_birth) {
+      age--;
+    } else if ((now_month == month_of_birth) && (now_day < day_of_birht)) {
+      age--;
+      if (age < 0) {
+        age = 0;
+      }
+    }
+    return age;
+  }
+  Idform(){
+let plecSearch:boolean=false;
+let townSearch:boolean;
+let priceSearch:boolean;
+let ageSearch:boolean=false;
+let dyscSearch:boolean=true;
+    for (let i=0; i<this.profiles.length; i++) {
+      let age = this.getAgeStr(this.profiles[i].bdate);
+      console.log("age",age);
+      if(age>=this.structure.lower&&age<=this.structure.upper)ageSearch=true;
+      else ageSearch=false;
+console.log("struture",this.structure);
+console.log("structure2",this.structure2);
+
+         //
+         // for(let j=0 ;j<this.profiles[i].trOff.length;j++) {
+         //   if (this.profiles[i].trOff[j].name == this.dyscyplina.name && this.profiles[i].trOff[j].price >= this.structure2.lower && this.profiles[i].trOff[j].price <= this.structure2.upper) {
+         //     dyscSearch = true;
+         //
+         //   }
+         //
+         //   else if (dyscSearch && this.profiles[i].trOff[j].name == this.dyscyplina.name && this.profiles[i].trOff[j].price >= this.structure2.lower && this.profiles[i].trOff[j].price <= this.structure2.upper) {
+         //     dyscSearch = true;
+         //   } else {
+         //     dyscSearch = false;
+         //   }
+         //
+         // }
+
+console.log("agesearch",ageSearch);
+console.log("dyscysearch",dyscSearch);
+console.log("plecsearch",plecSearch);
+
+       if(this.profiles[i].gender==this.testRadioResult)plecSearch=true;else plecSearch=false;
+       if((ageSearch&&dyscSearch&&plecSearch)==true){
+         console.log("splice")
+         this.profilesFiltered.push(this.profiles[i]);
+         // this.profiles.splice(i+1,1);
+       }
+console.log(this.profilesFiltered);
+    }
+    if(this.profilesFiltered.length>0){
+      this.showFilters=true;}
+      else this.showFilters=false;
+
+  }
 }
 

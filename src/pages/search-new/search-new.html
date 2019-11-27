@@ -25,15 +25,134 @@
 
 
 <ion-content padding>
- <ion-card class="backcard">
-   <p>Wyniki wyszukiwania dla : {{searchParams.dysc}}</p>
-   <p>Miejscowość : {{searchParams.loc}} </p>
-   <div class="ilosc">
-     <p>
-       ({{profiles.length}} wyszukiwan.)
-     </p>
+  <ion-row>
+    <ion-col col-12>
 
-   </div>
+
+
+
+
+    <!--<ion-col col-8>-->
+    <!--</ion-col>-->
+
+
+        <ion-card>
+
+
+
+        <p>Wyniki wyszukiwania dla : {{searchParams.dysc}}</p>
+        <p>Miejscowość : {{searchParams.loc}} </p>
+        <div class="ilosc">
+          <p>
+            ({{profiles.length}} wyszukiwan.)
+          </p>
+
+        </div>
+        </ion-card>
+    </ion-col>
+
+      </ion-row>
+
+
+
+
+
+      <ion-row >
+
+
+      </ion-row>
+
+      <ion-row>
+
+
+        <!--<ion-item  >-->
+        <!--<ion-label>Płeć</ion-label>-->
+        <!--<ion-select [(ngModel)]="gender" >-->
+        <!--<ion-option *ngFor="let gender   of genders" [value]="gender"></ion-option>-->
+        <!--</ion-select>-->
+        <!--</ion-item>-->
+
+        <button ion-button color="buutonlight" full (click)=showRadio()  ><h2>Płec</h2></button>
+
+      </ion-row>
+      <ion-row>
+        <p></p>
+      </ion-row>
+
+      <ion-row >
+        <ion-item>
+          <ion-label><h1>Wiek</h1> </ion-label>
+          <ion-range dualKnobs="true" [(ngModel)]="structure" min="10" max="100" step="1" snaps="true" pin="true">
+            <ion-icon range-left  name="md-square"></ion-icon>
+            <ion-icon range-right name="md-square"></ion-icon>
+          </ion-range>
+
+        </ion-item>
+      </ion-row>
+
+
+
+
+
+    <ion-row>
+        <ion-item>
+          <ion-label><h1>Cena</h1> </ion-label>
+          <ion-range dualKnobs="true" [(ngModel)]="structure2" min="0" max="300" step="10" snaps="true" pin="true">
+            <ion-icon range-left  name="md-square"></ion-icon>
+            <ion-icon range-right name="md-square"></ion-icon>
+          </ion-range>
+
+        </ion-item>
+      </ion-row>
+
+      <ion-row>
+        <p></p>
+      </ion-row>
+      <ion-row text-right>
+        <ion-col col-12>
+          <ion-row>
+
+            <ion-item  >
+              <ion-label>Dyscypliny</ion-label>
+              <ion-select [(ngModel)]=" dyscyplina"  [ngModelOptions]="{standalone: true}" >
+                <ion-option *ngFor="let  dyscyplina of  Dysciplines" [value]=" dyscyplina" >{{dyscyplina.name}}</ion-option>
+              </ion-select>
+            </ion-item>
+
+          </ion-row>
+          <form [formGroup]="idforms" (ngSubmit)=" Idform()">
+
+            <ion-row >
+              <ion-item>
+                <ion-label fixed>Miejsce</ion-label>
+                <ion-input  type="text" placeholder="Miasto..." [(ngModel)]="Town"
+                            formControlName="Town"   required></ion-input>
+              </ion-item>
+
+
+        <span>
+            <button ion-button large color="filtrWynikow">Filtruj</button> </span>
+            </ion-row>
+          </form>
+        </ion-col>
+</ion-row>
+
+    <!--</ion-col>-->
+      <!--</ion-row>-->
+
+
+
+      <!--</form>-->
+
+<!---->
+    <ion-col col-2>
+
+
+    </ion-col>
+
+
+ <ion-card class="backcard">
+
 
 
    <ion-list>
@@ -106,12 +225,7 @@
 
 
 
-          <ion-card-content>
 
-
-
-
-</ion-card-content>
 
           <ion-grid>
 
@@ -133,8 +247,142 @@
 
 
         </ion-card>
+
   </ion-item>
+
   </ion-item-sliding>
   </ion-list>
+
+
  </ion-card>
+  <ion-col col-2>
+
+
+  </ion-col>
+
+
+  <ion-card class="backcard">
+<ion-card>
+<ion-row>
+
+
+
+  <h5>  <p>Wyniki Filtorwania</p>
+
+</h5>
+</ion-row>
+</ion-card>
+  <ion-card *ngIf="showFilters==false">
+
+    <ion-row>
+
+      <h5>Brak wyników Filtrowania</h5>
+    </ion-row>
+
+
+  </ion-card>
+
+
+
+
+    <ion-list *ngIf="showFilters==true">
+      <ion-item-sliding *ngFor="let profil of profilesFiltered; let i = index" >
+        <ion-item>
+
+
+
+          <!--<ion-img width="60" height="60" src="./assets/imgs/avatar3.png"></ion-img>-->
+
+
+
+          <ion-card>
+
+            <img style="width: 80px; height: 80px; float: left" src="./assets/imgs/avatar2.png"/>
+
+            <div class="avatartext">
+
+              <h1> {{profil.name}} {{profil.surname}}  </h1>
+
+
+            </div>
+            <ion-row text-right>
+
+
+
+
+              <ion-col text-end>
+                ({{profil.rating}}/5)
+                <!--<ionic3-star-rating-->
+                <!--activeIcon = "ios-star"-->
+                <!--defaultIcon = "ios-star"-->
+                <!--activeColor = "#3cdaa8"-->
+                <!--defaultColor = "#d4f9ed"-->
+                <!--readonly="true"-->
+                <!--[rating]=profil.rating>-->
+                <!--</ionic3-star-rating>-->
+                <ionic3-star-rating #rating
+                                    activeIcon = "ios-star"
+                                    defaultIcon = "ios-star-outline"
+                                    activeColor = "#488aff"
+                                    defaultColor = "#f4f4f4"
+                                    readonly="false"
+                                    rating="3"
+                                    fontSize = "32px"
+                                    (ratingChanged)="logRatingChange($event)">
+                </ionic3-star-rating>
+
+
+
+
+
+              </ion-col>
+
+
+
+
+
+            </ion-row>
+            <ion-row text-right>
+
+              <ion-col text-end>
+
+                (0 opini)
+
+              </ion-col>
+
+
+            </ion-row>
+
+
+
+
+
+            <ion-grid>
+
+              <ion-row text-start >
+                <ion-col text-right>
+
+
+                  <button ion-button  color="secondary" (click)="profilsite(this.profil)">Wczytaj Profil</button>
+
+
+
+                </ion-col>
+
+              </ion-row>
+            </ion-grid>
+
+
+
+
+
+          </ion-card>
+
+        </ion-item>
+
+      </ion-item-sliding>
+    </ion-list>
+
+
+  </ion-card>
 </ion-content>
