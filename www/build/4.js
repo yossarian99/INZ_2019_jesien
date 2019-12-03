@@ -1,6 +1,6 @@
 webpackJsonp([4],{
 
-/***/ 447:
+/***/ 444:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchNewPageModule", function() { return SearchNewPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__search_new__ = __webpack_require__(469);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__search_new__ = __webpack_require__(467);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_image_loader__ = __webpack_require__(261);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic3_star_rating__ = __webpack_require__(259);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -46,7 +46,7 @@ var SearchNewPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 469:
+/***/ 467:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -58,7 +58,7 @@ var SearchNewPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_Pfofile_list__ = __webpack_require__(135);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__api_profile_service__ = __webpack_require__(258);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__api_trainer_service__ = __webpack_require__(264);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__api_dyscypline_service__ = __webpack_require__(138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__api_dyscypline_service__ = __webpack_require__(137);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_forms__ = __webpack_require__(15);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -110,7 +110,7 @@ var SearchNewPage = /** @class */ (function () {
         this.genders = ["kobieta", "meżczyzna"];
         this.change_rating(4);
         this.showForm();
-        this.showFilters = false;
+        this.showFilters = true;
         this.getDyscp();
         this.Idform();
         this.structure = {
@@ -248,20 +248,19 @@ var SearchNewPage = /** @class */ (function () {
                 ageSearch = false;
             console.log("struture", this.structure);
             console.log("structure2", this.structure2);
-            //
-            // for(let j=0 ;j<this.profiles[i].trOff.length;j++) {
-            //   if (this.profiles[i].trOff[j].name == this.dyscyplina.name && this.profiles[i].trOff[j].price >= this.structure2.lower && this.profiles[i].trOff[j].price <= this.structure2.upper) {
-            //     dyscSearch = true;
-            //
-            //   }
-            //
-            //   else if (dyscSearch && this.profiles[i].trOff[j].name == this.dyscyplina.name && this.profiles[i].trOff[j].price >= this.structure2.lower && this.profiles[i].trOff[j].price <= this.structure2.upper) {
-            //     dyscSearch = true;
-            //   } else {
-            //     dyscSearch = false;
-            //   }
-            //
-            // }
+            console.log("profiles", this.profiles[i]);
+            // Object.assign(this.profiltest, this.profiles[i]);
+            // console.log("trroffer",this.profiltest.trOff);
+            debugger;
+            var offers = this.profiles[i].tr_off;
+            for (var j = 1; j < offers.length; j++) {
+                debugger;
+                if (offers[j].name == this.dyscyplina.name && offers[j].price >= this.structure2.lower && offers[j].price <= this.structure2.upper) {
+                    dyscSearch = true;
+                }
+                else
+                    dyscSearch = dyscSearch && offers[j].name == this.dyscyplina.name && offers[j].price >= this.structure2.lower && offers[j].price <= this.structure2.upper;
+            }
             console.log("agesearch", ageSearch);
             console.log("dyscysearch", dyscSearch);
             console.log("plecsearch", plecSearch);

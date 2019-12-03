@@ -21,18 +21,18 @@ import { Training } from './training';
 import { University } from './university';
 
 
-export interface ProfileOut extends Profile { 
+export interface ProfileOut extends Profile {
     description?: string;
     rating?: number;
     avatar?: string;
     registerDate?: string;
-    trDisc?: Array<Discipline>;
-    trCert?: Array<Certificate>;
-    trUni?: Array<University>;
-    trLoc?: Array<Location>;
-    trPl?: Array<Place>;
-    trOff?: Array<Offer>;
-    trOp?: Array<Opinion>;
-    trTr?: Array<Training>;
-    trPh?: Array<Photo>;
+    tr_disc?: Array<Discipline>;
+    tr_cert?: Array<Certificate>;
+    tr_uni?: Array<University>;
+    tr_loc?: Array<Location>;
+    tr_pl?: Array<Place>;
+    tr_off?: Array<Offer>;
+    tr_op?: Array<Opinion>;
+    tr_tr?: Array<Training>;
+    tr_ph?: Array<Photo>;
 }
