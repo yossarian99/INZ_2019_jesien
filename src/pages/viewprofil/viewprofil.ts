@@ -9,6 +9,7 @@ import {UserProfile} from "../../models/UserProfile-model";
 import {SearchServiceProvider} from "../../providers/search-service/search-service";
 import {RestProvider} from "../../providers/rest/rest";
 import { Events } from 'ionic-angular';
+import {ProfileOut} from "../../model/profileOut";
 /**
  * Generated class for the ViewprofilPage page.
  *
@@ -52,7 +53,7 @@ id:number;
 rating_option:number;
   showprofil:boolean;
   Opinions: Opinie ={};
-  item:UserProfile={};
+  item:ProfileOut={};
   opinionforms = new FormGroup({Opinionss:new FormControl(),opinionuser:new FormControl(),email:new FormControl(),ocena:new FormControl()});
   Opinionform(){
 

@@ -253,26 +253,37 @@ export class SearchNewPage {
       // Object.assign(this.profiltest, this.profiles[i]);
       // console.log("trroffer",this.profiltest.trOff);
       debugger;
-      let offers = this.profiles[i].tr_off;
-      for (let j = 1; j < offers.length; j++) {
-        debugger;
-        if (offers[j].name == this.dyscyplina.name && offers[j].price >= this.structure2.lower && offers[j].price <= this.structure2.upper) {
-          dyscSearch = true;
-        } else dyscSearch = dyscSearch && offers[j].name == this.dyscyplina.name && offers[j].price >= this.structure2.lower && offers[j].price <= this.structure2.upper;
+      let offers = this.profiles[i].tr_tr;
+      for (let j = 0; j < offers.length; j++) {
+        if (offers[j].place == this.Town) townSearch = true;
+        else townSearch = false;
+        console.log("dys==name",offers[j].name);
+        console.log("dysc name list ===",this.dyscyplina.name);
+        if (offers[j].name == this.dyscyplina.name) dyscSearch = true;
+
+        else dyscSearch = false;
+
+        if (offers[j].price >= this.structure2.lower && offers[j].price <= this.structure2.upper)
+          priceSearch = true;
+        else priceSearch = false;
+
+
+        if (this.profiles[i].gender == this.testRadioResult) plecSearch = true; else plecSearch = false;
+        console.log("agesearch", ageSearch);
+        console.log("dyscysearch", dyscSearch);
+        console.log("plecsearch", plecSearch);
+        console.log("pricesearch", priceSearch);
+        console.log("townsearch", townSearch);
+        if ((ageSearch && dyscSearch && plecSearch&&priceSearch&&townSearch) == true) {
+          console.log("splice ====== true");
+          this.profilesFiltered.push(this.profiles[i]);
+          // this.profiles.splice(i+1,1);
+        }
+        console.log(this.profilesFiltered);
       }
 
-      console.log("agesearch", ageSearch);
-      console.log("dyscysearch", dyscSearch);
-      console.log("plecsearch", plecSearch);
-
-      if (this.profiles[i].gender == this.testRadioResult) plecSearch = true; else plecSearch = false;
-      if ((ageSearch && dyscSearch && plecSearch) == true) {
-        console.log("splice")
-        this.profilesFiltered.push(this.profiles[i]);
-        // this.profiles.splice(i+1,1);
       }
-      console.log(this.profilesFiltered);
-    }
+
     if (this.profilesFiltered.length > 0) {
       this.showFilters = true;
     }
