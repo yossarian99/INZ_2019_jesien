@@ -407,90 +407,6 @@ var ProfileListService = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StartPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_config_service_config_service__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_search_service_search_service__ = __webpack_require__(133);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_rest_rest__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__api_dyscypline_service__ = __webpack_require__(138);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-// import { ApiModule} from '../..';
-
-/**
- * Generated class for the StartPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var StartPage = /** @class */ (function () {
-    function StartPage(nav, navParams, sea, configServce, restProvider, rest) {
-        this.nav = nav;
-        this.navParams = navParams;
-        this.sea = sea;
-        this.configServce = configServce;
-        this.restProvider = restProvider;
-        this.rest = rest;
-        this.Dysciplines = [];
-        //idforms: FormGroup;
-        this.form_object = {};
-        this.idforms = new __WEBPACK_IMPORTED_MODULE_5__angular_forms__["b" /* FormGroup */]({ Town: new __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormControl */]() });
-        this.getDyscp();
-    }
-    StartPage.prototype.ionViewDidLoad = function () {
-        this.getDyscp();
-    };
-    StartPage.prototype.getDyscp = function () {
-        var _this = this;
-        this.rest.getDyscyplines().subscribe(function (result) {
-            Object.assign(_this.Dysciplines, result);
-            //  for(var i=0;i<result.length;++i){
-            //    this.Dyscyplines[i]=result[i].Name;
-            // }
-            console.log("wczytane profils w wyszukiwaniu :");
-            console.log("list of dysc =", _this.Dysciplines);
-        });
-    };
-    StartPage.prototype.compareFn = function (e1, e2) {
-        return e1 && e2 ? e1.Name === e2.Name : e1 === e2;
-    };
-    StartPage.prototype.Idform = function () {
-        this.sea.addSearchParams(this.dyscyplina.name, this.Town);
-        this.nav.push('SearchNewPage');
-    };
-    StartPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-start',template:/*ion-inline-start:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\start\start.html"*/'<!--\n  Generated template for the StartPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n<ion-header>\n\n  <ion-navbar class="nav" >\n    <ion-buttons start>\n      <button ion-button >\n        <ion-icon name="menu"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-title style=" font-size:22px !important" >\n      Najlepszy trener\n    </ion-title>\n    <ion-buttons end>\n\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="getstart">\n  <ion-grid>\n\n<ion-row  justify-content-center>\n\n\n\n\n\n\n\n\n\n\n\n\n<ion-col col-12>\n\n<ion-row><P></P><P></P></ion-row>\n\n\n\n\n\n\n      <ion-row  align-items-start class="przesroczyste">\n        <div class="textdiv" text-center><p>Wyszukiwarka trenerów sportu.</p></div>\n      </ion-row >\n\n      <ion-row align-items-end class="przesroczyste" >\n        <div class="textdiv" text-center><p>Znajdz w szybki sposób trenera dysypliny</p></div>\n      </ion-row>\n\n\n\n\n<ion-row>\n  <ion-row>\n  </ion-row>\n\n\n\n\n\n   <ion-item  >\n     <ion-label>Dyscypliny</ion-label>\n     <ion-select [(ngModel)]=" dyscyplina"  [ngModelOptions]="{standalone: true}" >\n       <ion-option *ngFor="let  dyscyplina of  Dysciplines" [value]=" dyscyplina" >{{dyscyplina.name}}</ion-option>\n     </ion-select>\n   </ion-item>\n</ion-row>\n<ion-row class="tło_start2">\n  <p></p>\n</ion-row>\n\n  <form [formGroup]="idforms" (ngSubmit)=" Idform()"  >\n\n    <ion-list>\n<ion-row>\n      <ion-item col-12>\n\n        <ion-input  type="text" placeholder="Miasto..." [(ngModel)]="Town"\n                    formControlName="Town"   required></ion-input>\n\n\n      </ion-item>\n</ion-row>\n      <ion-row class="tło_start2">\n        <p></p>\n      </ion-row>\n<ion-row>\n      <ion-item class="przesroczyste">\n        <button  ion-button color="light" medium block type="submit" >Wczytaj profil</button>\n      </ion-item>\n\n</ion-row>\n    </ion-list>\n\n  </form>\n\n\n</ion-col>\n\n\n</ion-row>\n  </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\start\start.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_search_service_search_service__["a" /* SearchServiceProvider */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_config_service_config_service__["a" /* ConfigServce */], __WEBPACK_IMPORTED_MODULE_4__providers_rest_rest__["a" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_6__api_dyscypline_service__["a" /* DyscyplineService */]])
-    ], StartPage);
-    return StartPage;
-}());
-
-//# sourceMappingURL=start.js.map
-
-/***/ }),
-
-/***/ 138:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DyscyplineService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(36);
@@ -585,6 +501,90 @@ var DyscyplineService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ 138:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StartPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_config_service_config_service__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_search_service_search_service__ = __webpack_require__(133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_rest_rest__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__api_dyscypline_service__ = __webpack_require__(137);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+// import { ApiModule} from '../..';
+
+/**
+ * Generated class for the StartPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var StartPage = /** @class */ (function () {
+    function StartPage(nav, navParams, sea, configServce, restProvider, rest) {
+        this.nav = nav;
+        this.navParams = navParams;
+        this.sea = sea;
+        this.configServce = configServce;
+        this.restProvider = restProvider;
+        this.rest = rest;
+        this.Dysciplines = [];
+        //idforms: FormGroup;
+        this.form_object = {};
+        this.idforms = new __WEBPACK_IMPORTED_MODULE_5__angular_forms__["b" /* FormGroup */]({ Town: new __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormControl */]() });
+        this.getDyscp();
+    }
+    StartPage.prototype.ionViewDidLoad = function () {
+        this.getDyscp();
+    };
+    StartPage.prototype.getDyscp = function () {
+        var _this = this;
+        this.rest.getDyscyplines().subscribe(function (result) {
+            Object.assign(_this.Dysciplines, result);
+            //  for(var i=0;i<result.length;++i){
+            //    this.Dyscyplines[i]=result[i].Name;
+            // }
+            console.log("wczytane profils w wyszukiwaniu :");
+            console.log("list of dysc =", _this.Dysciplines);
+        });
+    };
+    StartPage.prototype.compareFn = function (e1, e2) {
+        return e1 && e2 ? e1.Name === e2.Name : e1 === e2;
+    };
+    StartPage.prototype.Idform = function () {
+        this.sea.addSearchParams(this.dyscyplina.name, this.Town);
+        this.nav.push('SearchNewPage');
+    };
+    StartPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-start',template:/*ion-inline-start:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\start\start.html"*/'<!--\n  Generated template for the StartPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n<ion-header>\n\n  <ion-navbar class="nav" >\n    <ion-buttons start>\n      <button ion-button >\n        <ion-icon name="menu"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-title style=" font-size:22px !important" >\n      Najlepszy trener\n    </ion-title>\n    <ion-buttons end>\n\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="getstart">\n  <ion-grid>\n\n<ion-row  justify-content-center>\n\n\n\n\n\n\n\n\n\n\n\n\n<ion-col col-12>\n\n<ion-row><P></P><P></P></ion-row>\n\n\n\n\n\n\n      <ion-row  align-items-start class="przesroczyste">\n        <div class="textdiv" text-center><p>Wyszukiwarka trenerów sportu.</p></div>\n      </ion-row >\n\n      <ion-row align-items-end class="przesroczyste" >\n        <div class="textdiv" text-center><p>Znajdz w szybki sposób trenera dysypliny</p></div>\n      </ion-row>\n\n\n\n\n<ion-row>\n  <ion-row>\n  </ion-row>\n\n\n\n\n\n   <ion-item  >\n     <ion-label>Dyscypliny</ion-label>\n     <ion-select [(ngModel)]=" dyscyplina"  [ngModelOptions]="{standalone: true}" >\n       <ion-option *ngFor="let  dyscyplina of  Dysciplines" [value]=" dyscyplina" >{{dyscyplina.name}}</ion-option>\n     </ion-select>\n   </ion-item>\n</ion-row>\n<ion-row class="tło_start2">\n  <p></p>\n</ion-row>\n\n  <form [formGroup]="idforms" (ngSubmit)=" Idform()"  >\n\n    <ion-list>\n<ion-row>\n      <ion-item col-12>\n\n        <ion-input  type="text" placeholder="Miasto..." [(ngModel)]="Town"\n                    formControlName="Town"   required></ion-input>\n\n\n      </ion-item>\n</ion-row>\n      <ion-row class="tło_start2">\n        <p></p>\n      </ion-row>\n<ion-row>\n      <ion-item class="przesroczyste">\n        <button  ion-button color="light" medium block type="submit" >Wczytaj profil</button>\n      </ion-item>\n\n</ion-row>\n    </ion-list>\n\n  </form>\n\n\n</ion-col>\n\n\n</ion-row>\n  </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\start\start.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_search_service_search_service__["a" /* SearchServiceProvider */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_config_service_config_service__["a" /* ConfigServce */], __WEBPACK_IMPORTED_MODULE_4__providers_rest_rest__["a" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_6__api_dyscypline_service__["a" /* DyscyplineService */]])
+    ], StartPage);
+    return StartPage;
+}());
+
+//# sourceMappingURL=start.js.map
+
+/***/ }),
+
 /***/ 149:
 /***/ (function(module, exports) {
 
@@ -615,19 +615,19 @@ var map = {
 		19
 	],
 	"../pages/callendar-profill/callendar-profill.module": [
-		432,
+		427,
 		23
 	],
 	"../pages/dyscypline/dyscypline.module": [
-		427,
+		428,
 		18
 	],
 	"../pages/edit-primary-info/edit-primary-info.module": [
-		428,
+		429,
 		0
 	],
 	"../pages/education-porfil/education-porfil.module": [
-		429,
+		430,
 		17
 	],
 	"../pages/experience-profill/experience-profill.module": [
@@ -635,7 +635,7 @@ var map = {
 		16
 	],
 	"../pages/gallery-profil/gallery-profil.module": [
-		430,
+		432,
 		15
 	],
 	"../pages/home/home.module": [
@@ -643,23 +643,23 @@ var map = {
 		22
 	],
 	"../pages/location/location.module": [
-		434,
+		436,
 		14
 	],
 	"../pages/login/login.module": [
-		435,
+		434,
 		13
 	],
 	"../pages/opinion-profill/opinion-profill.module": [
-		436,
+		435,
 		12
 	],
 	"../pages/places-profil/places-profil.module": [
-		438,
+		437,
 		11
 	],
 	"../pages/price-list-profill/price-list-profill.module": [
-		437,
+		438,
 		10
 	],
 	"../pages/profil-view-menu/profil-view-menu.module": [
@@ -671,35 +671,35 @@ var map = {
 		8
 	],
 	"../pages/register/register.module": [
-		441,
+		442,
 		7
 	],
 	"../pages/relogin/relogin.module": [
-		443,
+		441,
 		6
 	],
 	"../pages/reregister/reregister.module": [
-		442,
+		443,
 		5
 	],
 	"../pages/search-new/search-new.module": [
-		448,
+		444,
 		4
 	],
 	"../pages/search2/search2.module": [
-		444,
+		445,
 		3
 	],
 	"../pages/show-search/show-search.module": [
-		445,
+		446,
 		2
 	],
 	"../pages/start/start.module": [
-		446,
+		447,
 		21
 	],
 	"../pages/viewprofil/viewprofil.module": [
-		447,
+		448,
 		1
 	]
 };
@@ -1353,8 +1353,8 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__api_profile_service__ = __webpack_require__(258);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ionic_native_calendar_ngx__ = __webpack_require__(136);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_callendar_profill_callendar_profill__ = __webpack_require__(262);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_start_start__ = __webpack_require__(137);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__api_dyscypline_service__ = __webpack_require__(138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_start_start__ = __webpack_require__(138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__api_dyscypline_service__ = __webpack_require__(137);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__api_trainer_service__ = __webpack_require__(264);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1405,28 +1405,28 @@ var AppModule = /** @class */ (function () {
                     links: [
                         { loadChildren: '../pages/add-event/add-event.module#AddEventPageModule', name: 'AddEventPage', segment: 'add-event', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/cal-details/cal-details.module#CalDetailsPageModule', name: 'CalDetailsPage', segment: 'cal-details', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/callendar-profill/callendar-profill.module#CallendarProfillPageModule', name: 'CallendarProfillPage', segment: 'callendar-profill', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/dyscypline/dyscypline.module#DyscyplinePageModule', name: 'DyscyplinePage', segment: 'dyscypline', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/edit-primary-info/edit-primary-info.module#EditPrimaryInfoPageModule', name: 'EditPrimaryInfoPage', segment: 'edit-primary-info', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/education-porfil/education-porfil.module#EducationPorfilPageModule', name: 'EducationPorfilPage', segment: 'education-porfil', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/gallery-profil/gallery-profil.module#GalleryProfilPageModule', name: 'GalleryProfilPage', segment: 'gallery-profil', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/experience-profill/experience-profill.module#ExperienceProfillPageModule', name: 'ExperienceProfillPage', segment: 'experience-profill', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/callendar-profill/callendar-profill.module#CallendarProfillPageModule', name: 'CallendarProfillPage', segment: 'callendar-profill', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/gallery-profil/gallery-profil.module#GalleryProfilPageModule', name: 'GalleryProfilPage', segment: 'gallery-profil', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/location/location.module#LocationPageModule', name: 'LocationPage', segment: 'location', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/opinion-profill/opinion-profill.module#OpinionProfillPageModule', name: 'OpinionProfillPage', segment: 'opinion-profill', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/price-list-profill/price-list-profill.module#PriceListProfillPageModule', name: 'PriceListProfillPage', segment: 'price-list-profill', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/location/location.module#LocationPageModule', name: 'LocationPage', segment: 'location', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/places-profil/places-profil.module#PlacesProfilPageModule', name: 'PlacesProfilPage', segment: 'places-profil', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/price-list-profill/price-list-profill.module#PriceListProfillPageModule', name: 'PriceListProfillPage', segment: 'price-list-profill', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profil-view-menu/profil-view-menu.module#ProfilViewMenuPageModule', name: 'ProfilViewMenuPage', segment: 'profil-view-menu', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profil/profil.module#ProfilPageModule', name: 'ProfilPage', segment: 'profil', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/relogin/relogin.module#ReloginPageModule', name: 'ReloginPage', segment: 'relogin', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/reregister/reregister.module#ReregisterPageModule', name: 'ReregisterPage', segment: 'reregister', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/relogin/relogin.module#ReloginPageModule', name: 'ReloginPage', segment: 'relogin', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/search-new/search-new.module#SearchNewPageModule', name: 'SearchNewPage', segment: 'search-new', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/search2/search2.module#Search2PageModule', name: 'Search2Page', segment: 'search2', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/show-search/show-search.module#ShowSearchPageModule', name: 'ShowSearchPage', segment: 'show-search', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/start/start.module#StartPageModule', name: 'StartPage', segment: 'start', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/viewprofil/viewprofil.module#ViewprofilPageModule', name: 'ViewprofilPage', segment: 'viewprofil', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/search-new/search-new.module#SearchNewPageModule', name: 'SearchNewPage', segment: 'search-new', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/viewprofil/viewprofil.module#ViewprofilPageModule', name: 'ViewprofilPage', segment: 'viewprofil', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_9__angular_http__["a" /* HttpModule */],
@@ -1552,7 +1552,7 @@ var UserProfileN0c = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(257);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(256);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_start_start__ = __webpack_require__(137);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_start_start__ = __webpack_require__(138);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);

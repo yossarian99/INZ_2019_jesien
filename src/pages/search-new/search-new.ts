@@ -252,7 +252,7 @@ export class SearchNewPage {
       console.log("profiles", this.profiles[i]);
       // Object.assign(this.profiltest, this.profiles[i]);
       // console.log("trroffer",this.profiltest.trOff);
-      debugger;
+
       let offers = this.profiles[i].tr_tr;
       for (let j = 0; j < offers.length; j++) {
         if (offers[j].place == this.Town) townSearch = true;

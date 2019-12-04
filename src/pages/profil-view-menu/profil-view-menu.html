@@ -30,6 +30,9 @@
   <ion-menu [content]="mycontent" [persistent]="true" [enabled]="true">
     <ion-content>
       <ion-list>
+        <button expand="block" color="success" ion-item (click)="openPage('ProfilPage')">
+          Dane Podstawowe
+        </button>
         <button expand="block" color="success" ion-item (click)="openPage('EducationPorfilPage')">
         Wykształcenie
       </button>
