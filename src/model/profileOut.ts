@@ -26,8 +26,9 @@ export interface ProfileOut extends Profile {
     rating?: number;
     avatar?: string;
     registerDate?: string;
+
     tr_disc?: Array<Discipline>;
-    tr_cert?: Array<Certificate>;
+  tr_cert?: Array<Certificate>;
     tr_uni?: Array<University>;
     tr_loc?: Array<Location>;
     tr_pl?: Array<Place>;

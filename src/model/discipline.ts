@@ -11,7 +11,7 @@
  */
 
 
-export interface Discipline { 
+export interface Discipline {
     id?: number;
-    disciplineName?: string;
+  disciplineName?: string;
 }

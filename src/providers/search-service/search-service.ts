@@ -13,6 +13,7 @@ export class SearchServiceProvider {
   ProfillViewMenu: ProfileOut = {};
 
 id:number;
+id2:number;
   public addSearchParams(dysc: string, loc: string) {
     this.searchParams.dysc = dysc;
     this.searchParams.loc = loc;
@@ -33,6 +34,12 @@ id:number;
   }
 public addProfilById(id1:number){
     this.id=id1;
+}
+public setId2(id:number){
+    this.id2=id;
+}
+public getId2(){
+    return this.id2;
 }
   public getprofilParms() {
     return this.Profilnew;

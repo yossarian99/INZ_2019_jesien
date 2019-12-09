@@ -35,13 +35,14 @@ import {Opinion} from "../../model/opinion";
 })
 
 export class ProfilViewMenuPage {
-
+id:number;
   rootPage: any = ProfilViewMenuPage;
   constructor(public ProfillRest:ProfileService,public menuCtrl:MenuController, public events: Events,public sea:SearchServiceProvider,public nav: NavController, public navParams: NavParams,private provilconfig: SearchServiceProvider ,  public profilsService: ProfileListService,public rest: RestProvider) {
     events.subscribe('star-rating:changed', (starRating) =>
       console.log(starRating));
 
     this.id = this.provilconfig.getProfilById();
+    console.log("id0000===",this.id);
     // Object.assign(this.item, this.item1);
     this.searchParams = this.provilconfig.searchParams;
 
@@ -72,7 +73,7 @@ export class ProfilViewMenuPage {
     loc: '',
     dysc: ''
   };
-  id:number;
+
   rating_option:number;
   showprofil:boolean;
   Opinions:Opinion ={};
@@ -94,8 +95,8 @@ export class ProfilViewMenuPage {
 
   }
   getUsers(id:number) {
-    this.id=1;
-    this.ProfillRest.getProfile(this.id).subscribe(result => {
+console.log("id9999==",id);
+    this.ProfillRest.getProfile(id).subscribe(result => {
 
       Object.assign(this.item, result);
 
@@ -121,8 +122,9 @@ export class ProfilViewMenuPage {
   }
 
   openPage(page) {
-    this.sea.addProfillViewMenu(this.item);
+    // this.sea.addProfillViewMenu(this.item);
     //
+    this.provilconfig.setId2(this.id);
     this.nav.push(page);
 
   }

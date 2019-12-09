@@ -1,4 +1,4 @@
-webpackJsonp([24],{
+webpackJsonp([25],{
 
 /***/ 105:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -134,6 +134,12 @@ var SearchServiceProvider = /** @class */ (function () {
     };
     SearchServiceProvider.prototype.addProfilById = function (id1) {
         this.id = id1;
+    };
+    SearchServiceProvider.prototype.setId2 = function (id) {
+        this.id2 = id;
+    };
+    SearchServiceProvider.prototype.getId2 = function () {
+        return this.id2;
     };
     SearchServiceProvider.prototype.getprofilParms = function () {
         return this.Profilnew;
@@ -608,19 +614,19 @@ webpackEmptyAsyncContext.id = 149;
 var map = {
 	"../pages/add-event/add-event.module": [
 		425,
-		20
+		21
 	],
 	"../pages/cal-details/cal-details.module": [
 		426,
-		19
+		20
 	],
 	"../pages/callendar-profill/callendar-profill.module": [
 		427,
-		23
+		24
 	],
 	"../pages/dyscypline/dyscypline.module": [
 		428,
-		18
+		19
 	],
 	"../pages/edit-primary-info/edit-primary-info.module": [
 		429,
@@ -628,78 +634,82 @@ var map = {
 	],
 	"../pages/education-porfil/education-porfil.module": [
 		430,
-		17
+		18
 	],
 	"../pages/experience-profill/experience-profill.module": [
+		432,
+		17
+	],
+	"../pages/gallery-profil/gallery-profil.module": [
 		431,
 		16
 	],
-	"../pages/gallery-profil/gallery-profil.module": [
-		432,
-		15
-	],
 	"../pages/home/home.module": [
 		433,
-		22
+		23
 	],
 	"../pages/location/location.module": [
-		436,
-		14
+		434,
+		15
 	],
 	"../pages/login/login.module": [
-		434,
-		13
+		435,
+		14
 	],
 	"../pages/opinion-profill/opinion-profill.module": [
-		435,
-		12
+		436,
+		13
 	],
 	"../pages/places-profil/places-profil.module": [
 		437,
-		11
+		12
 	],
 	"../pages/price-list-profill/price-list-profill.module": [
 		438,
-		10
+		11
 	],
 	"../pages/profil-view-menu/profil-view-menu.module": [
+		440,
+		10
+	],
+	"../pages/profil/profil.module": [
 		439,
 		9
 	],
-	"../pages/profil/profil.module": [
-		440,
+	"../pages/register/register.module": [
+		441,
 		8
 	],
-	"../pages/register/register.module": [
+	"../pages/relogin/relogin.module": [
 		442,
 		7
 	],
-	"../pages/relogin/relogin.module": [
-		441,
-		6
-	],
 	"../pages/reregister/reregister.module": [
 		443,
-		5
+		6
 	],
 	"../pages/search-new/search-new.module": [
 		444,
-		4
+		5
 	],
 	"../pages/search2/search2.module": [
 		445,
-		3
+		4
 	],
 	"../pages/show-search/show-search.module": [
 		446,
-		2
+		3
 	],
 	"../pages/start/start.module": [
 		447,
-		21
+		22
+	],
+	"../pages/trening-list/trening-list.module": [
+		448,
+		2
 	],
 	"../pages/viewprofil/viewprofil.module": [
-		448,
+		449,
 		1
 	]
 };
@@ -1409,23 +1419,24 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/dyscypline/dyscypline.module#DyscyplinePageModule', name: 'DyscyplinePage', segment: 'dyscypline', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/edit-primary-info/edit-primary-info.module#EditPrimaryInfoPageModule', name: 'EditPrimaryInfoPage', segment: 'edit-primary-info', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/education-porfil/education-porfil.module#EducationPorfilPageModule', name: 'EducationPorfilPage', segment: 'education-porfil', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/experience-profill/experience-profill.module#ExperienceProfillPageModule', name: 'ExperienceProfillPage', segment: 'experience-profill', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/gallery-profil/gallery-profil.module#GalleryProfilPageModule', name: 'GalleryProfilPage', segment: 'gallery-profil', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/experience-profill/experience-profill.module#ExperienceProfillPageModule', name: 'ExperienceProfillPage', segment: 'experience-profill', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/location/location.module#LocationPageModule', name: 'LocationPage', segment: 'location', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/opinion-profill/opinion-profill.module#OpinionProfillPageModule', name: 'OpinionProfillPage', segment: 'opinion-profill', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/location/location.module#LocationPageModule', name: 'LocationPage', segment: 'location', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/places-profil/places-profil.module#PlacesProfilPageModule', name: 'PlacesProfilPage', segment: 'places-profil', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/price-list-profill/price-list-profill.module#PriceListProfillPageModule', name: 'PriceListProfillPage', segment: 'price-list-profill', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/profil-view-menu/profil-view-menu.module#ProfilViewMenuPageModule', name: 'ProfilViewMenuPage', segment: 'profil-view-menu', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profil/profil.module#ProfilPageModule', name: 'ProfilPage', segment: 'profil', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/relogin/relogin.module#ReloginPageModule', name: 'ReloginPage', segment: 'relogin', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/profil-view-menu/profil-view-menu.module#ProfilViewMenuPageModule', name: 'ProfilViewMenuPage', segment: 'profil-view-menu', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/relogin/relogin.module#ReloginPageModule', name: 'ReloginPage', segment: 'relogin', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/reregister/reregister.module#ReregisterPageModule', name: 'ReregisterPage', segment: 'reregister', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/search-new/search-new.module#SearchNewPageModule', name: 'SearchNewPage', segment: 'search-new', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/search2/search2.module#Search2PageModule', name: 'Search2Page', segment: 'search2', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/show-search/show-search.module#ShowSearchPageModule', name: 'ShowSearchPage', segment: 'show-search', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/start/start.module#StartPageModule', name: 'StartPage', segment: 'start', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/trening-list/trening-list.module#TreningListPageModule', name: 'TreningListPage', segment: 'trening-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/viewprofil/viewprofil.module#ViewprofilPageModule', name: 'ViewprofilPage', segment: 'viewprofil', priority: 'low', defaultHistory: [] }
                     ]
                 }),

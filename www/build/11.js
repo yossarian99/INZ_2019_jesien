@@ -1,14 +1,14 @@
 webpackJsonp([11],{
 
-/***/ 437:
+/***/ 438:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PlacesProfilPageModule", function() { return PlacesProfilPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PriceListProfillPageModule", function() { return PriceListProfillPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__places_profil__ = __webpack_require__(460);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__price_list_profill__ = __webpack_require__(462);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,31 +18,31 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var PlacesProfilPageModule = /** @class */ (function () {
-    function PlacesProfilPageModule() {
+var PriceListProfillPageModule = /** @class */ (function () {
+    function PriceListProfillPageModule() {
     }
-    PlacesProfilPageModule = __decorate([
+    PriceListProfillPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__places_profil__["a" /* PlacesProfilPage */],
+                __WEBPACK_IMPORTED_MODULE_2__price_list_profill__["a" /* PriceListProfillPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__places_profil__["a" /* PlacesProfilPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__price_list_profill__["a" /* PriceListProfillPage */]),
             ],
         })
-    ], PlacesProfilPageModule);
-    return PlacesProfilPageModule;
+    ], PriceListProfillPageModule);
+    return PriceListProfillPageModule;
 }());
 
-//# sourceMappingURL=places-profil.module.js.map
+//# sourceMappingURL=price-list-profill.module.js.map
 
 /***/ }),
 
-/***/ 460:
+/***/ 462:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PlacesProfilPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PriceListProfillPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -57,32 +57,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /**
- * Generated class for the PlacesProfilPage page.
+ * Generated class for the PriceListProfillPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var PlacesProfilPage = /** @class */ (function () {
-    function PlacesProfilPage(nav, navParams) {
+var PriceListProfillPage = /** @class */ (function () {
+    function PriceListProfillPage(nav, navParams) {
         this.nav = nav;
         this.navParams = navParams;
     }
-    PlacesProfilPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad PlacesProfilPage');
+    PriceListProfillPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad PriceListProfillPage');
     };
-    PlacesProfilPage.prototype.backtoprofiles = function () {
+    PriceListProfillPage.prototype.backtoprofiles = function () {
         this.nav.pop();
     };
-    PlacesProfilPage = __decorate([
+    PriceListProfillPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-places-profil',template:/*ion-inline-start:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\places-profil\places-profil.html"*/'<!--\n  Generated template for the PlacesProfilPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title>PlacesProfil</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <button ion-button (click)="backtoprofiles" >\n    <ion-icon ios="ios-undo" md="md-undo"></ion-icon>\n\n  </button>\n</ion-content>\n'/*ion-inline-end:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\places-profil\places-profil.html"*/,
+            selector: 'page-price-list-profill',template:/*ion-inline-start:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\price-list-profill\price-list-profill.html"*/'<!--\n  Generated template for the PriceListProfillPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>  <button ion-button (click)="backtoprofiles" >\n    <ion-icon ios="ios-undo" md="md-undo"></ion-icon>\n\n  </button>\n\n    <ion-title>PriceListProfill</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\price-list-profill\price-list-profill.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
-    ], PlacesProfilPage);
-    return PlacesProfilPage;
+    ], PriceListProfillPage);
+    return PriceListProfillPage;
 }());
 
-//# sourceMappingURL=places-profil.js.map
+//# sourceMappingURL=price-list-profill.js.map
 
 /***/ })
 

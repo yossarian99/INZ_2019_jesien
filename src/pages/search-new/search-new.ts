@@ -163,6 +163,8 @@ export class SearchNewPage {
   profilsite(profil: ProfileOut) {
     // this.service.addItem_object(id);
     this.provilconfig.addprofilParams(profil);
+    console.log("id333==",profil.id);
+    this.provilconfig.addProfilById(profil.id);
     console.log("w srodku servisu");
 
     this.nav.push('ProfilViewMenuPage');
