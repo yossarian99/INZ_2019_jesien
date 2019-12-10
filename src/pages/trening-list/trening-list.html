@@ -26,9 +26,18 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <div #map id="my-map">
 
   </div>
+  <ion-row>
+    <ion-col>
+      <button  ion-button color="secondary" [small]="" (click)="Upp()"  >Do góry</button>
+    </ion-col>
+    <ion-col>
+      <button  ion-button color="secondary" [small]="" (click)="Down()" >W dół</button>
+
+    </ion-col>
+  </ion-row>
 
 </ion-content>

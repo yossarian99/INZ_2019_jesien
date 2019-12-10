@@ -40024,6 +40024,6 @@ page-start .btnrozmiar {
   max-width: 100% !important;
 }
 
-page-trening-list #map {
-  height: 50%;
+page-trening-list #my-map {
+  height: 30%;
 }

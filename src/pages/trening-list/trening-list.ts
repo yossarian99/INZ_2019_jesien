@@ -3,6 +3,7 @@ import {Events, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {ProfileService} from "../../api/profile.service";
 import {SearchServiceProvider} from "../../providers/search-service/search-service";
 import {ProfileOut} from "../../model/profileOut";
+import {Place} from "../../model/place";
 
 /**
  * Generated class for the TreningListPage page.
@@ -21,15 +22,24 @@ export class TreningListPage {
   item:ProfileOut={};
   id:number;
   map:any;
+  index:number;
+  localizationTemp:Place;
+  szerokosc:string;
+  wysokosc:string;
   constructor(public navCtrl: NavController,private provilconfig: SearchServiceProvider, public navParams: NavParams,public ProfillRest:ProfileService,public events: Events,public sea:SearchServiceProvider) {
-    this.id = this.provilconfig.getId2();
 
-    this.getUsers(this.id);
 
+
+    //
   }
 
   ionViewDidLoad() {
-    this.showmap();
+    console.log("na mapie");
+    this.id = this.provilconfig.getId2();
+    this.getUsers(this.id);
+    this.index=0;
+     this.setItems();
+    this.showmap(this.szerokosc, this.wysokosc);
   }
   getUsers(id:number) {
 
@@ -39,15 +49,17 @@ export class TreningListPage {
 
     });
   }
-  showmap(){
-    const location= new google.maps.LatLng(53.123482,18.008438);
+
+  showmap(lat,long){
+    const location= new google.maps.LatLng(lat,long);
     const options={
       center: location,
       zoom: 10
     };
-  this.map= new google.maps.Map(this.mapRef,options);
-  const map= new google.maps.Map;
-this.addMArker(location,map);
+    // const map= new google.maps.Map;
+  this.map= new google.maps.Map(this.mapRef.nativeElement,options);
+
+ this.addMArker(location,this.map);
 
   }
   addMArker(position,map){
@@ -55,5 +67,28 @@ this.addMArker(location,map);
       position,
       map
     });
+  }
+  Upp(){
+    if(this.index+1==this.item.tr_loc.length)this.index=0;
+    else this.index=this.index+1;
+    this.localizationTemp=this.item.tr_loc[this.index];
+    this.szerokosc=this.localizationTemp.latitude;
+    this.wysokosc=this.localizationTemp.longitude;
+  }
+  Down(){
+    if(this.index==0)this.index=this.item.tr_loc.length-1;
+    else this.index=this.index-1;
+
+    this.localizationTemp=this.item.tr_loc[this.index];
+    this.szerokosc=this.localizationTemp.latitude;
+    this.wysokosc=this.localizationTemp.longitude;
+
+
+  }
+  setItems(){
+    this.index=0;
+    this.localizationTemp=this.item.tr_loc[this.index];
+    this.szerokosc=this.localizationTemp.latitude;
+    this.wysokosc=this.localizationTemp.longitude;
   }
 }
