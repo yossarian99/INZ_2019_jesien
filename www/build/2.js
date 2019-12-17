@@ -60,8 +60,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var TreningListPage = /** @class */ (function () {
-    function TreningListPage(navCtrl, provilconfig, navParams, ProfillRest, events, sea) {
+    function TreningListPage(zone, platform, navCtrl, provilconfig, navParams, ProfillRest, events, sea) {
+        this.zone = zone;
+        this.platform = platform;
         this.navCtrl = navCtrl;
         this.provilconfig = provilconfig;
         this.navParams = navParams;
@@ -69,15 +72,14 @@ var TreningListPage = /** @class */ (function () {
         this.events = events;
         this.sea = sea;
         this.item = {};
-        //
-    }
-    TreningListPage.prototype.ionViewDidLoad = function () {
-        console.log("na mapie");
+        this.treningOffer = {};
         this.id = this.provilconfig.getId2();
         this.getUsers(this.id);
         this.index = 0;
-        this.setItems();
-        this.showmap(this.szerokosc, this.wysokosc);
+        console.log("wysokosc", this.wysokosc);
+    }
+    TreningListPage.prototype.ionViewDidLoad = function () {
+        console.log("na mapie");
     };
     TreningListPage.prototype.getUsers = function (id) {
         var _this = this;
@@ -88,7 +90,8 @@ var TreningListPage = /** @class */ (function () {
     TreningListPage.prototype.showmap = function (lat, long) {
         var location = new google.maps.LatLng(lat, long);
         var options = {
-            center: location,
+            // center: location,
+            center: { lat: +lat, lng: +long },
             zoom: 10
         };
         // const map= new google.maps.Map;
@@ -102,28 +105,62 @@ var TreningListPage = /** @class */ (function () {
         });
     };
     TreningListPage.prototype.Upp = function () {
-        if (this.index + 1 == this.item.tr_loc.length)
+        var _this = this;
+        if (this.index + 1 == this.item.tr_pl.length)
             this.index = 0;
         else
             this.index = this.index + 1;
-        this.localizationTemp = this.item.tr_loc[this.index];
+        this.localizationTemp = this.item.tr_pl[this.index];
         this.szerokosc = this.localizationTemp.latitude;
         this.wysokosc = this.localizationTemp.longitude;
+        // this.provilconfig.setlatitude(this.szerokosc);
+        // this.provilconfig.setlongtitude((this.wysokosc));
+        console.log("++++", this.item.tr_loc);
+        console.log("uppp");
+        console.log("szerokosc", this.szerokosc);
+        console.log("wysokosc", this.wysokosc);
+        console.log("index", this.index);
+        this.searchOffer(this.index);
+        this.checkLimitClients(this.treningOffer.clientLimit, this.treningOffer.actualClientNumber);
+        this.platform.ready().then(function () {
+            _this.showmap(_this.szerokosc, _this.wysokosc);
+        });
+        // this.events.publish('updateScreen');
     };
     TreningListPage.prototype.Down = function () {
+        var _this = this;
         if (this.index == 0)
-            this.index = this.item.tr_loc.length - 1;
+            this.index = this.item.tr_pl.length - 1;
         else
             this.index = this.index - 1;
-        this.localizationTemp = this.item.tr_loc[this.index];
+        this.localizationTemp = this.item.tr_pl[this.index];
         this.szerokosc = this.localizationTemp.latitude;
         this.wysokosc = this.localizationTemp.longitude;
+        this.searchOffer(this.index);
+        this.checkLimitClients(this.treningOffer.clientLimit, this.treningOffer.actualClientNumber);
+        console.log("down");
+        this.platform.ready().then(function () {
+            _this.showmap(_this.szerokosc, _this.wysokosc);
+        });
     };
     TreningListPage.prototype.setItems = function () {
         this.index = 0;
-        this.localizationTemp = this.item.tr_loc[this.index];
+        this.localizationTemp = this.item.tr_pl[this.index];
         this.szerokosc = this.localizationTemp.latitude;
         this.wysokosc = this.localizationTemp.longitude;
+    };
+    TreningListPage.prototype.searchOffer = function (index) {
+        for (var i = 0; i < this.item.tr_pl.length; i++) {
+            if (this.item.tr_pl[index].id == this.item.tr_tr[i].id) {
+                this.treningOffer = this.item.tr_tr[i];
+            }
+        }
+    };
+    TreningListPage.prototype.checkLimitClients = function (limit, clients) {
+        if (limit <= clients)
+            this.limit = false;
+        else
+            this.limit = true;
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
@@ -131,12 +168,12 @@ var TreningListPage = /** @class */ (function () {
     ], TreningListPage.prototype, "mapRef", void 0);
     TreningListPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-trening-list',template:/*ion-inline-start:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\trening-list\trening-list.html"*/'<!--\n  Generated template for the ProfilViewMenuPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar class="nav">\n    <ion-buttons start>\n      <!--<button ion-button>-->\n      <!--<ion-icon name="contact"></ion-icon>-->\n      <!--</button>-->\n    </ion-buttons>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      Menu\n    </ion-title>\n    <ion-title >\n      Najlepszy trener\n    </ion-title>\n    <ion-buttons end>\n\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <div #map id="my-map">\n\n  </div>\n  <ion-row>\n    <ion-col>\n      <button  ion-button color="secondary" [small]="" (click)="Upp()"  >Do góry</button>\n    </ion-col>\n    <ion-col>\n      <button  ion-button color="secondary" [small]="" (click)="Down()" >W dół</button>\n\n    </ion-col>\n  </ion-row>\n\n</ion-content>\n'/*ion-inline-end:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\trening-list\trening-list.html"*/,
+            selector: 'page-trening-list',template:/*ion-inline-start:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\trening-list\trening-list.html"*/'<!--\n  Generated template for the ProfilViewMenuPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar class="nav">\n    <ion-buttons start>\n      <!--<button ion-button>-->\n      <!--<ion-icon name="contact"></ion-icon>-->\n      <!--</button>-->\n    </ion-buttons>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      Menu\n    </ion-title>\n    <ion-title >\n      Najlepszy trener\n    </ion-title>\n    <ion-buttons end>\n\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n  <div #map id="my-map">\n\n  </div>\n  <ion-grid>\n\n\n\n\n\n<ion-row>\n\n  <ion-col col-12="">\n<ion-row>\n\n\n      <ion-col col-6="" text-left="">\n\n          <button text-left=""  ion-button color="secondary" [small]="" (click)="Upp()"  >Do góry</button>\n\n\n      </ion-col>\n      <ion-col col-6="" text-right="">\n\n          <button text-right="" ion-button color="secondary" [small]="" (click)="Down()" >W dół</button>\n\n      </ion-col>\n</ion-row>\n    </ion-col>\n\n</ion-row>\n\n\n  <ion-row>\n  <ion-col col-12="">\n\n\n\n\n  <br>\n    Trening:{{treningOffer.name}}\n      <br>\n\n            Data:{{treningOffer.date}}\n          <br>\n\n            Godz:{{treningOffer.beginTime}}:{{treningOffer.endTime}}\n          <br>\n\n            Cena:{{treningOffer.price}}\n          <br>\n\n            Limit klientów:{{treningOffer.clientLimit}}\n          <br>\n\n            Zapisani klienci:{{treningOffer.actualClientNumber}}\n\n\n\n\n    </ion-col>\n  </ion-row>\n<ion-row>\n<ion-row>\n  <div *ngIf="limit==true ">\n<ion-row text-center="">\n\n<ion-col col-12="" text-center="">\n  <button text-center=""  ion-button color="secondary" [small]=""   >Zapisz się na trening</button>\n\n</ion-col>\n\n\n</ion-row>\n  </div>\n  <div *ngIf="limit==false ">\n<ion-item text-center="">\n  <ion-col col-12="" text-center="">\n\n    Brak wolnych miejsc.\n  </ion-col>\n\n\n\n</ion-item>\n\n\n\n  </div>\n</ion-row>\n\n\n</ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\trening-list\trening-list.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_search_service_search_service__["a" /* SearchServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_search_service_search_service__["a" /* SearchServiceProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__api_profile_service__["a" /* ProfileService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__api_profile_service__["a" /* ProfileService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_3__providers_search_service_search_service__["a" /* SearchServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_search_service_search_service__["a" /* SearchServiceProvider */]) === "function" && _g || Object])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__providers_search_service_search_service__["a" /* SearchServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_search_service_search_service__["a" /* SearchServiceProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2__api_profile_service__["a" /* ProfileService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__api_profile_service__["a" /* ProfileService */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_3__providers_search_service_search_service__["a" /* SearchServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_search_service_search_service__["a" /* SearchServiceProvider */]) === "function" && _j || Object])
     ], TreningListPage);
     return TreningListPage;
-    var _a, _b, _c, _d, _e, _f, _g;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
 }());
 
 //# sourceMappingURL=trening-list.js.map

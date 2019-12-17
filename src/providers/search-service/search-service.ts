@@ -14,6 +14,8 @@ export class SearchServiceProvider {
 
 id:number;
 id2:number;
+wysokosc:string;
+szerokosc:string;
   public addSearchParams(dysc: string, loc: string) {
     this.searchParams.dysc = dysc;
     this.searchParams.loc = loc;
@@ -47,5 +49,18 @@ public getId2(){
   public getProfilById()
   {
     return this.id;
+  }
+  public setlatitude(lo){
+    this.wysokosc=lo;
+
+  }
+  public setlongtitude(lng){
+    this.szerokosc=lng;
+  }
+  public getlatitude(){
+    return this.wysokosc;
+  }
+  public getlongtitude(){
+    return this.szerokosc;
   }
 }
