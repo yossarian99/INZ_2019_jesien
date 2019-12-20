@@ -5,6 +5,12 @@
   background-size: cover;
 }
 
+.setPicture {
+  background-image: url("../assets/imgs/silownia.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .columna {
   border: think solid black;
 }
