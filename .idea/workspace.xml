@@ -1,36 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cebcc254-d153-49ab-bd32-f3e8432b3346" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/imgs/silownia.png" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/.sourcemaps/2.js.map" afterPath="$PROJECT_DIR$/.sourcemaps/2.js.map" />
-      <change beforePath="$PROJECT_DIR$/.sourcemaps/main.js.map" afterPath="$PROJECT_DIR$/.sourcemaps/main.js.map" />
-      <change beforePath="$PROJECT_DIR$/src/pages/profil-view-menu/profil-view-menu.html" afterPath="$PROJECT_DIR$/src/pages/profil-view-menu/profil-view-menu.html" />
-      <change beforePath="$PROJECT_DIR$/src/pages/profil-view-menu/profil-view-menu.scss" afterPath="$PROJECT_DIR$/src/pages/profil-view-menu/profil-view-menu.scss" />
-      <change beforePath="$PROJECT_DIR$/src/pages/profil/profil.html" afterPath="$PROJECT_DIR$/src/pages/profil/profil.html" />
-      <change beforePath="$PROJECT_DIR$/src/theme/variables.scss" afterPath="$PROJECT_DIR$/src/theme/variables.scss" />
-      <change beforePath="$PROJECT_DIR$/www/build/10.js" afterPath="$PROJECT_DIR$/www/build/10.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/12.js" afterPath="$PROJECT_DIR$/www/build/12.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/14.js" afterPath="$PROJECT_DIR$/www/build/14.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/15.js" afterPath="$PROJECT_DIR$/www/build/15.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/16.js" afterPath="$PROJECT_DIR$/www/build/16.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/19.js" afterPath="$PROJECT_DIR$/www/build/19.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/2.js" afterPath="$PROJECT_DIR$/www/build/2.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/2.js.map" afterPath="$PROJECT_DIR$/www/build/2.js.map" />
-      <change beforePath="$PROJECT_DIR$/www/build/22.js" afterPath="$PROJECT_DIR$/www/build/22.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/23.js" afterPath="$PROJECT_DIR$/www/build/23.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/24.js" afterPath="$PROJECT_DIR$/www/build/24.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/4.js" afterPath="$PROJECT_DIR$/www/build/4.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/5.js" afterPath="$PROJECT_DIR$/www/build/5.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/6.js" afterPath="$PROJECT_DIR$/www/build/6.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/8.js" afterPath="$PROJECT_DIR$/www/build/8.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/9.js" afterPath="$PROJECT_DIR$/www/build/9.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/main.css" afterPath="$PROJECT_DIR$/www/build/main.css" />
-      <change beforePath="$PROJECT_DIR$/www/build/main.js" afterPath="$PROJECT_DIR$/www/build/main.js" />
-      <change beforePath="$PROJECT_DIR$/www/build/main.js.map" afterPath="$PROJECT_DIR$/www/build/main.js.map" />
-      <change beforePath="$PROJECT_DIR$/www/build/vendor.js.map" afterPath="$PROJECT_DIR$/www/build/vendor.js.map" />
-    </list>
+    <list default="true" id="cebcc254-d153-49ab-bd32-f3e8432b3346" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -536,7 +507,7 @@
       <workItem from="1576664707326" duration="117000" />
       <workItem from="1576674813355" duration="773000" />
       <workItem from="1576691365295" duration="2593000" />
-      <workItem from="1576858282448" duration="7552000" />
+      <workItem from="1576858282448" duration="7661000" />
     </task>
     <task id="LOCAL-00001" summary="dodanie wyswietlania google maps. nie skonczone jeszcze.">
       <created>1575996477693</created>
@@ -549,11 +520,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127173000" />
+    <option name="totallyTimeSpent" value="127282000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
