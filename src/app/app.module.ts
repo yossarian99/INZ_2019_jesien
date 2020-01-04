@@ -12,7 +12,6 @@ import { HomePage } from '../pages/home/home';
 
 
 
-
 //import { IonicPageModule } from 'ionic-angular';
 import {AuthServiceProvider} from '../providers/auth-service/auth-service';
 import {ConfigServce} from "../providers/config-service/config-service";
@@ -23,7 +22,6 @@ import { RestProvider } from '../providers/rest/rest';
 import {SearchServiceProvider} from "../providers/search-service/search-service";
 import {FormsModule,ReactiveFormsModule} from "@angular/forms";
 import { StarRatingModule } from 'ionic3-star-rating';
-import { IonicImageLoader } from 'ionic-image-loader';
 import {ProfilViewMenuPage} from '../pages/profil-view-menu/profil-view-menu';
 // import { ApiModule } from '../.';
 import {ProfileService} from "../api/profile.service";
@@ -33,6 +31,9 @@ import {StartPage} from "../pages/start/start";
 import {DyscyplineService} from "../api/dyscypline.service";
 import {SearchNewPage} from "../pages/search-new/search-new";
 import {TrainerService} from "../api/trainer.service";
+
+import {SpecificPhotoService} from "../api/specificPhoto.service";
+
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import {TrainerService} from "../api/trainer.service";
     FormsModule,
     StarRatingModule,
     ReactiveFormsModule,
-    IonicImageLoader.forRoot(),
+
+    // IonicImageLoader.forRoot(),
     // ApiModule,
   ],
   bootstrap: [IonicApp],
@@ -79,6 +81,7 @@ import {TrainerService} from "../api/trainer.service";
     Calendar,
     DyscyplineService,
     TrainerService,
+    SpecificPhotoService
   ]
 })
 export class AppModule {}

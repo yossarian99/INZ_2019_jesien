@@ -1,6 +1,7 @@
-import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
-import { GalleryProfilPage } from './gallery-profil';
+import {NgModule} from '@angular/core';
+import {IonicPageModule} from 'ionic-angular';
+import {GalleryProfilPage} from './gallery-profil';
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -8,6 +9,8 @@ import { GalleryProfilPage } from './gallery-profil';
   ],
   imports: [
     IonicPageModule.forChild(GalleryProfilPage),
+    CommonModule,
+    // IonicImageLoader,
   ],
 })
 export class GalleryProfilPageModule {}

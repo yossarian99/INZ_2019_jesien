@@ -13,7 +13,7 @@
 
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
-         HttpResponse, HttpEvent }                           from '@angular/common/http';
+  HttpResponse, HttpEvent }                           from '@angular/common/http';
 import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs/Observable';
@@ -26,101 +26,101 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class PhotoService {
 
-    protected basePath = 'https://virtserver.swaggerhub.com/Wmi-uam/Inz/1.0.0';
-    public defaultHeaders = new HttpHeaders();
-    public configuration = new Configuration();
+  protected basePath = 'https://localhost:9090/api';
+  public defaultHeaders = new HttpHeaders();
+  public configuration = new Configuration();
 
-    constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
-        if (basePath) {
-            this.basePath = basePath;
-        }
-        if (configuration) {
-            this.configuration = configuration;
-            this.basePath = basePath || configuration.basePath || this.basePath;
-        }
+  constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
+    if (basePath) {
+      this.basePath = basePath;
+    }
+    if (configuration) {
+      this.configuration = configuration;
+      this.basePath = basePath || configuration.basePath || this.basePath;
+    }
+  }
+
+  /**
+   * @param consumes string[] mime-types
+   * @return true: consumes contains 'multipart/form-data', false: otherwise
+   */
+  private canConsumeForm(consumes: string[]): boolean {
+    const form = 'multipart/form-data';
+    for (const consume of consumes) {
+      if (form === consume) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+
+  /**
+   * Add a new photo
+   *
+   * @param photoName file to upload
+   * @param photoFile file to upload
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public photoServicePostPhoto(photoName: string, photoFile: Blob, observe?: 'body', reportProgress?: boolean): Observable<any>;
+  public photoServicePostPhoto(photoName: string, photoFile: Blob, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+  public photoServicePostPhoto(photoName: string, photoFile: Blob, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+  public photoServicePostPhoto(photoName: string, photoFile: Blob, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+    if (photoName === null || photoName === undefined) {
+      throw new Error('Required parameter photoName was null or undefined when calling photoServicePostPhoto.');
     }
 
-    /**
-     * @param consumes string[] mime-types
-     * @return true: consumes contains 'multipart/form-data', false: otherwise
-     */
-    private canConsumeForm(consumes: string[]): boolean {
-        const form = 'multipart/form-data';
-        for (const consume of consumes) {
-            if (form === consume) {
-                return true;
-            }
-        }
-        return false;
+    if (photoFile === null || photoFile === undefined) {
+      throw new Error('Required parameter photoFile was null or undefined when calling photoServicePostPhoto.');
     }
 
+    let headers = this.defaultHeaders;
 
-    /**
-     * Add a new photo
-     * 
-     * @param photoName file to upload
-     * @param photoFile file to upload
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public photoServicePostPhoto(photoName: string, photoFile: Blob, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public photoServicePostPhoto(photoName: string, photoFile: Blob, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public photoServicePostPhoto(photoName: string, photoFile: Blob, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public photoServicePostPhoto(photoName: string, photoFile: Blob, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (photoName === null || photoName === undefined) {
-            throw new Error('Required parameter photoName was null or undefined when calling photoServicePostPhoto.');
-        }
-
-        if (photoFile === null || photoFile === undefined) {
-            throw new Error('Required parameter photoFile was null or undefined when calling photoServicePostPhoto.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'multipart/form-data'
-        ];
-
-        const canConsumeForm = this.canConsumeForm(consumes);
-
-        let formParams: { append(param: string, value: any): void; };
-        let useForm = false;
-        let convertFormParamsToString = false;
-        // use FormData to transmit files using content-type "multipart/form-data"
-        // see https://stackoverflow.com/questions/4007969/application-x-www-form-urlencoded-or-multipart-form-data
-        useForm = canConsumeForm;
-        if (useForm) {
-            formParams = new FormData();
-        } else {
-            formParams = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        }
-
-        if (photoName !== undefined) {
-            formParams = formParams.append('photo_name', <any>photoName) || formParams;
-        }
-        if (photoFile !== undefined) {
-            formParams = formParams.append('photo_file', <any>photoFile) || formParams;
-        }
-
-        return this.httpClient.post<any>(`${this.basePath}/photo`,
-            convertFormParamsToString ? formParams.toString() : formParams,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
+    // to determine the Accept header
+    let httpHeaderAccepts: string[] = [
+    ];
+    const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    if (httpHeaderAcceptSelected != undefined) {
+      headers = headers.set('Accept', httpHeaderAcceptSelected);
     }
+
+    // to determine the Content-Type header
+    const consumes: string[] = [
+      'multipart/form-data'
+    ];
+
+    const canConsumeForm = this.canConsumeForm(consumes);
+
+    let formParams: { append(param: string, value: any): void; };
+    let useForm = false;
+    let convertFormParamsToString = false;
+    // use FormData to transmit files using content-type "multipart/form-data"
+    // see https://stackoverflow.com/questions/4007969/application-x-www-form-urlencoded-or-multipart-form-data
+    useForm = canConsumeForm;
+    if (useForm) {
+      formParams = new FormData();
+    } else {
+      formParams = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+    }
+
+    if (photoName !== undefined) {
+      formParams = formParams.append('photo_name', <any>photoName) || formParams;
+    }
+    if (photoFile !== undefined) {
+      formParams = formParams.append('photo_file', <any>photoFile) || formParams;
+    }
+
+    return this.httpClient.post<any>(`${this.basePath}/photo`,
+      convertFormParamsToString ? formParams.toString() : formParams,
+      {
+        withCredentials: this.configuration.withCredentials,
+        headers: headers,
+        observe: observe,
+        reportProgress: reportProgress
+      }
+    );
+  }
 
 }

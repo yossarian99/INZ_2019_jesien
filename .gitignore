@@ -1,6 +1,8 @@
 # Don't track content of these folders
 node_modules/
 
+www/build/
+
 
 
 # Compiled source #
@@ -26,3 +28,6 @@ node_modules/
 *.rar
 *.tar
 *.zip
+.idea/inspectionProfiles/
+plugins/
+www\

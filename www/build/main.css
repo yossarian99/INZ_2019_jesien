@@ -39823,6 +39823,34 @@ ion-navbar.toolbar {
   min-height: 46px;
 }
 
+@media (min-width: 0px) {
+  page-gallery-profil .images {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
+}
+
+@media (min-width: 420px) {
+  page-gallery-profil .images {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+  }
+}
+
+@media (min-width: 720px) {
+  page-gallery-profil .images {
+    -webkit-column-count: 4;
+    -moz-column-count: 4;
+    column-count: 4;
+  }
+}
+
+page-gallery-profil .one-image {
+  margin: 2px;
+}
+
 page-home .coment-box {
   padding: 25px;
   margin: 25px;
