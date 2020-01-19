@@ -11,7 +11,7 @@ export class SearchServiceProvider {
   };
   Profilnew: ProfileOut = {};
   ProfillViewMenu: ProfileOut = {};
-
+picturePhoto:any;
 id:number;
 id2:number;
 wysokosc:string;
@@ -20,7 +20,12 @@ szerokosc:string;
     this.searchParams.dysc = dysc;
     this.searchParams.loc = loc;
   }
-
+public  senddPhoto(picture:any){
+    this.picturePhoto=picture;
+}
+public getPhoto(){
+    return this.picturePhoto;
+}
   public getSearchParams() {
     return this.searchParams;
   }

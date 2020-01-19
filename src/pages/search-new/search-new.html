@@ -166,8 +166,25 @@
 
 
         <ion-card>
+          <div *ngIf="avatarShow[i]!=null">
 
-          <img style="width: 80px; height: 80px; float: left" src="./assets/imgs/avatar2.png"/>
+            <img style="width: 80px; height: 80px; float: left" [src]="photoArray[i]"/>
+
+
+            <div *ngIf="avatarShow[i]==null">
+
+              <ion-img style="width: 80px; height: 80px; float: left" src="./assets/imgs/avatar3.png"></ion-img>
+
+
+            </div>
+
+
+
+
+
+
+          </div>
+
 
             <div class="avatartext">
 
@@ -296,8 +313,30 @@
 
 
           <ion-card>
+            <div>
 
-            <img style="width: 80px; height: 80px; float: left" src="./assets/imgs/avatar2.png"/>
+
+
+            </div>
+            <div *ngIf="avatarShow2!=null">
+
+                  <img style="width: 80px; height: 80px; float: left" [src]="photoArray[i]"/>
+
+
+                <div *ngIf="avatarShow2==null">
+
+                  <ion-img style="width: 80px; height: 80px; float: left" src="./assets/imgs/avatar3.png"></ion-img>
+
+
+                </div>
+
+
+
+
+
+
+            </div>
+            <!--<img style="width: 80px; height: 80px; float: left" [src]="photoArray[i]"/>-->
 
             <div class="avatartext">
 

@@ -6,6 +6,7 @@ import {ProfileService} from "../../api/profile.service";
 import {SpecificPhotoService} from "../../api/specificPhoto.service";
 import {HttpClient} from "@angular/common/http";
 import {DomSanitizer} from "@angular/platform-browser";
+import {BigphotoPage} from "../bigphoto/bigphoto";
 
 /**
  * Generated class for the GalleryProfilPage page.
@@ -111,8 +112,13 @@ export class GalleryProfilPage {
       binaryData.push(image);
       //
       // this.photoArray.push(this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(new Blob(binaryData, {type: "application/png"}))));
-debugger;
+
       reader.readAsDataURL(new Blob(binaryData, {type: "image/png"}));
     }
+  }
+
+  getBig(picture){
+    this.sea.senddPhoto(picture);
+    this.nav.push('BigphotoPage');
   }
 }

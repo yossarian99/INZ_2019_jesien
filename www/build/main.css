@@ -39823,6 +39823,11 @@ ion-navbar.toolbar {
   min-height: 46px;
 }
 
+page-bigphoto .form {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 @media (min-width: 0px) {
   page-gallery-profil .images {
     -webkit-column-count: 2;

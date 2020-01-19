@@ -11,6 +11,9 @@ import {ProfilViewMenuPage} from "../profil-view-menu/profil-view-menu";
 import {DyscyplineService} from "../../api/dyscypline.service";
 import {Disciplines} from "../../model/disciplines";
 import {FormControl, FormGroup} from "@angular/forms";
+import {SpecificPhotoService} from "../../api/specificPhoto.service";
+import {DomSanitizer} from "@angular/platform-browser";
+import {isQuote} from "@angular/compiler";
 
 // import {ViewprofilPage} from "../viewprofil/viewprofil";
 //
@@ -30,8 +33,14 @@ export class SearchNewPage {
   structure: any;
   structure2: any;
   showFilters: boolean;
-
-  constructor(public restdyscyp: DyscyplineService, public trenersearch: TrainerService, public rest: ProfileService, public nav: NavController, public navParams: NavParams, private sea: SearchServiceProvider, private configServce: ConfigServce, private provilconfig: SearchServiceProvider, private  service: ProfileListService, public alertCtrl: AlertController) {
+  Avatarphoto:any;
+  photoArray = [];
+  photoArray2=[];
+  singlephoto:any;
+  binaryData = [];
+  avatarShow= [];
+  avatarShow2=[];
+  constructor(public restdyscyp: DyscyplineService, private sanitizer: DomSanitizer,public getphoto: SpecificPhotoService , public trenersearch: TrainerService, public rest: ProfileService, public nav: NavController, public navParams: NavParams, private sea: SearchServiceProvider, private configServce: ConfigServce, private provilconfig: SearchServiceProvider, private  service: ProfileListService, public alertCtrl: AlertController) {
     this.change_rating(4);
     this.showForm();
     this.showFilters = true;
@@ -105,9 +114,10 @@ export class SearchNewPage {
       console.log(this.sciezka);
       if (result != undefined) {
         Object.assign(this.profiles, result);
+        console.log("avatar2",result[0].avatar);
         console.log("wczytane profils w wyszukiwaniu :");
         console.log(this.profiles);
-
+        this.loadPhoto();
 
       }
       else {
@@ -117,6 +127,8 @@ export class SearchNewPage {
 
 
     });
+
+
   }
 
   public getSearch2() {
@@ -126,6 +138,7 @@ export class SearchNewPage {
         Object.assign(this.profiles, result);
         console.log("wczytane profils w wyszukiwaniu :");
         console.log(this.profiles);
+
 
 
       }
@@ -292,5 +305,113 @@ export class SearchNewPage {
     else this.showFilters = false;
 
   }
+
+  loadPhoto() {
+
+    for(let i=0;i<this.profiles.length;i++) {
+      var index: number;
+      let j:any;
+
+      console.log("this profiles ",this.profiles[0]);
+      console.log("avatar",this.profiles[i].avatar);
+      // console.log("data=",data);
+      index=JSON.parse(this.profiles[i].avatar);
+      if(index==undefined){
+        this.photoArray.push(null);
+        this.avatarShow.push(null);
+      }else{
+
+        this.singlephoto = this.getphoto.photoServiceGetPhoto(index).subscribe(result => {
+          this.createImageFromBlob(result);
+          this.avatarShow.push("good");
+        });
+
+      }
+
+
+
+
+      // let binaryData = [];
+      // binaryData.push(this.singlephoto);
+      //
+      // this.photoArray.push(this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(new Blob(binaryData, {type: "application/png"}))));
+      // debugger;
+    }
+
+  }
+createImageFromBlob(image: Blob) {
+  let reader = new FileReader();
+  reader.addEventListener("load", () => {
+    this.photoArray.push(this.sanitizer.bypassSecurityTrustUrl(reader.result));
+  }, false);
+  if (image) {
+
+    let binaryData = [];
+    binaryData.push(image);
+    // this.photoArray.push(image);
+    //
+    // this.photoArray.push(this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(new Blob(binaryData, {type: "application/png"}))));
+
+    reader.readAsDataURL(new Blob(binaryData, {type: "image/png"}));
+
+    // this.photoArray.push(reader);
+  }
+
+
+}
+  loadPhoto2() {
+
+    for(let i=0;i<this.profilesFiltered.length;i++) {
+      var index: number;
+      let j:any;
+
+      console.log("this profiles ",this.profiles[0]);
+      console.log("avatar",this.profiles[i].avatar);
+      // console.log("data=",data);
+      index=JSON.parse(this.profilesFiltered[i].avatar);
+      if(index==undefined){
+        this.photoArray2.push(null);
+        this.avatarShow2.push(null);
+      }else{
+
+        this.singlephoto = this.getphoto.photoServiceGetPhoto(index).subscribe(result => {
+          this.createImageFromBlob2(result);
+          this.avatarShow2.push("good");
+        });
+
+      }
+
+
+
+
+      // let binaryData = [];
+      // binaryData.push(this.singlephoto);
+      //
+      // this.photoArray.push(this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(new Blob(binaryData, {type: "application/png"}))));
+      // debugger;
+    }
+
+  }
+  createImageFromBlob2(image: Blob) {
+    let reader = new FileReader();
+    reader.addEventListener("load", () => {
+      this.photoArray2.push(this.sanitizer.bypassSecurityTrustUrl(reader.result));
+    }, false);
+    if (image) {
+
+      let binaryData = [];
+      binaryData.push(image);
+      // this.photoArray.push(image);
+      //
+      // this.photoArray.push(this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(new Blob(binaryData, {type: "application/png"}))));
+
+      reader.readAsDataURL(new Blob(binaryData, {type: "image/png"}));
+
+      // this.photoArray.push(reader);
+    }
+
+
+  }
+
 }
 

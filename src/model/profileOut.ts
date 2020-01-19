@@ -24,7 +24,7 @@ import { University } from './university';
 export interface ProfileOut extends Profile {
     description?: string;
     rating?: number;
-    avatar?: string;
+  avatar?: string;
     registerDate?: string;
 
     tr_disc?: Array<Discipline>;

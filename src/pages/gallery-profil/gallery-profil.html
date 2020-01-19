@@ -49,9 +49,13 @@
   <div class="images">
     <div class="one-image">
       <ion-item *ngFor="let photo of photoArray">
+   <div (click)="getBig(photo)">
+     <img [src]="photo" />
 
-        <!--<img-loader [src]="photo?.large" useImg (load)="onImageLoad($event)"></img-loader>-->
-        <img [src]="photo" />
+
+
+   </div>
+
       </ion-item>
 
     </div>
