@@ -27,6 +27,12 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-grid>
+
+
+    <ion-row
+      justify-content-center>
+      <ion-col col-12 text-center  style="border: 1px solid;border-radius: 5px">
   <!--<button ion-button (click)="backtoprofiles" ></button>-->
   <!--<ion-icon ios="ios-undo" md="md-undo"></ion-icon>-->
   <ion-row justify-content-center>
@@ -48,7 +54,7 @@
       </ion-card-header>
       <ion-card-content>
 
-        <ion-item *ngFor="let opp of item.tr_op let i = index" (click)="onCheckItem(i)">
+        <ion-item *ngFor="let opp of this.item.tr_op; let i = index">
 
           <ion-card>
             <ion-card-header>
@@ -61,11 +67,9 @@
         </ion-item>
       </ion-card-content>
     </ion-card>
-  </ion-row>
-  <ion-row>
 
 
-    <form [formGroup]="opinionforms"  (ngSubmit)="Opinionform()" padding>
+    <form [formGroup]="opinionforms" (ngSubmit)="Opinionform()" padding>
 
       <ion-row>
         <ion-col>
@@ -92,7 +96,8 @@
         <ion-col>
           <ion-item>
             <ion-label stacked>Ocena:</ion-label>
-            <ion-input type="number" clearInput=true min="1" max="5" placeholder="" [(ngModel)]="Opinions.rating" formControlName="ocena"
+            <ion-input type="number" clearInput=true min="1" max="5" placeholder="" [(ngModel)]="Opinions.rating"
+                       formControlName="ocena"
                        required>
             </ion-input>
           </ion-item>
@@ -101,17 +106,19 @@
 
 
       <ion-item>
-        <ion-label  stacked>Opinia Urzytkownika</ion-label>
+        <ion-label stacked>Opinia Urzytkownika</ion-label>
         <ion-textarea placeholder="" [(ngModel)]="Opinions.description"
 
-        formControlName="Opinionss"
+                      formControlName="Opinionss"
                       required></ion-textarea>
 
       </ion-item>
       <ion-row>
         <ion-col text-right>
 
-          <button ion-button color="secondary"color="light" type="submit"[disabled]="! opinionforms.valid">Dodaj Opinie</button>
+          <button ion-button color="secondary" color="light" type="submit" [disabled]="! opinionforms.valid">Dodaj
+            Opinie
+          </button>
 
 
         </ion-col>
@@ -120,8 +127,10 @@
       </ion-row>
 
 
-
     </form>
 
   </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

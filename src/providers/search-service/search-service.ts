@@ -16,6 +16,7 @@ id:number;
 id2:number;
 wysokosc:string;
 szerokosc:string;
+tr_id:number;
   public addSearchParams(dysc: string, loc: string) {
     this.searchParams.dysc = dysc;
     this.searchParams.loc = loc;
@@ -67,5 +68,11 @@ public getId2(){
   }
   public getlongtitude(){
     return this.szerokosc;
+  }
+  public setTrId(id:number){
+    this.tr_id=id;
+  }
+  public getTRId(){
+    return this.tr_id;
   }
 }

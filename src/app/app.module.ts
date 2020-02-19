@@ -33,6 +33,7 @@ import {SearchNewPage} from "../pages/search-new/search-new";
 import {TrainerService} from "../api/trainer.service";
 
 import {SpecificPhotoService} from "../api/specificPhoto.service";
+import {AddopinionService} from "../api/addopinion.service";
 
 
 @NgModule({
@@ -69,7 +70,7 @@ import {SpecificPhotoService} from "../api/specificPhoto.service";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-
+    AddopinionService,
     HttpClient,
     HttpClientModule,
     AuthServiceProvider,

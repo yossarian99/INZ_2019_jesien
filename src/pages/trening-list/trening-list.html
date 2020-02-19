@@ -63,26 +63,55 @@
   <ion-row>
   <ion-col col-12="">
 
-
-
-
+<ion-card>
   <br>
-    Trening:{{treningOffer.name}}
-      <br>
+  Trening:{{treningOffer.name}}
+  <br>
 
-            Data:{{treningOffer.date}}
-          <br>
+  Data:{{treningOffer.date}}
+  <br>
 
-            Godz:{{treningOffer.beginTime}}:{{treningOffer.endTime}}
-          <br>
+  Godz:{{treningOffer.beginTime}}:{{treningOffer.endTime}}
+  <br>
 
-            Cena:{{treningOffer.price}}
-          <br>
+  Cena:{{treningOffer.price}}
+  <br>
 
-            Limit klientów:{{treningOffer.clientLimit}}
-          <br>
+  Limit klientów:{{treningOffer.clientLimit}}
+  <br>
 
-            Zapisani klienci:{{treningOffer.actualClientNumber}}
+  Zapisani klienci:{{treningOffer.actualClientNumber}}
+
+
+</ion-card>
+<ion-card>
+  <ion-card-header>
+    Osoby zapisane na trening.
+  </ion-card-header>
+
+  <ion-item *ngFor=" let person of treningOffer. booking; let i=index">
+<br>
+    Osoba nr. {{i}}
+
+
+    <br>
+    {{person.name}}
+    <br>
+    {{person.surname}}
+    <br>
+    {{person.email}}
+   <br>
+    <br><br>
+
+
+  </ion-item>
+
+
+
+
+</ion-card>
+
+
 
 
 
@@ -95,7 +124,7 @@
 <ion-row text-center="">
 
 <ion-col col-12="" text-center="">
-  <button text-center=""  ion-button color="secondary" [small]=""   >Zapisz się na trening</button>
+  <button text-center=""  ion-button color="secondary" [small]="" onclick="subscribeTrening"  >Zapisz się na trening</button>
 
 </ion-col>
 

@@ -6,6 +6,8 @@ import {ProfileOut} from "../../model/profileOut";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Opinion} from "../../model/opinion";
 import {ProfileListService} from "../../services/Pfofile-list";
+import {Dodanieopini} from "../../model/dodanieopini";
+import {AddopinionService} from "../../api/addopinion.service";
 
 /**
  * Generated class for the OpinionProfillPage page.
@@ -22,12 +24,13 @@ import {ProfileListService} from "../../services/Pfofile-list";
 export class OpinionProfillPage {
   id: number;
   item: ProfileOut = {};
-  Opinions: Opinion = {};
-
-  constructor(public nav: NavController, public profilsService: ProfileListService, public navParams: NavParams, private provilconfig: SearchServiceProvider, public sea: SearchServiceProvider, public ProfillRest: ProfileService) {
+  Opinions: Dodanieopini = {};
+   opinionSend:Dodanieopini={};
+   exitCode:number;
+  constructor(public nav: NavController,public opinionService:AddopinionService, public profilsService: ProfileListService, public navParams: NavParams, private provilconfig: SearchServiceProvider, public sea: SearchServiceProvider, public ProfillRest: ProfileService) {
     this.id = this.provilconfig.getId2();
     this.getUsers(this.id);
-
+    this.initializeopinionforms();
   }
 
   ionViewDidLoad() {
@@ -46,7 +49,7 @@ export class OpinionProfillPage {
     this.ProfillRest.getProfile(id).subscribe(result => {
 
       Object.assign(this.item, result);
-
+         console.log("item",this.item.tr_op);
     });
   }
 
@@ -64,15 +67,28 @@ export class OpinionProfillPage {
     Opinionss: new FormControl(),
     opinionuser: new FormControl(),
     email: new FormControl(),
-    ocena: new FormControl()
+    ocena: new FormControl(),
+
   });
 
   Opinionform() {
 
-    this.profilsService.addOponion(this.Opinions.description, this.Opinions.name, this.Opinions.email, this.Opinions.rating, this.item.name);
+this.opinionSend.email=this.Opinions.email;
+this.opinionSend.name=this.Opinions.name;
+this.opinionSend.rating=this.Opinions.rating;
+this.opinionSend.trainerId=this.id;
+this.opinionSend.description=this.Opinions.description;
+console.log("opinionsend",this.opinionSend);
+this.opinionService.addOpinion(this.opinionSend).subscribe(result => {
+  console.log("result",result);
+  this.exitCode = result;
+});
 
-    console.log("opinion=", this.Opinions.description);
-    console.log("opinodawca=", this.Opinions.name);
+console.log("exitcode",this.exitCode);
+
+
+
+    // console.log("opinodawca=", this.Opinions.name);
     this.opinionforms.reset();
   }
 

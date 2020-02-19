@@ -9,6 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { RezerwacjaTreningu } from './rezerwacjaTreningu';
 
 
 export interface Training { 
@@ -24,4 +25,5 @@ export interface Training {
     actualClientNumber?: number;
     description?: string;
     trainerId?: number;
+    booking?: Array<RezerwacjaTreningu>;
 }

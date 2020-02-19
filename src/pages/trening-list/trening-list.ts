@@ -6,6 +6,7 @@ import {ProfileOut} from "../../model/profileOut";
 import {Place} from "../../model/place";
 import { NgZone  } from '@angular/core';
 import {Training} from "../../model/training";
+import {AddEventPage} from "../add-event/add-event";
 /**
  * Generated class for the TreningListPage page.
  *
@@ -29,6 +30,7 @@ export class TreningListPage {
   wysokosc:string;
   treningOffer:Training={};
   limit:boolean;
+  id_tr:number;
   constructor(
                private zone: NgZone,public platform: Platform,public navCtrl: NavController,private provilconfig: SearchServiceProvider, public navParams: NavParams,public ProfillRest:ProfileService,public events: Events,public sea:SearchServiceProvider) {
 
@@ -122,6 +124,7 @@ console.log("down");
     for(let i=0;i<this.item.tr_pl.length;i++){
       if(this.item.tr_pl[index].id==this.item.tr_tr[i].id){
         this.treningOffer=this.item.tr_tr[i];
+        this.id_tr=this.treningOffer.id;
       }
     }
   }
@@ -130,6 +133,13 @@ console.log("down");
 
     if(limit<=clients)this.limit=false;
     else this.limit=true;
+
+  }
+  subscribeTrening(){
+    this.provilconfig.setId2(this.id);
+    this.provilconfig.setTrId(this.id_tr);
+    this.navCtrl.push('AddEventPage');
+
 
   }
 }

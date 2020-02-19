@@ -251,6 +251,7 @@ export class SearchNewPage {
   }
 
   Idform() {
+    this.loadPhoto2();
     let plecSearch: boolean = false;
     let townSearch: boolean;
     let priceSearch: boolean;
