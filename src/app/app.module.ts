@@ -34,6 +34,7 @@ import {TrainerService} from "../api/trainer.service";
 
 import {SpecificPhotoService} from "../api/specificPhoto.service";
 import {AddopinionService} from "../api/addopinion.service";
+import {TrainingrezerwationService} from "../api/trainingrezerwation.service";
 
 
 @NgModule({
@@ -82,7 +83,8 @@ import {AddopinionService} from "../api/addopinion.service";
     Calendar,
     DyscyplineService,
     TrainerService,
-    SpecificPhotoService
+    SpecificPhotoService,
+    TrainingrezerwationService
   ]
 })
 export class AppModule {}

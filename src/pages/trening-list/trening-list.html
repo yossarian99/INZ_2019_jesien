@@ -89,9 +89,9 @@
     Osoby zapisane na trening.
   </ion-card-header>
 
-  <ion-item *ngFor=" let person of treningOffer. booking; let i=index">
+  <ion-item *ngFor=" let person of treningOffer.booking; let i=index">
 <br>
-    Osoba nr. {{i}}
+    Osoba nr. {{i+1}}
 
 
     <br>
@@ -124,7 +124,7 @@
 <ion-row text-center="">
 
 <ion-col col-12="" text-center="">
-  <button text-center=""  ion-button color="secondary" [small]="" onclick="subscribeTrening"  >Zapisz się na trening</button>
+  <button text-center=""  ion-button color="secondary" [small]="" (click)="subTrening()"  >Zapisz się na trening</button>
 
 </ion-col>
 

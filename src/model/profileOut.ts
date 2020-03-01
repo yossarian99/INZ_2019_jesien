@@ -19,6 +19,7 @@ import { Place } from './place';
 import { Profile } from './profile';
 import { Training } from './training';
 import { University } from './university';
+import {RezerwacjaTreningu} from "./rezerwacjaTreningu";
 
 
 export interface ProfileOut extends Profile {
@@ -33,7 +34,7 @@ export interface ProfileOut extends Profile {
     tr_loc?: Array<Location>;
     tr_pl?: Array<Place>;
     tr_off?: Array<Offer>;
-    tr_op?: Array<Opinion>;
+    tr_op?: Array<RezerwacjaTreningu>;
     tr_tr?: Array<Training>;
     tr_ph?: Array<Photo>;
 }

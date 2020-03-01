@@ -49,7 +49,7 @@ export class OpinionProfillPage {
     this.ProfillRest.getProfile(id).subscribe(result => {
 
       Object.assign(this.item, result);
-         console.log("item",this.item.tr_op);
+         console.log("item",this.item);
     });
   }
 
@@ -76,7 +76,7 @@ export class OpinionProfillPage {
 this.opinionSend.email=this.Opinions.email;
 this.opinionSend.name=this.Opinions.name;
 this.opinionSend.rating=this.Opinions.rating;
-this.opinionSend.trainerId=this.id;
+this.opinionSend.trainer_id=this.id;
 this.opinionSend.description=this.Opinions.description;
 console.log("opinionsend",this.opinionSend);
 this.opinionService.addOpinion(this.opinionSend).subscribe(result => {

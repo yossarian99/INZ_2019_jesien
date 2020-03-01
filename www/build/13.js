@@ -1,6 +1,6 @@
 webpackJsonp([13],{
 
-/***/ 311:
+/***/ 312:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OpinionProfillPageModule", function() { return OpinionProfillPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__opinion_profill__ = __webpack_require__(336);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__opinion_profill__ = __webpack_require__(337);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var OpinionProfillPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 336:
+/***/ 337:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49,7 +49,7 @@ var OpinionProfillPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__api_profile_service__ = __webpack_require__(210);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_Pfofile_list__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__api_addopinion_service__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__api_addopinion_service__ = __webpack_require__(217);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -104,7 +104,7 @@ var OpinionProfillPage = /** @class */ (function () {
         var _this = this;
         this.ProfillRest.getProfile(id).subscribe(function (result) {
             Object.assign(_this.item, result);
-            console.log("item", _this.item.tr_op);
+            console.log("item", _this.item);
         });
     };
     OpinionProfillPage.prototype.initializeopinionforms = function () {
@@ -118,7 +118,7 @@ var OpinionProfillPage = /** @class */ (function () {
         this.opinionSend.email = this.Opinions.email;
         this.opinionSend.name = this.Opinions.name;
         this.opinionSend.rating = this.Opinions.rating;
-        this.opinionSend.trainerId = this.id;
+        this.opinionSend.trainer_id = this.id;
         this.opinionSend.description = this.Opinions.description;
         console.log("opinionsend", this.opinionSend);
         this.opinionService.addOpinion(this.opinionSend).subscribe(function (result) {

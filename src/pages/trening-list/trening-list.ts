@@ -7,6 +7,7 @@ import {Place} from "../../model/place";
 import { NgZone  } from '@angular/core';
 import {Training} from "../../model/training";
 import {AddEventPage} from "../add-event/add-event";
+import {RezerwacjaTreningu} from "../../model/rezerwacjaTreningu";
 /**
  * Generated class for the TreningListPage page.
  *
@@ -29,6 +30,7 @@ export class TreningListPage {
   szerokosc:string;
   wysokosc:string;
   treningOffer:Training={};
+  treningPoint:Training={};
   limit:boolean;
   id_tr:number;
   constructor(
@@ -52,7 +54,7 @@ export class TreningListPage {
     this.ProfillRest.getProfile(id).subscribe(result => {
 
       Object.assign(this.item, result);
-
+console.log("pobranie item")
     });
   }
 
@@ -76,6 +78,7 @@ export class TreningListPage {
     });
   }
   Upp(){
+
     if(this.index+1==this.item.tr_pl.length)this.index=0;
     else this.index=this.index+1;
     this.localizationTemp=this.item.tr_pl[this.index];
@@ -97,6 +100,7 @@ export class TreningListPage {
     // this.events.publish('updateScreen');
   }
   Down(){
+
     if(this.index==0)this.index=this.item.tr_pl.length-1;
     else this.index=this.index-1;
 
@@ -120,24 +124,37 @@ console.log("down");
     this.wysokosc=this.localizationTemp.longitude;
   }
   searchOffer(index){
-
-    for(let i=0;i<this.item.tr_pl.length;i++){
+    this.getUsers(this.id);
+    debugger;
+    for(let i=0;i<this.item.tr_tr.length;i++){
       if(this.item.tr_pl[index].id==this.item.tr_tr[i].id){
         this.treningOffer=this.item.tr_tr[i];
         this.id_tr=this.treningOffer.id;
+        this.treningPoint=this.treningOffer;
       }
     }
   }
+  searchOffer2(index){
 
+    for(let i=0;i<this.item.tr_tr.length;i++){
+      if(this.item.tr_pl[index].id==this.item.tr_tr[i].id){
+        this.treningOffer=this.item.tr_tr[i];
+        this.id_tr=this.treningOffer.id;
+        this.treningPoint=this.treningOffer;
+      }
+    }
+  }
   checkLimitClients(limit,clients){
 
     if(limit<=clients)this.limit=false;
     else this.limit=true;
 
   }
-  subscribeTrening(){
+  public subTrening(){
+
     this.provilconfig.setId2(this.id);
     this.provilconfig.setTrId(this.id_tr);
+
     this.navCtrl.push('AddEventPage');
 
 

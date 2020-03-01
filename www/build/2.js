@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TreningListPageModule", function() { return TreningListPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__trening_list__ = __webpack_require__(346);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__trening_list__ = __webpack_require__(347);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var TreningListPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 346:
+/***/ 347:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73,6 +73,7 @@ var TreningListPage = /** @class */ (function () {
         this.sea = sea;
         this.item = {};
         this.treningOffer = {};
+        this.treningPoint = {};
         this.id = this.provilconfig.getId2();
         this.getUsers(this.id);
         this.index = 0;
@@ -85,6 +86,7 @@ var TreningListPage = /** @class */ (function () {
         var _this = this;
         this.ProfillRest.getProfile(id).subscribe(function (result) {
             Object.assign(_this.item, result);
+            console.log("pobranie item");
         });
     };
     TreningListPage.prototype.showmap = function (lat, long) {
@@ -150,9 +152,22 @@ var TreningListPage = /** @class */ (function () {
         this.wysokosc = this.localizationTemp.longitude;
     };
     TreningListPage.prototype.searchOffer = function (index) {
-        for (var i = 0; i < this.item.tr_pl.length; i++) {
+        this.getUsers(this.id);
+        debugger;
+        for (var i = 0; i < this.item.tr_tr.length; i++) {
             if (this.item.tr_pl[index].id == this.item.tr_tr[i].id) {
                 this.treningOffer = this.item.tr_tr[i];
+                this.id_tr = this.treningOffer.id;
+                this.treningPoint = this.treningOffer;
+            }
+        }
+    };
+    TreningListPage.prototype.searchOffer2 = function (index) {
+        for (var i = 0; i < this.item.tr_tr.length; i++) {
+            if (this.item.tr_pl[index].id == this.item.tr_tr[i].id) {
+                this.treningOffer = this.item.tr_tr[i];
+                this.id_tr = this.treningOffer.id;
+                this.treningPoint = this.treningOffer;
             }
         }
     };
@@ -162,8 +177,9 @@ var TreningListPage = /** @class */ (function () {
         else
             this.limit = true;
     };
-    TreningListPage.prototype.subscribeTrening = function () {
+    TreningListPage.prototype.subTrening = function () {
         this.provilconfig.setId2(this.id);
+        this.provilconfig.setTrId(this.id_tr);
         this.navCtrl.push('AddEventPage');
     };
     __decorate([
@@ -172,7 +188,7 @@ var TreningListPage = /** @class */ (function () {
     ], TreningListPage.prototype, "mapRef", void 0);
     TreningListPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-trening-list',template:/*ion-inline-start:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\trening-list\trening-list.html"*/'<!--\n  Generated template for the ProfilViewMenuPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar class="nav">\n    <ion-buttons start>\n      <!--<button ion-button>-->\n      <!--<ion-icon name="contact"></ion-icon>-->\n      <!--</button>-->\n    </ion-buttons>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      Menu\n    </ion-title>\n    <ion-title >\n      Najlepszy trener\n    </ion-title>\n    <ion-buttons end>\n\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n  <div #map id="my-map">\n\n  </div>\n  <ion-grid>\n\n\n\n\n\n<ion-row>\n\n  <ion-col col-12="">\n<ion-row>\n\n\n      <ion-col col-6="" text-left="">\n\n          <button text-left=""  ion-button color="secondary" [small]="" (click)="Upp()"  >Do góry</button>\n\n\n      </ion-col>\n      <ion-col col-6="" text-right="">\n\n          <button text-right="" ion-button color="secondary" [small]="" (click)="Down()" >W dół</button>\n\n      </ion-col>\n</ion-row>\n    </ion-col>\n\n</ion-row>\n\n\n  <ion-row>\n  <ion-col col-12="">\n\n<ion-card>\n  <br>\n  Trening:{{treningOffer.name}}\n  <br>\n\n  Data:{{treningOffer.date}}\n  <br>\n\n  Godz:{{treningOffer.beginTime}}:{{treningOffer.endTime}}\n  <br>\n\n  Cena:{{treningOffer.price}}\n  <br>\n\n  Limit klientów:{{treningOffer.clientLimit}}\n  <br>\n\n  Zapisani klienci:{{treningOffer.actualClientNumber}}\n\n\n</ion-card>\n<ion-card>\n  <ion-card-header>\n    Osoby zapisane na trening.\n  </ion-card-header>\n\n  <ion-item *ngFor=" let person of treningOffer. booking; let i=index">\n<br>\n    Osoba nr. {{i}}\n\n\n    <br>\n    {{person.name}}\n    <br>\n    {{person.surname}}\n    <br>\n    {{person.email}}\n   <br>\n    <br><br>\n\n\n  </ion-item>\n\n\n\n\n</ion-card>\n\n\n\n\n\n\n    </ion-col>\n  </ion-row>\n<ion-row>\n<ion-row>\n  <div *ngIf="limit==true ">\n<ion-row text-center="">\n\n<ion-col col-12="" text-center="">\n  <button text-center=""  ion-button color="secondary" [small]="" onclick="subscribeTrening"  >Zapisz się na trening</button>\n\n</ion-col>\n\n\n</ion-row>\n  </div>\n  <div *ngIf="limit==false ">\n<ion-item text-center="">\n  <ion-col col-12="" text-center="">\n\n    Brak wolnych miejsc.\n  </ion-col>\n\n\n\n</ion-item>\n\n\n\n  </div>\n</ion-row>\n\n\n</ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\trening-list\trening-list.html"*/,
+            selector: 'page-trening-list',template:/*ion-inline-start:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\trening-list\trening-list.html"*/'<!--\n  Generated template for the ProfilViewMenuPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar class="nav">\n    <ion-buttons start>\n      <!--<button ion-button>-->\n      <!--<ion-icon name="contact"></ion-icon>-->\n      <!--</button>-->\n    </ion-buttons>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      Menu\n    </ion-title>\n    <ion-title >\n      Najlepszy trener\n    </ion-title>\n    <ion-buttons end>\n\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n  <div #map id="my-map">\n\n  </div>\n  <ion-grid>\n\n\n\n\n\n<ion-row>\n\n  <ion-col col-12="">\n<ion-row>\n\n\n      <ion-col col-6="" text-left="">\n\n          <button text-left=""  ion-button color="secondary" [small]="" (click)="Upp()"  >Do góry</button>\n\n\n      </ion-col>\n      <ion-col col-6="" text-right="">\n\n          <button text-right="" ion-button color="secondary" [small]="" (click)="Down()" >W dół</button>\n\n      </ion-col>\n</ion-row>\n    </ion-col>\n\n</ion-row>\n\n\n  <ion-row>\n  <ion-col col-12="">\n\n<ion-card>\n  <br>\n  Trening:{{treningOffer.name}}\n  <br>\n\n  Data:{{treningOffer.date}}\n  <br>\n\n  Godz:{{treningOffer.beginTime}}:{{treningOffer.endTime}}\n  <br>\n\n  Cena:{{treningOffer.price}}\n  <br>\n\n  Limit klientów:{{treningOffer.clientLimit}}\n  <br>\n\n  Zapisani klienci:{{treningOffer.actualClientNumber}}\n\n\n</ion-card>\n<ion-card>\n  <ion-card-header>\n    Osoby zapisane na trening.\n  </ion-card-header>\n\n  <ion-item *ngFor=" let person of treningOffer.booking; let i=index">\n<br>\n    Osoba nr. {{i+1}}\n\n\n    <br>\n    {{person.name}}\n    <br>\n    {{person.surname}}\n    <br>\n    {{person.email}}\n   <br>\n    <br><br>\n\n\n  </ion-item>\n\n\n\n\n</ion-card>\n\n\n\n\n\n\n    </ion-col>\n  </ion-row>\n<ion-row>\n<ion-row>\n  <div *ngIf="limit==true ">\n<ion-row text-center="">\n\n<ion-col col-12="" text-center="">\n  <button text-center=""  ion-button color="secondary" [small]="" (click)="subTrening()"  >Zapisz się na trening</button>\n\n</ion-col>\n\n\n</ion-row>\n  </div>\n  <div *ngIf="limit==false ">\n<ion-item text-center="">\n  <ion-col col-12="" text-center="">\n\n    Brak wolnych miejsc.\n  </ion-col>\n\n\n\n</ion-item>\n\n\n\n  </div>\n</ion-row>\n\n\n</ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\trening-list\trening-list.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__providers_search_service_search_service__["a" /* SearchServiceProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__api_profile_service__["a" /* ProfileService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */], __WEBPACK_IMPORTED_MODULE_3__providers_search_service_search_service__["a" /* SearchServiceProvider */]])
     ], TreningListPage);

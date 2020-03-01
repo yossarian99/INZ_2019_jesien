@@ -22,8 +22,8 @@ import {TrainingrezerwationService} from "../../api/trainingrezerwation.service"
 export class AddEventPage {
 id:number;
   item: ProfileOut = {};
-  tr:RezerwacjaTreningu;
-  treningRezerwation:RezerwacjaTreningu;
+  tr:RezerwacjaTreningu={};
+  treningRezerwation:RezerwacjaTreningu={};
   trId:number;
   exitCode:number;
   constructor(public setTR:TrainingrezerwationService,public navCtrl: NavController, public navParams: NavParams,private provilconfig: SearchServiceProvider,public ProfillRest: ProfileService) {
@@ -46,35 +46,35 @@ id:number;
   treningInitalize(){
    this.setTrening = new FormGroup({
 
-     //Dane do posta do zapisu osoby na trening
-     name: new FormControl(),
-     surname: new FormControl(),
 
-     phone: new FormControl(),
-     email: new FormControl(),
-     comment: new FormControl(),
+     namess: new FormControl(),
+     surnamess: new FormControl(),
+
+     phoness: new FormControl(),
+     emailss: new FormControl(),
+     commentss: new FormControl(),
    })
 
   };
   setTrening = new FormGroup({
 
-    //Dane do posta do zapisu osoby na trening
-    name:new FormControl(),
-  surname:new FormControl(),
 
-  phone:new FormControl(),
-  email:new FormControl(),
-  comment:new FormControl(),
+    namess:new FormControl(),
+  surnamess:new FormControl(),
+
+  phoness:new FormControl(),
+  emailss:new FormControl(),
+  commentss:new FormControl(),
   });
-  setTreningMew() {
 
+    setTreningNew(){
     this.treningRezerwation.email=this.tr.email;
     this.treningRezerwation.name=this.tr.name;
     this.treningRezerwation.surname=this.tr.surname;
     this.treningRezerwation.phone=this.tr.phone;
     this.treningRezerwation.comment=this.tr.comment;
     this.treningRezerwation.id=this.trId;
-    this.treningRezerwation.trainerId=this.id;
+    this.treningRezerwation.trainer_id=this.id;
     this.setTR.orderTraining(this.treningRezerwation).subscribe(result => {
       console.log("result",result);
       this.exitCode = result;

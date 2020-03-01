@@ -60,7 +60,7 @@
                 <ion-col>
                   <ion-item>
                     <ion-label stacked>Imie :</ion-label>
-                    <ion-input type="text" placeholder="" [(ngModel)]="tr.name" formControlName="name"
+                    <ion-input type="text" placeholder="" [(ngModel)]="tr.name" formControlName="namess"
                                required>
                     </ion-input>
                   </ion-item>
@@ -70,7 +70,7 @@
                 <ion-col>
                   <ion-item>
                     <ion-label stacked>Nazwisko</ion-label>
-                    <ion-input type="text" placeholder="" [(ngModel)]="tr.surname" formControlName="surname"
+                    <ion-input type="text" placeholder="" [(ngModel)]="tr.surname" formControlName="surnamess"
                                required>
                     </ion-input>
                   </ion-item>
@@ -82,7 +82,7 @@
                   <ion-item>
                     <ion-label stacked>Email:</ion-label>
                     <ion-input  type="text" placeholder="" [(ngModel)]="tr.email"
-                    formControlName="email"
+                    formControlName="emailss"
                                required>
                     </ion-input>
                   </ion-item>
@@ -93,7 +93,7 @@
                   <ion-item>
                     <ion-label stacked>Phone:</ion-label>
                     <ion-input  type="text" placeholder="" [(ngModel)]="tr.phone"
-                    formControlName="phone"
+                    formControlName="phoness"
                     required>
                     </ion-input>
                   </ion-item>
@@ -101,18 +101,17 @@
               </ion-row>
 
               <ion-item>
-                <ion-label stacked>Telefon</ion-label>
+                <ion-label stacked>Opinia Urzytkownika</ion-label>
                 <ion-textarea placeholder="" [(ngModel)]="tr.comment"
 
-                              formControlName="comment"
+                              formControlName="commentss"
                               required></ion-textarea>
 
               </ion-item>
               <ion-row>
                 <ion-col text-right>
 
-                  <button ion-button color="secondary" color="light" type="submit" [disabled]="! opinionforms.valid">Dodaj
-                    Opinie
+                  <button ion-button color="secondary" color="light" type="submit" [disabled]="!setTrening.valid">Zapisz sie na trening
                   </button>
 
 

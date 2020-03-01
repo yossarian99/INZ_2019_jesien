@@ -11,6 +11,6 @@
  */
 
 
-export interface TrenerID { 
-    trainerId?: number;
+export interface TrenerID {
+    trainer_id?: number;
 }
