@@ -13,8 +13,7 @@ import {Disciplines} from "../../model/disciplines";
 import {FormControl, FormGroup} from "@angular/forms";
 import {SpecificPhotoService} from "../../api/specificPhoto.service";
 import {DomSanitizer} from "@angular/platform-browser";
-import {isQuote} from "@angular/compiler";
-
+import {cloneDeep} from 'lodash';
 // import {ViewprofilPage} from "../viewprofil/viewprofil";
 //
 /**
@@ -33,19 +32,43 @@ export class SearchNewPage {
   structure: any;
   structure2: any;
   showFilters: boolean;
-  Avatarphoto:any;
+  Avatarphoto: any;
   photoArray = [];
-  photoArray2=[];
-  singlephoto:any;
+  photoArray2 = [];
+  singlephoto: any;
   binaryData = [];
-  avatarShow= [];
-  avatarShow2=[];
-  constructor(public restdyscyp: DyscyplineService, private sanitizer: DomSanitizer,public getphoto: SpecificPhotoService , public trenersearch: TrainerService, public rest: ProfileService, public nav: NavController, public navParams: NavParams, private sea: SearchServiceProvider, private configServce: ConfigServce, private provilconfig: SearchServiceProvider, private  service: ProfileListService, public alertCtrl: AlertController) {
+  avatarShow = [];
+  avatarShow2 = [];
+  ln: number;
+  showsearch: boolean;
+  showresult: boolean = true;
+  public profiles1: ProfileOut[] = [];
+  public profiles2: ProfileOut[] = [];
+  public profiles3: ProfileOut[] = [];
+  profilesFiltered: ProfileOut[] = [];
+  prifilFiltered: ProfileOut;
+  profil: ProfileOut;
+  BASE_URL: string;
+  GET_PROFILE: string;
+  URl: string;
+  sciezka: string;
+  profiltest: ProfileOut;
+  public check: boolean = false;
+
+  constructor(public restdyscyp: DyscyplineService, private sanitizer: DomSanitizer, public getphoto: SpecificPhotoService, public trenersearch: TrainerService, public rest: ProfileService, public nav: NavController, public navParams: NavParams, private sea: SearchServiceProvider, private configServce: ConfigServce, private provilconfig: SearchServiceProvider, private  service: ProfileListService, public alertCtrl: AlertController) {
     this.change_rating(4);
+    debugger;
     this.showForm();
+
+    this.profiles3 = this.sea.getProfiles();
+    console.log("prifiles root", this.profiles3);
+    console.log("prifiles root", this.profiles3.length);
     this.showFilters = true;
     this.getDyscp();
+
     this.Idform();
+    // this.loadPhoto();
+
     this.structure = {
       lower: 30, upper: 60
 
@@ -97,32 +120,27 @@ export class SearchNewPage {
     loc: '',
     dysc: ''
   };
-  showsearch: boolean;
-  showresult: boolean = true;
-  profiles: ProfileOut[] = [];
-  profilesFiltered: ProfileOut[] = [];
-  prifilFiltered: ProfileOut;
-  profil: ProfileOut;
-  BASE_URL: string;
-  GET_PROFILE: string;
-  URl: string;
-  sciezka: string;
-  profiltest: ProfileOut;
+
 
   public getSearch(miasto: string, dyscyplina: string) {
     this.trenersearch.getTrainers(dyscyplina, miasto).subscribe(result => {
       console.log(this.sciezka);
       if (result != undefined) {
-        Object.assign(this.profiles, result);
-        console.log("avatar2",result[0].avatar);
+        Object.assign(this.profiles1, result);
+        console.log("avatar2", result[0].avatar);
         console.log("wczytane profils w wyszukiwaniu :");
-        console.log(this.profiles);
+        console.log(this.profiles1.length);
+        ;
+        this.profiles2 = cloneDeep(this.profiles1);
+        console.log(this.profiles2.length);
+        debugger;
+        this.sea.setProfiles(this.profiles2);
         this.loadPhoto();
-
       }
       else {
         console.log("error showserach");
         this.showresult = false;
+
       }
 
 
@@ -135,10 +153,9 @@ export class SearchNewPage {
     this.rest.getProfile(1).subscribe(result => {
       console.log(this.sciezka);
       if (result != undefined) {
-        Object.assign(this.profiles, result);
+        Object.assign(this.profiles1, result);
         console.log("wczytane profils w wyszukiwaniu :");
-        console.log(this.profiles);
-
+        console.log(this.profiles1);
 
 
       }
@@ -165,6 +182,9 @@ export class SearchNewPage {
         this.URl = this.BASE_URL + this.searchParams.dysc + '/' + this.searchParams.loc;
         this.sciezka = encodeURI(this.URl);
         this.getSearch(this.searchParams.loc, this.searchParams.dysc);
+        console.log("ppp", this.profiles1);
+        this.profiles3 = Array.from(this.profiles1);
+        console.log("lll", this.profiles1.length);
         this.showsearch = true;
 
 
@@ -176,7 +196,7 @@ export class SearchNewPage {
   profilsite(profil: ProfileOut) {
     // this.service.addItem_object(id);
     this.provilconfig.addprofilParams(profil);
-    console.log("id333==",profil.id);
+    console.log("id333==", profil.id);
     this.provilconfig.addProfilById(profil.id);
     console.log("w srodku servisu");
 
@@ -251,30 +271,31 @@ export class SearchNewPage {
   }
 
   Idform() {
-    this.loadPhoto2();
+
+    // this.profiles3=this.sea.getProfiles()
     let plecSearch: boolean = false;
     let townSearch: boolean;
     let priceSearch: boolean;
     let ageSearch: boolean = false;
     let dyscSearch: boolean = true;
-    for (let i = 0; i < this.profiles.length; i++) {
-      let age = this.getAgeStr(this.profiles[i].bdate);
+    for (let i = 0; i < this.profiles2.length; i++) {
+      let age = this.getAgeStr(this.profiles2[i].bdate);
       console.log("age", age);
       if (age >= this.structure.lower && age <= this.structure.upper) ageSearch = true;
       else ageSearch = false;
       console.log("struture", this.structure);
       console.log("structure2", this.structure2);
 
-      console.log("profiles", this.profiles[i]);
+      console.log("profiles", this.profiles2[i]);
       // Object.assign(this.profiltest, this.profiles[i]);
       // console.log("trroffer",this.profiltest.trOff);
 
-      let offers = this.profiles[i].tr_tr;
+      let offers = this.profiles2[i].tr_tr;
       for (let j = 0; j < offers.length; j++) {
         if (offers[j].place == this.Town) townSearch = true;
         else townSearch = false;
-        console.log("dys==name",offers[j].name);
-        console.log("dysc name list ===",this.dyscyplina.name);
+        console.log("dys==name", offers[j].name);
+        console.log("dysc name list ===", this.dyscyplina.name);
         if (offers[j].name == this.dyscyplina.name) dyscSearch = true;
 
         else dyscSearch = false;
@@ -284,54 +305,65 @@ export class SearchNewPage {
         else priceSearch = false;
 
 
-        if (this.profiles[i].gender == this.testRadioResult) plecSearch = true; else plecSearch = false;
+        if (this.profiles2[i].gender == this.testRadioResult) plecSearch = true; else plecSearch = false;
         console.log("agesearch", ageSearch);
         console.log("dyscysearch", dyscSearch);
         console.log("plecsearch", plecSearch);
         console.log("pricesearch", priceSearch);
         console.log("townsearch", townSearch);
-        if ((ageSearch && dyscSearch && plecSearch&&priceSearch&&townSearch) == true) {
+        if ((ageSearch && dyscSearch && plecSearch && priceSearch && townSearch) == true) {
           console.log("splice ====== true");
-          this.profilesFiltered.push(this.profiles[i]);
+          this.profilesFiltered.push(this.profiles2[i]);
           // this.profiles.splice(i+1,1);
         }
-        console.log(this.profilesFiltered);
+
+        console.log("Profile filtered", this.profilesFiltered);
       }
 
-      }
+    }
 
     if (this.profilesFiltered.length > 0) {
       this.showFilters = true;
+
+      this.loadPhoto2();
     }
     else this.showFilters = false;
 
   }
 
+  myFunction(item) {
+    console.log("item", item);
+  }
+
   loadPhoto() {
+    this.profiles2 = this.sea.getProfiles();
+    console.log("profiles", this.profiles2);
+    console.log(this.profiles2.length);
+    // for(let i=0;i<this.profiles2.length;i++) {
+    debugger;
+    for (let i = 0; i < this.profiles2.length; i++) {
 
-    for(let i=0;i<this.profiles.length;i++) {
+
       var index: number;
-      let j:any;
 
-      console.log("this profiles ",this.profiles[0]);
-      console.log("avatar",this.profiles[i].avatar);
-      // console.log("data=",data);
-      index=JSON.parse(this.profiles[i].avatar);
-      if(index==undefined){
+      index = JSON.parse(this.profiles2[i].avatar);
+      console.log("index", index);
+      if (index == undefined) {
         this.photoArray.push(null);
         this.avatarShow.push(null);
-      }else{
+      } else {
+        if (index != null) {
+          console.log("index1=", index);
+          this.singlephoto = this.getphoto.photoServiceGetPhoto(index).subscribe(result => {
+            this.createImageFromBlob(result);
+            this.avatarShow.push("good");
 
-        this.singlephoto = this.getphoto.photoServiceGetPhoto(index).subscribe(result => {
-          this.createImageFromBlob(result);
-          this.avatarShow.push("good");
-        });
+          });
+          console.log("photoarray", this.photoArray);
+        }
+
 
       }
-
-
-
-
       // let binaryData = [];
       // binaryData.push(this.singlephoto);
       //
@@ -340,59 +372,60 @@ export class SearchNewPage {
     }
 
   }
-createImageFromBlob(image: Blob) {
-  let reader = new FileReader();
-  reader.addEventListener("load", () => {
-    this.photoArray.push(this.sanitizer.bypassSecurityTrustUrl(reader.result));
-  }, false);
-  if (image) {
 
-    let binaryData = [];
-    binaryData.push(image);
-    // this.photoArray.push(image);
-    //
-    // this.photoArray.push(this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(new Blob(binaryData, {type: "application/png"}))));
+  createImageFromBlob(image: Blob) {
+    let reader = new FileReader();
+    reader.addEventListener("load", () => {
+      this.photoArray.push(this.sanitizer.bypassSecurityTrustUrl(reader.result));
+    }, false);
+    if (image) {
 
-    reader.readAsDataURL(new Blob(binaryData, {type: "image/png"}));
+      let binaryData = [];
+      binaryData.push(image);
+      // this.photoArray.push(image);
+      //
+      // this.photoArray.push(this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(new Blob(binaryData, {type: "application/png"}))));
 
-    // this.photoArray.push(reader);
+      reader.readAsDataURL(new Blob(binaryData, {type: "image/png"}));
+
+      // this.photoArray.push(reader);
+    }
+
+
   }
 
-
-}
   loadPhoto2() {
 
-    for(let i=0;i<this.profilesFiltered.length;i++) {
+    for (let i = 0; i < this.profilesFiltered.length; ++i) {
       var index: number;
-      let j:any;
 
-      console.log("this profiles ",this.profiles[0]);
-      console.log("avatar",this.profiles[i].avatar);
+
       // console.log("data=",data);
-      index=JSON.parse(this.profilesFiltered[i].avatar);
-      if(index==undefined){
+      index = JSON.parse(this.profilesFiltered[i].avatar);
+      if (index == null) {
         this.photoArray2.push(null);
         this.avatarShow2.push(null);
-      }else{
+      } else {
 
         this.singlephoto = this.getphoto.photoServiceGetPhoto(index).subscribe(result => {
           this.createImageFromBlob2(result);
           this.avatarShow2.push("good");
+
         });
 
       }
 
-
-
-
-      // let binaryData = [];
-      // binaryData.push(this.singlephoto);
-      //
-      // this.photoArray.push(this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(new Blob(binaryData, {type: "application/png"}))));
-      // debugger;
     }
 
+
+    // let binaryData = [];
+    // binaryData.push(this.singlephoto);
+    //
+    // this.photoArray.push(this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(new Blob(binaryData, {type: "application/png"}))));
+    // debugger;
   }
+
+
   createImageFromBlob2(image: Blob) {
     let reader = new FileReader();
     reader.addEventListener("load", () => {

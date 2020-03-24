@@ -1,14 +1,15 @@
 webpackJsonp([2],{
 
-/***/ 322:
+/***/ 324:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TreningListPageModule", function() { return TreningListPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewprofilPageModule", function() { return ViewprofilPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__trening_list__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__viewprofil__ = __webpack_require__(348);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic3_star_rating__ = __webpack_require__(211);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,35 +19,40 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var TreningListPageModule = /** @class */ (function () {
-    function TreningListPageModule() {
+
+var ViewprofilPageModule = /** @class */ (function () {
+    function ViewprofilPageModule() {
     }
-    TreningListPageModule = __decorate([
+    ViewprofilPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__trening_list__["a" /* TreningListPage */],
+                __WEBPACK_IMPORTED_MODULE_2__viewprofil__["a" /* ViewprofilPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__trening_list__["a" /* TreningListPage */]),
+                __WEBPACK_IMPORTED_MODULE_3_ionic3_star_rating__["a" /* StarRatingModule */],
+                // StarRatingModule,
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__viewprofil__["a" /* ViewprofilPage */]),
             ],
         })
-    ], TreningListPageModule);
-    return TreningListPageModule;
+    ], ViewprofilPageModule);
+    return ViewprofilPageModule;
 }());
 
-//# sourceMappingURL=trening-list.module.js.map
+//# sourceMappingURL=viewprofil.module.js.map
 
 /***/ }),
 
-/***/ 347:
+/***/ 348:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TreningListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ViewprofilPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_profile_service__ = __webpack_require__(210);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_search_service_search_service__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_Pfofile_list__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_search_service_search_service__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_rest_rest__ = __webpack_require__(53);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -58,144 +64,84 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+// import {ArrayID} from "../../models/id-array-ns";
 
 
 
-var TreningListPage = /** @class */ (function () {
-    function TreningListPage(zone, platform, navCtrl, provilconfig, navParams, ProfillRest, events, sea) {
-        this.zone = zone;
-        this.platform = platform;
-        this.navCtrl = navCtrl;
-        this.provilconfig = provilconfig;
-        this.navParams = navParams;
-        this.ProfillRest = ProfillRest;
+
+
+/**
+ * Generated class for the ViewprofilPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ViewprofilPage = /** @class */ (function () {
+    function ViewprofilPage(events, navCtrl, navParams, provilconfig, profilsService, rest) {
         this.events = events;
-        this.sea = sea;
-        this.item = {};
-        this.treningOffer = {};
-        this.treningPoint = {};
-        this.id = this.provilconfig.getId2();
-        this.getUsers(this.id);
-        this.index = 0;
-        console.log("wysokosc", this.wysokosc);
-    }
-    TreningListPage.prototype.ionViewDidLoad = function () {
-        console.log("na mapie");
-    };
-    TreningListPage.prototype.getUsers = function (id) {
-        var _this = this;
-        this.ProfillRest.getProfile(id).subscribe(function (result) {
-            Object.assign(_this.item, result);
-            console.log("pobranie item");
-        });
-    };
-    TreningListPage.prototype.showmap = function (lat, long) {
-        var location = new google.maps.LatLng(lat, long);
-        var options = {
-            // center: location,
-            center: { lat: +lat, lng: +long },
-            zoom: 10
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.provilconfig = provilconfig;
+        this.profilsService = profilsService;
+        this.rest = rest;
+        this.searchParams = {
+            loc: '',
+            dysc: ''
         };
-        // const map= new google.maps.Map;
-        this.map = new google.maps.Map(this.mapRef.nativeElement, options);
-        this.addMArker(location, this.map);
+        this.Opinions = {};
+        this.item = {};
+        this.opinionforms = new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["b" /* FormGroup */]({ Opinionss: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormControl */](), opinionuser: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormControl */](), email: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormControl */](), ocena: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormControl */]() });
+        events.subscribe('star-rating:changed', function (starRating) {
+            return console.log(starRating);
+        });
+        this.id = this.provilconfig.getProfilById();
+        // Object.assign(this.item, this.item1);
+        this.searchParams = this.provilconfig.searchParams;
+        rest.id = this.id;
+        this.getUsers();
+        // this.rating_option = this.item.rating;
+        this.logRatingChange(this.item.rating);
+        // this.initializeopinionforms();
+    }
+    // item: UserProfileN0c= new UserProfileN0c();
+    // rating=3;
+    //   gwiazdki:4;
+    ViewprofilPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ViewprofilPage');
     };
-    TreningListPage.prototype.addMArker = function (position, map) {
-        return new google.maps.Marker({
-            position: position,
-            map: map
+    ViewprofilPage.prototype.Opinionform = function () {
+        this.profilsService.addOponion(this.Opinions.description, this.Opinions.name, this.Opinions.email, this.Opinions.rating, this.item.name);
+        console.log("opinion=", this.Opinions.description);
+        console.log("opinodawca=", this.Opinions.name);
+        this.opinionforms.reset();
+    };
+    ViewprofilPage.prototype.backtoprofiles = function () {
+        this.navCtrl.pop();
+    };
+    ViewprofilPage.prototype.logRatingChange = function (rating) {
+        console.log("changed rating: ", rating);
+        // do your stuff
+        this.rating_option = rating;
+    };
+    ViewprofilPage.prototype.getUsers = function () {
+        this.item = this.provilconfig.getprofilParms();
+    };
+    ViewprofilPage.prototype.initializeopinionforms = function () {
+        this.opinionforms = new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["b" /* FormGroup */]({
+            opinionuser: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormControl */](),
+            Opinionss: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormControl */](), email: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormControl */](), ocena: new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormControl */]()
         });
     };
-    TreningListPage.prototype.Upp = function () {
-        var _this = this;
-        if (this.index + 1 == this.item.tr_pl.length)
-            this.index = 0;
-        else
-            this.index = this.index + 1;
-        this.localizationTemp = this.item.tr_pl[this.index];
-        this.szerokosc = this.localizationTemp.latitude;
-        this.wysokosc = this.localizationTemp.longitude;
-        // this.provilconfig.setlatitude(this.szerokosc);
-        // this.provilconfig.setlongtitude((this.wysokosc));
-        console.log("++++", this.item.tr_loc);
-        console.log("uppp");
-        console.log("szerokosc", this.szerokosc);
-        console.log("wysokosc", this.wysokosc);
-        console.log("index", this.index);
-        this.searchOffer(this.index);
-        this.checkLimitClients(this.treningOffer.clientLimit, this.treningOffer.actualClientNumber);
-        this.platform.ready().then(function () {
-            _this.showmap(_this.szerokosc, _this.wysokosc);
-        });
-        // this.events.publish('updateScreen');
-    };
-    TreningListPage.prototype.Down = function () {
-        var _this = this;
-        if (this.index == 0)
-            this.index = this.item.tr_pl.length - 1;
-        else
-            this.index = this.index - 1;
-        this.localizationTemp = this.item.tr_pl[this.index];
-        this.szerokosc = this.localizationTemp.latitude;
-        this.wysokosc = this.localizationTemp.longitude;
-        this.searchOffer(this.index);
-        this.checkLimitClients(this.treningOffer.clientLimit, this.treningOffer.actualClientNumber);
-        console.log("down");
-        this.platform.ready().then(function () {
-            _this.showmap(_this.szerokosc, _this.wysokosc);
-        });
-    };
-    TreningListPage.prototype.setItems = function () {
-        this.index = 0;
-        this.localizationTemp = this.item.tr_pl[this.index];
-        this.szerokosc = this.localizationTemp.latitude;
-        this.wysokosc = this.localizationTemp.longitude;
-    };
-    TreningListPage.prototype.searchOffer = function (index) {
-        this.getUsers(this.id);
-        debugger;
-        for (var i = 0; i < this.item.tr_tr.length; i++) {
-            if (this.item.tr_pl[index].id == this.item.tr_tr[i].id) {
-                this.treningOffer = this.item.tr_tr[i];
-                this.id_tr = this.treningOffer.id;
-                this.treningPoint = this.treningOffer;
-            }
-        }
-    };
-    TreningListPage.prototype.searchOffer2 = function (index) {
-        for (var i = 0; i < this.item.tr_tr.length; i++) {
-            if (this.item.tr_pl[index].id == this.item.tr_tr[i].id) {
-                this.treningOffer = this.item.tr_tr[i];
-                this.id_tr = this.treningOffer.id;
-                this.treningPoint = this.treningOffer;
-            }
-        }
-    };
-    TreningListPage.prototype.checkLimitClients = function (limit, clients) {
-        if (limit <= clients)
-            this.limit = false;
-        else
-            this.limit = true;
-    };
-    TreningListPage.prototype.subTrening = function () {
-        this.provilconfig.setId2(this.id);
-        this.provilconfig.setTrId(this.id_tr);
-        this.navCtrl.push('AddEventPage');
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
-    ], TreningListPage.prototype, "mapRef", void 0);
-    TreningListPage = __decorate([
+    ViewprofilPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-trening-list',template:/*ion-inline-start:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\trening-list\trening-list.html"*/'<!--\n  Generated template for the ProfilViewMenuPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar class="nav">\n    <ion-buttons start>\n      <!--<button ion-button>-->\n      <!--<ion-icon name="contact"></ion-icon>-->\n      <!--</button>-->\n    </ion-buttons>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      Menu\n    </ion-title>\n    <ion-title >\n      Najlepszy trener\n    </ion-title>\n    <ion-buttons end>\n\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n  <div #map id="my-map">\n\n  </div>\n  <ion-grid>\n\n\n\n\n\n<ion-row>\n\n  <ion-col col-12="">\n<ion-row>\n\n\n      <ion-col col-6="" text-left="">\n\n          <button text-left=""  ion-button color="secondary" [small]="" (click)="Upp()"  >Do góry</button>\n\n\n      </ion-col>\n      <ion-col col-6="" text-right="">\n\n          <button text-right="" ion-button color="secondary" [small]="" (click)="Down()" >W dół</button>\n\n      </ion-col>\n</ion-row>\n    </ion-col>\n\n</ion-row>\n\n\n  <ion-row>\n  <ion-col col-12="">\n\n<ion-card>\n  <br>\n  Trening:{{treningOffer.name}}\n  <br>\n\n  Data:{{treningOffer.date}}\n  <br>\n\n  Godz:{{treningOffer.beginTime}}:{{treningOffer.endTime}}\n  <br>\n\n  Cena:{{treningOffer.price}}\n  <br>\n\n  Limit klientów:{{treningOffer.clientLimit}}\n  <br>\n\n  Zapisani klienci:{{treningOffer.actualClientNumber}}\n\n\n</ion-card>\n<ion-card>\n  <ion-card-header>\n    Osoby zapisane na trening.\n  </ion-card-header>\n\n  <ion-item *ngFor=" let person of treningOffer.booking; let i=index">\n<br>\n    Osoba nr. {{i+1}}\n\n\n    <br>\n    {{person.name}}\n    <br>\n    {{person.surname}}\n    <br>\n    {{person.email}}\n   <br>\n    <br><br>\n\n\n  </ion-item>\n\n\n\n\n</ion-card>\n\n\n\n\n\n\n    </ion-col>\n  </ion-row>\n<ion-row>\n<ion-row>\n  <div *ngIf="limit==true ">\n<ion-row text-center="">\n\n<ion-col col-12="" text-center="">\n  <button text-center=""  ion-button color="secondary" [small]="" (click)="subTrening()"  >Zapisz się na trening</button>\n\n</ion-col>\n\n\n</ion-row>\n  </div>\n  <div *ngIf="limit==false ">\n<ion-item text-center="">\n  <ion-col col-12="" text-center="">\n\n    Brak wolnych miejsc.\n  </ion-col>\n\n\n\n</ion-item>\n\n\n\n  </div>\n</ion-row>\n\n\n</ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\trening-list\trening-list.html"*/,
+            selector: 'page-viewprofil',template:/*ion-inline-start:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\viewprofil\viewprofil.html"*/'<!--\n  Generated template for the ViewprofilPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar class="nav">\n    <ion-buttons start>\n      <button ion-button >\n        <ion-icon name="menu"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-title  >\n      Najlepszy trener\n    </ion-title>\n    <ion-buttons end>\n\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n <ion-grid>\n\n\n<ion-row\n  justify-content-center>\n  <ion-col col-12 text-center  style="border: 1px solid;border-radius: 5px">\n    <ion-row>\n      <ion-col text-left="">\n\n        <button ion-button (click)="backtoprofiles" >\n          <ion-icon ios="ios-undo" md="md-undo"></ion-icon>\n\n        </button>\n\n\n      </ion-col>\n\n    </ion-row>\n    <ion-row>\n      <ion-col col-12 text-left>\n        {{item.name}} {{item.surname}}\n\n\n      </ion-col>\n<ion-col col-12 text-left>\n  <!--<ionic3-star-rating-->\n    <!--activeIcon = "ios-star"-->\n    <!--defaultIcon = "ios-star"-->\n    <!--activeColor = "#3cdaa8"-->\n    <!--defaultColor = "#d4f9ed"-->\n    <!--readonly="true"-->\n    <!--[rating]=item.rating>-->\n  <!--</ionic3-star-rating>-->\n  <ionic3-star-rating #rating\n                      activeIcon = "ios-star"\n                      defaultIcon = "ios-star-outline"\n                      activeColor = "#488aff"\n                      defaultColor = "#f4f4f4"\n                      readonly="false"\n                      rating="3"\n                      fontSize = "32px"\n                      (ratingChanged)="logRatingChange($event)">\n  </ionic3-star-rating>\n</ion-col>\n      <ion-col>\n  <ion-row>\n\n    <ion-col col-12="" text-left>\n      <ion-item *ngFor="let opp of item.tr_loc let i = index" (click)="onCheckItem(i)">\n\n      {{opp.city}}\n      {{opp.voivodeship}}\n\n      </ion-item>\n\n    </ion-col>\n    <ion-col col-4 text-right>\n\n    {{item.rating}}/5\n    </ion-col>\n\n  </ion-row>\n      </ion-col>\n    </ion-row>\n    <ion-row justify-content-center>\n      <ion-col col-7>\n\n        <img style="width: 200px; height: 200px;" src="./assets/imgs/silacz.jpg"/>\n\n\n      </ion-col>\n\n\n\n    </ion-row>\n    <ion-card-content>\n    <ion-card>\n\n      <ion-col>\n        <ion-row text-left>\n          <ion-icon name="call" style="padding-left: 5px;padding-right: 5px"></ion-icon> Numer Telefonu\n        </ion-row>\n<ion-row text-left>\n\n  <div style="padding-left: 25px">\n    {{item.phone}}\n\n  </div>\n\n</ion-row>\n        <ion-row><p></p></ion-row>\n        <ion-row text-left>\n          <ion-icon name="mail" style="padding-left: 5px;padding-right: 5px"></ion-icon>\n          Email\n\n\n\n        </ion-row>\n        <ion-row text-left>\n\n          <div style="padding-left: 25px">\n            {{item.email}}\n\n          </div>\n\n        </ion-row>\n\n<ion-row>\n<ion-row><p></p></ion-row>\n    <ion-col col-6 text-left="">\n  <ion-icon ios="logo-facebook" md="logo-facebook" ></ion-icon>\n    Facebook\n  <ion-row>\n\n      <ion-icon ios="logo-instagram" md="logo-instagram" ></ion-icon>\n\n\n\n      Instagram\n\n</ion-row>\n\n\n\n\n\n\n      <ion-row>\n      <ion-icon ios="ios-at" md="md-at"></ion-icon> Strona WWW\n\n\n\n  </ion-row>\n      </ion-col>\n<ion-row><p></p></ion-row>\n</ion-row>\n\n\n\n\n\n\n\n\n      </ion-col>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n    </ion-card>\n\n      <ion-card>\n        <ion-card-header>\n          <ion-icon ios="ios-bookmark" md="md-bookmark"></ion-icon>\n          Doświadczenie i umiejetności.\n        </ion-card-header>\n        <ion-card-content>\n         {{item.tr_cert}}\n       <ion-row>\n         <ion-col text-left="">\n           Umiejetności.\n\n\n         </ion-col>\n       </ion-row>\n          <ion-row>\n            <ion-col text-left="">\n              {{item.description}}\n\n\n\n              <ion-icon ios="ios-checkbox" md="md-checkbox"></ion-icon> {{searchParams.dysc}}\n\n\n            </ion-col>\n          </ion-row>\n\n        </ion-card-content>\n      </ion-card>\n      <ion-card>\n        <ion-card-header>\n          <ion-icon ios="ios-school" md="md-school"></ion-icon> Wykształcenie.\n        </ion-card-header>\n        <ion-card-content>\n        {{item.tr_uni}}\n        </ion-card-content>\n      </ion-card>\n\n      <ion-card>\n        <ion-card-header>\n          <ion-icon ios="ios-camera" md="md-camera"></ion-icon>\n          Galeria\n        </ion-card-header>\n        <ion-card-content>\n        Tutaj powinna znajdować sie galeria zdjeć.\n        </ion-card-content>\n      </ion-card>\n\n      <ion-card>\n        <ion-card-header>\n          <ion-icon ios="ios-book" md="md-book"></ion-icon>\n          Opinie\n        </ion-card-header>\n        <ion-card-content>\n\n          <ion-item *ngFor="let opp of item.tr_op let i = index" (click)="onCheckItem(i)">\n\n            <ion-card>\n              <ion-card-header>\n                <h5 ion-text color="danger">Opiniodawca: {{opp.opinionGiver}}</h5>\n              </ion-card-header>\n              <ion-card-content>\n                <h5 ion-text color="danger">Opinia: {{opp.opinion}}</h5>\n              </ion-card-content>\n            </ion-card>\n\n\n\n\n\n\n          </ion-item>\n\n\n\n\n\n\n\n          <form [formGroup]="opinionforms"  (ngSubmit)="Opinionform()" padding>\n\n<ion-row>\n  <ion-col>\n    <ion-item>\n      <ion-label stacked>Imie :</ion-label>\n      <ion-input type="text" placeholder="" [(ngModel)]="Opinions.name" formControlName="opinionuser"\n                 required>\n      </ion-input>\n    </ion-item>\n  </ion-col>\n</ion-row>\n            <ion-row>\n              <ion-col>\n                <ion-item>\n                  <ion-label stacked>Email:</ion-label>\n                  <ion-input type="text" placeholder="" [(ngModel)]="Opinions.email" formControlName="email"\n                             required>\n                  </ion-input>\n                </ion-item>\n              </ion-col>\n            </ion-row>\n\n            <ion-row>\n              <ion-col>\n                <ion-item>\n                  <ion-label stacked>Ocena:</ion-label>\n                  <ion-input type="number" placeholder="" [(ngModel)]="Opinions.rating" formControlName="ocena"\n                             required>\n                  </ion-input>\n                </ion-item>\n              </ion-col>\n            </ion-row>\n\n\n            <ion-item>\n              <ion-label  stacked>Opinia Urzytkownika</ion-label>\n              <ion-textarea placeholder="" [(ngModel)]="Opinions.opinion"\n                            formControlName="Opinionss"\n                            required></ion-textarea>\n\n            </ion-item>\n            <ion-row>\n              <ion-col text-right>\n\n                  <button ion-button color="secondary"color="light" type="submit"[disabled]="! opinionforms.valid">Dodaj Opinie</button>\n\n\n              </ion-col>\n\n\n            </ion-row>\n\n\n\n          </form>\n\n\n\n\n\n          The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.\n        </ion-card-content>\n      </ion-card>\n    </ion-card-content>\n  </ion-col>\n\n\n\n</ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\viewprofil\viewprofil.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__providers_search_service_search_service__["a" /* SearchServiceProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__api_profile_service__["a" /* ProfileService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */], __WEBPACK_IMPORTED_MODULE_3__providers_search_service_search_service__["a" /* SearchServiceProvider */]])
-    ], TreningListPage);
-    return TreningListPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__providers_search_service_search_service__["a" /* SearchServiceProvider */], __WEBPACK_IMPORTED_MODULE_2__services_Pfofile_list__["a" /* ProfileListService */], __WEBPACK_IMPORTED_MODULE_5__providers_rest_rest__["a" /* RestProvider */]])
+    ], ViewprofilPage);
+    return ViewprofilPage;
 }());
 
-//# sourceMappingURL=trening-list.js.map
+//# sourceMappingURL=viewprofil.js.map
 
 /***/ })
 

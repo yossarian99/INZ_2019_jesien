@@ -44,7 +44,7 @@
         <p>Miejscowość : {{searchParams.loc}} </p>
         <div class="ilosc">
           <p>
-            ({{profiles.length}} wyszukiwan.)
+            ({{profiles2.length}} wyszukiwan.)
           </p>
 
         </div>
@@ -156,7 +156,7 @@
 
 
    <ion-list>
-     <ion-item-sliding *ngFor="let profil of profiles; let i = index" >
+     <ion-item-sliding *ngFor="let profil of profiles2; let i = index" >
        <ion-item>
 
 
@@ -166,9 +166,9 @@
 
 
         <ion-card>
-          <div *ngIf="avatarShow[i]!=null">
+          <div *ngIf="photoArray[i]!=null || photoArray[i]!== undefined">
 
-            <img style="width: 80px; height: 80px; float: left" [src]="photoArray[i]"/>
+            <img  style="width: 80px; height: 80px; float: left" [src]="photoArray[i]"/>
 
 
             <div *ngIf="avatarShow[i]==null">

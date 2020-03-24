@@ -1,14 +1,14 @@
 webpackJsonp([3],{
 
-/***/ 321:
+/***/ 323:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShowSearchPageModule", function() { return ShowSearchPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TreningListPageModule", function() { return TreningListPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__show_search__ = __webpack_require__(346);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__trening_list__ = __webpack_require__(347);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,38 +18,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ShowSearchPageModule = /** @class */ (function () {
-    function ShowSearchPageModule() {
+var TreningListPageModule = /** @class */ (function () {
+    function TreningListPageModule() {
     }
-    ShowSearchPageModule = __decorate([
+    TreningListPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__show_search__["a" /* ShowSearchPage */],
+                __WEBPACK_IMPORTED_MODULE_2__trening_list__["a" /* TreningListPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__show_search__["a" /* ShowSearchPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__trening_list__["a" /* TreningListPage */]),
             ],
         })
-    ], ShowSearchPageModule);
-    return ShowSearchPageModule;
+    ], TreningListPageModule);
+    return TreningListPageModule;
 }());
 
-//# sourceMappingURL=show-search.module.js.map
+//# sourceMappingURL=trening-list.module.js.map
 
 /***/ }),
 
-/***/ 346:
+/***/ 347:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ShowSearchPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TreningListPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_config_service_config_service__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_search_service_search_service__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_auth_service_auth_service__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__api_profile_service__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_profile_service__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_search_service_search_service__ = __webpack_require__(106);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -61,93 +58,144 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-// import {DyscyplinePage} from "../dyscypline/dyscypline";
 
 
 
-// import {HomePage} from "../home/home";
-
-
-/**
- * Generated class for the ShowSearchPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var ShowSearchPage = /** @class */ (function () {
-    function ShowSearchPage(rest, nav, auth, navParams, configServce, restProvider, sea) {
-        this.rest = rest;
-        this.nav = nav;
-        this.auth = auth;
+var TreningListPage = /** @class */ (function () {
+    function TreningListPage(zone, platform, navCtrl, provilconfig, navParams, ProfillRest, events, sea) {
+        this.zone = zone;
+        this.platform = platform;
+        this.navCtrl = navCtrl;
+        this.provilconfig = provilconfig;
         this.navParams = navParams;
-        this.configServce = configServce;
-        this.restProvider = restProvider;
+        this.ProfillRest = ProfillRest;
+        this.events = events;
         this.sea = sea;
-        this.searchParams = {
-            loc: '',
-            dysc: ''
-        };
-        this.showresult = true;
-        this.profiles = [];
-        this.BASE_URL = 'http://najlepszytrener.com.pl/api/';
-        this.GET_PROFILE = this.BASE_URL + 'profiles/';
-        this.URl = this.GET_PROFILE + this.searchParams.dysc + '/' + this.searchParams.loc;
+        this.item = {};
+        this.treningOffer = {};
+        this.treningPoint = {};
+        this.id = this.provilconfig.getId2();
+        this.getUsers(this.id);
+        this.index = 0;
+        console.log("wysokosc", this.wysokosc);
     }
-    ShowSearchPage.prototype.getSearch = function () {
+    TreningListPage.prototype.ionViewDidLoad = function () {
+        console.log("na mapie");
+    };
+    TreningListPage.prototype.getUsers = function (id) {
         var _this = this;
-        this.rest.getProfile(1).subscribe(function (result) {
-            if (result != undefined) {
-                Object.assign(_this.profiles, result);
-                console.log("wczytane profils w wyszukiwaniu :");
-                console.log(_this.profiles);
-            }
-            else {
-                console.log("error showserach");
-                _this.showresult = false;
-            }
+        this.ProfillRest.getProfile(id).subscribe(function (result) {
+            Object.assign(_this.item, result);
+            console.log("pobranie item");
         });
     };
-    ShowSearchPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ShowSearchPage');
+    TreningListPage.prototype.showmap = function (lat, long) {
+        var location = new google.maps.LatLng(lat, long);
+        var options = {
+            // center: location,
+            center: { lat: +lat, lng: +long },
+            zoom: 10
+        };
+        // const map= new google.maps.Map;
+        this.map = new google.maps.Map(this.mapRef.nativeElement, options);
+        this.addMArker(location, this.map);
     };
-    ShowSearchPage.prototype.showForm = function () {
-        this.searchParams = this.sea.getSearchParams();
-        if (this.searchParams.dysc === '' && this.searchParams.loc === '') {
-            this.showsearch = false;
-            this.nav.push('DyscyplinePage');
-        }
-        else {
-            if (this.searchParams.dysc != '' && this.searchParams.loc != '') {
-                this.getSearch();
-                this.showsearch = true;
+    TreningListPage.prototype.addMArker = function (position, map) {
+        return new google.maps.Marker({
+            position: position,
+            map: map
+        });
+    };
+    TreningListPage.prototype.Upp = function () {
+        var _this = this;
+        if (this.index + 1 == this.item.tr_pl.length)
+            this.index = 0;
+        else
+            this.index = this.index + 1;
+        this.localizationTemp = this.item.tr_pl[this.index];
+        this.szerokosc = this.localizationTemp.latitude;
+        this.wysokosc = this.localizationTemp.longitude;
+        // this.provilconfig.setlatitude(this.szerokosc);
+        // this.provilconfig.setlongtitude((this.wysokosc));
+        console.log("++++", this.item.tr_loc);
+        console.log("uppp");
+        console.log("szerokosc", this.szerokosc);
+        console.log("wysokosc", this.wysokosc);
+        console.log("index", this.index);
+        this.searchOffer(this.index);
+        this.checkLimitClients(this.treningOffer.clientLimit, this.treningOffer.actualClientNumber);
+        this.platform.ready().then(function () {
+            _this.showmap(_this.szerokosc, _this.wysokosc);
+        });
+        // this.events.publish('updateScreen');
+    };
+    TreningListPage.prototype.Down = function () {
+        var _this = this;
+        if (this.index == 0)
+            this.index = this.item.tr_pl.length - 1;
+        else
+            this.index = this.index - 1;
+        this.localizationTemp = this.item.tr_pl[this.index];
+        this.szerokosc = this.localizationTemp.latitude;
+        this.wysokosc = this.localizationTemp.longitude;
+        this.searchOffer(this.index);
+        this.checkLimitClients(this.treningOffer.clientLimit, this.treningOffer.actualClientNumber);
+        console.log("down");
+        this.platform.ready().then(function () {
+            _this.showmap(_this.szerokosc, _this.wysokosc);
+        });
+    };
+    TreningListPage.prototype.setItems = function () {
+        this.index = 0;
+        this.localizationTemp = this.item.tr_pl[this.index];
+        this.szerokosc = this.localizationTemp.latitude;
+        this.wysokosc = this.localizationTemp.longitude;
+    };
+    TreningListPage.prototype.searchOffer = function (index) {
+        this.getUsers(this.id);
+        debugger;
+        for (var i = 0; i < this.item.tr_tr.length; i++) {
+            if (this.item.tr_pl[index].id == this.item.tr_tr[i].id) {
+                this.treningOffer = this.item.tr_tr[i];
+                this.id_tr = this.treningOffer.id;
+                this.treningPoint = this.treningOffer;
             }
         }
     };
-    ShowSearchPage.prototype.changeSchow = function () {
-        this.searchParams.loc = '';
-        this.searchParams.dysc = '';
-        this.showsearch = false;
-        this.showresult = true;
+    TreningListPage.prototype.searchOffer2 = function (index) {
+        for (var i = 0; i < this.item.tr_tr.length; i++) {
+            if (this.item.tr_pl[index].id == this.item.tr_tr[i].id) {
+                this.treningOffer = this.item.tr_tr[i];
+                this.id_tr = this.treningOffer.id;
+                this.treningPoint = this.treningOffer;
+            }
+        }
     };
-    ShowSearchPage.prototype.backToHome = function () {
-        this.nav.push('HomePage');
+    TreningListPage.prototype.checkLimitClients = function (limit, clients) {
+        if (limit <= clients)
+            this.limit = false;
+        else
+            this.limit = true;
     };
-    ShowSearchPage.prototype.logout = function () {
-        var _this = this;
-        this.auth.logout().subscribe(function (succ) {
-            _this.nav.setRoot('LoginPage');
-        });
+    TreningListPage.prototype.subTrening = function () {
+        this.provilconfig.setId2(this.id);
+        this.provilconfig.setTrId(this.id_tr);
+        this.navCtrl.push('AddEventPage');
     };
-    ShowSearchPage = __decorate([
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
+    ], TreningListPage.prototype, "mapRef", void 0);
+    TreningListPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-show-search',template:/*ion-inline-start:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\show-search\show-search.html"*/'<!--\n  Generated template for the ShowSearchPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="dark">\n    <ion-title>\n      Wyszukaj Profil\n    </ion-title>\n    <ion-buttons end>\n      <button ion-button (click)="logout()">\n        <ion-icon name="log-out"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <ion-item>\n    Miasto  :  {{searchParams.loc}}\n    Dyscyplina  :  {{searchParams.dysc}}\n  </ion-item>\n\n  <form (ngSubmit)="showForm()">\n    <ion-list>\n\n\n\n      <ion-item>\n        <button ion-button color="secondary" type="submit">Wyszukaj profil</button>\n      </ion-item>\n      <ion-item>\n        <button ion-button class="register-btn" block clear (click)="changeSchow()">Zmien dane wyszukiwania</button>\n      </ion-item>\n\n      <ion-item>\n        <button ion-button class="register-btn" block clear (click)="backToHome()">Wróc do strony głownej</button>\n      </ion-item>\n    </ion-list>\n\n  </form>\n\n\n  <form>\n\n    <ion-list>\n      <ion-item *ngIf="showsearch === true" #slidingItem>\n\n      <ion-item *ngFor="let item of profiles; let i = index" (click)="onCheckItem(i)">\n        <p>Trener Personalny </p>\n        <p>Imie: {{item.name}}</p>\n        <p>Nazwisko: {{item.surname}}</p>\n        <p>Płeć: {{item.gender}}</p>\n        <p>Numer telefonu:{{item.phone}}</p>\n        <p>Email:{{item.email}}</p>\n        <p>Opis: {{item.description}}</p>\n        <p>Data rejestracji:{{item.registerDate}}</p>\n        <p>Dyscypliny:{{item.tr_disc}}</p>\n\n        <ion-item *ngFor="let cert of item.tr_cert let i = index2" (click)="onCheckItem(i)">\n          <p> Certyfikat: </p>\n          <p>Zdobyte certyfikaty</p>\n          <p>Nazwa kursu: {{cert.name}} </p>\n          <p>Data rozpoczecia:{{cert.beginDate}} </p>\n          <p>Data zakonczenia: {{cert.endDate}}</p>\n\n        </ion-item>\n\n        <ion-item *ngFor="let uni of item.tr_uni let i = index0" (click)="onCheckItem(i)">\n          <p>Zdobyte wykształcenie</p>\n          <p>Uniwersytet : {{uni.name}}</p>\n          <p>Kierunek: {{uni.course}}</p>\n          <p>Tytuł: {{uni.degree}}</p>\n          <p>Data rozpoczecia: {{uni.beginDate}}</p>\n          <p>Data zakonczenia:{{uni.endDate}}</p>\n          <!--<p>Data utworzenia:{{uni.created_at}}</p>-->\n          <!--<p>Data modyfikacji: {{uni.updated_at}}</p>-->\n        </ion-item>\n\n        <ion-item *ngFor="let loc of item.tr_loc let i = index3" (click)="onCheckItem(i)">\n          <p>Lokalizacja</p>\n          <P>Miasto : {{loc.  place}}</P>\n\n          <P>Ostatnia data: {{loc.beginTime}}</P>\n          <P>Data utworzenie {{loc.date}}</P>\n        </ion-item>\n\n        <ion-item *ngFor="let loc of item.tr_pl let i = index4" (click)="onCheckItem(i)">\n          <p>Lokalizacja:{{loc.city}}</p>\n          <p></p>\n        </ion-item>\n\n        <ion-item *ngFor="let off of item.tr_off let i = index5" (click)="onCheckItem(i)">\n          <p>Oferta</p>\n          <p>Usługa: {{off.name}}</p>\n          <p>Cena: {{off.price}}</p>\n          <p>Maksymalna liczba klientów:{{off.maxNofClients}}</p>\n          <!--<p>Data utworzenie:{{off.created_at}}</p>-->\n          <!--<p>Data modyfikacji : {{off.updated_at}}</p>-->\n          <p></p>\n        </ion-item>\n        <ion-item *ngFor="let opp of item.tr_op let i = index6" (click)="onCheckItem(i)">\n          <p>Opinia: {{opp.description}}</p>\n          <p></p>\n          <p>Opiniodawca: {{opp.name}}</p>\n\n        </ion-item>\n      </ion-item>\n    </ion-item>\n\n\n    </ion-list>\n\n\n\n\n  </form>\n  <ion-list>\n    <ion-item *ngIf="showresult === false" #slidingItem>\n\n      <h5 ion-text color="danger">Brak wyszukiwań spełniających wybrane kryteria.</h5>\n    </ion-item>\n\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\show-search\show-search.html"*/,
+            selector: 'page-trening-list',template:/*ion-inline-start:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\trening-list\trening-list.html"*/'<!--\n  Generated template for the ProfilViewMenuPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar class="nav">\n    <ion-buttons start>\n      <!--<button ion-button>-->\n      <!--<ion-icon name="contact"></ion-icon>-->\n      <!--</button>-->\n    </ion-buttons>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      Menu\n    </ion-title>\n    <ion-title >\n      Najlepszy trener\n    </ion-title>\n    <ion-buttons end>\n\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n  <div #map id="my-map">\n\n  </div>\n  <ion-grid>\n\n\n\n\n\n<ion-row>\n\n  <ion-col col-12="">\n<ion-row>\n\n\n      <ion-col col-6="" text-left="">\n\n          <button text-left=""  ion-button color="secondary" [small]="" (click)="Upp()"  >Do góry</button>\n\n\n      </ion-col>\n      <ion-col col-6="" text-right="">\n\n          <button text-right="" ion-button color="secondary" [small]="" (click)="Down()" >W dół</button>\n\n      </ion-col>\n</ion-row>\n    </ion-col>\n\n</ion-row>\n\n\n  <ion-row>\n  <ion-col col-12="">\n\n<ion-card>\n  <br>\n  Trening:{{treningOffer.name}}\n  <br>\n\n  Data:{{treningOffer.date}}\n  <br>\n\n  Godz:{{treningOffer.beginTime}}:{{treningOffer.endTime}}\n  <br>\n\n  Cena:{{treningOffer.price}}\n  <br>\n\n  Limit klientów:{{treningOffer.clientLimit}}\n  <br>\n\n  Zapisani klienci:{{treningOffer.actualClientNumber}}\n\n\n</ion-card>\n<ion-card>\n  <ion-card-header>\n    Osoby zapisane na trening.\n  </ion-card-header>\n\n  <ion-item *ngFor=" let person of treningOffer.booking; let i=index">\n<br>\n    Osoba nr. {{i+1}}\n\n\n    <br>\n    {{person.name}}\n    <br>\n    {{person.surname}}\n    <br>\n    {{person.email}}\n   <br>\n    <br><br>\n\n\n  </ion-item>\n\n\n\n\n</ion-card>\n\n\n\n\n\n\n    </ion-col>\n  </ion-row>\n<ion-row>\n<ion-row>\n  <div *ngIf="limit==true ">\n<ion-row text-center="">\n\n<ion-col col-12="" text-center="">\n  <button text-center=""  ion-button color="secondary" [small]="" (click)="subTrening()"  >Zapisz się na trening</button>\n\n</ion-col>\n\n\n</ion-row>\n  </div>\n  <div *ngIf="limit==false ">\n<ion-item text-center="">\n  <ion-col col-12="" text-center="">\n\n    Brak wolnych miejsc.\n  </ion-col>\n\n\n\n</ion-item>\n\n\n\n  </div>\n</ion-row>\n\n\n</ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\trening-list\trening-list.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_6__api_profile_service__["a" /* ProfileService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_5__providers_auth_service_auth_service__["a" /* AuthServiceProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_config_service_config_service__["a" /* ConfigServce */], __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__["a" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_4__providers_search_service_search_service__["a" /* SearchServiceProvider */]])
-    ], ShowSearchPage);
-    return ShowSearchPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__providers_search_service_search_service__["a" /* SearchServiceProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__api_profile_service__["a" /* ProfileService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */], __WEBPACK_IMPORTED_MODULE_3__providers_search_service_search_service__["a" /* SearchServiceProvider */]])
+    ], TreningListPage);
+    return TreningListPage;
 }());
 
-//# sourceMappingURL=show-search.js.map
+//# sourceMappingURL=trening-list.js.map
 
 /***/ })
 

@@ -1,8 +1,9 @@
 import {Injectable} from "@angular/core";
 
 import 'rxjs/add/operator/map';
-import {UserProfile} from "../../models/UserProfile-model";
 import {ProfileOut} from "../../model/profileOut";
+import {cloneDeep} from 'lodash';
+
 @Injectable()
 export class SearchServiceProvider {
   searchParams = {
@@ -11,68 +12,96 @@ export class SearchServiceProvider {
   };
   Profilnew: ProfileOut = {};
   ProfillViewMenu: ProfileOut = {};
-picturePhoto:any;
-id:number;
-id2:number;
-wysokosc:string;
-szerokosc:string;
-tr_id:number;
+  picturePhoto: any;
+  id: number;
+  id2: number;
+  wysokosc: string;
+  szerokosc: string;
+  tr_id: number;
+  profiles: ProfileOut[] = [];
+  profilesCopy: ProfileOut[] = [];
+
   public addSearchParams(dysc: string, loc: string) {
     this.searchParams.dysc = dysc;
     this.searchParams.loc = loc;
   }
-public  senddPhoto(picture:any){
-    this.picturePhoto=picture;
-}
-public getPhoto(){
+
+  public senddPhoto(picture: any) {
+    this.picturePhoto = picture;
+  }
+
+  public getPhoto() {
     return this.picturePhoto;
-}
+  }
+
   public getSearchParams() {
     return this.searchParams;
   }
 
   public addprofilParams(profil: ProfileOut) {
-    this.Profilnew=profil;
+    this.Profilnew = profil;
   }
+
   public addProfillViewMenu(profil: ProfileOut) {
-    this. ProfillViewMenu=profil;
+    this.ProfillViewMenu = profil;
   }
+
   public getProfillViewMenu() {
     return this.ProfillViewMenu;
   }
-public addProfilById(id1:number){
-    this.id=id1;
-}
-public setId2(id:number){
-    this.id2=id;
-}
-public getId2(){
+
+  public addProfilById(id1: number) {
+    this.id = id1;
+  }
+
+  public setId2(id: number) {
+    this.id2 = id;
+  }
+
+  public getId2() {
     return this.id2;
-}
+  }
+
   public getprofilParms() {
     return this.Profilnew;
   }
-  public getProfilById()
-  {
+
+  public getProfilById() {
     return this.id;
   }
-  public setlatitude(lo){
-    this.wysokosc=lo;
+
+  public setlatitude(lo) {
+    this.wysokosc = lo;
 
   }
-  public setlongtitude(lng){
-    this.szerokosc=lng;
+
+  public setlongtitude(lng) {
+    this.szerokosc = lng;
   }
-  public getlatitude(){
+
+  public getlatitude() {
     return this.wysokosc;
   }
-  public getlongtitude(){
+
+  public getlongtitude() {
     return this.szerokosc;
   }
-  public setTrId(id:number){
-    this.tr_id=id;
+
+  public setTrId(id: number) {
+    this.tr_id = id;
   }
-  public getTRId(){
+
+  public getTRId() {
     return this.tr_id;
+  }
+
+  public setProfiles(data: ProfileOut[]) {
+    Object.assign(this.profilesCopy, data);
+    // this.profiles = Array.from(this.profilesCopy);
+    this.profiles = this.profilesCopy;
+  }
+
+  public getProfiles() {
+    return this.profiles;
   }
 }
