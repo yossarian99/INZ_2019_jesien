@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 
 /**
  * Generated class for the PriceListProfillPage page.
@@ -21,11 +21,8 @@ export class PriceListProfillPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad PriceListProfillPage');
   }
-  backtoprofiles(){
 
+  backtoprofiles() {
     this.nav.pop();
-
-
-
   }
 }

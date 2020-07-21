@@ -17,36 +17,28 @@
     <ion-title>
       Menu
     </ion-title>
-    <ion-title >
+    <ion-title>
       Najlepszy trener
     </ion-title>
     <ion-buttons end>
-
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding>
   <!--<button ion-button (click)="backtoprofiles" ></button>-->
   <!--<ion-icon ios="ios-undo" md="md-undo"></ion-icon>-->
   <ion-row justify-content-center>
-    <ion-col col-6="" >
-
+    <ion-col col-6="">
       <img style="width: 200px; height: 200px;" src="./assets/imgs/silacz.jpg"/>
-
-
     </ion-col>
-
-
-
   </ion-row>
   <ion-row>
     <ion-card>
       <ion-card-header>
-        <ion-icon ios="ios-school" md="md-school"></ion-icon> Wykształcenie.
+        <ion-icon ios="ios-school" md="md-school"></ion-icon>
+        Wykształcenie.
       </ion-card-header>
       <ion-item *ngFor="let opp of item.tr_uni let i = index" (click)="onCheckItem(i)">
-
         <ion-card-content>
           <p>Uniwersytet</p>
           {{opp.university}}
@@ -56,7 +48,6 @@
           {{opp.degree}}
         </ion-card-content>
       </ion-item>
-
     </ion-card>
   </ion-row>
 </ion-content>

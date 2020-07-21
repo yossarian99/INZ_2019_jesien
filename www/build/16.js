@@ -91,28 +91,11 @@ var GalleryProfilPage = /** @class */ (function () {
         this.jsonData = null;
         this.id = this.provilconfig.getId2();
         this.getUsers(this.id);
-        // this.loadPhoto();
-        // this.events.publish('updateScreen');
     }
     GalleryProfilPage.prototype.loadData = function () {
         this.loadPhoto();
-        // if (!this.jsonData) {
-        //   this.httpClient.get("http://localhost:9090/api/photo/2").subscribe(res => {
-        //     this.photoArray = res['results'];
-        //     this.jsonData = res['results'];
-        //
-        //   });
-        //
-        // } else {
-        //   this.photoArray = [];
-        //   setTimeout(() => {
-        //     this.photoArray = this.jsonData;
-        //   }, 100);
-        //
-        // }
     };
     GalleryProfilPage.prototype.clearCache = function (refresher) {
-        // this.imageLoader.clearCache();
         refresher.complete();
     };
     GalleryProfilPage.prototype.ionViewDidLoad = function () {
@@ -133,11 +116,6 @@ var GalleryProfilPage = /** @class */ (function () {
             this.singlephoto = this.getphoto.photoServiceGetPhoto(this.item.tr_ph[i].id).subscribe(function (result) {
                 _this.createImageFromBlob(result);
             });
-            // let binaryData = [];
-            // binaryData.push(this.singlephoto);
-            //
-            // this.photoArray.push(this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(new Blob(binaryData, {type: "application/png"}))));
-            // debugger;
         }
     };
     GalleryProfilPage.prototype.createImageFromBlob = function (image) {
@@ -149,8 +127,6 @@ var GalleryProfilPage = /** @class */ (function () {
         if (image) {
             var binaryData = [];
             binaryData.push(image);
-            //
-            // this.photoArray.push(this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(new Blob(binaryData, {type: "application/png"}))));
             reader.readAsDataURL(new Blob(binaryData, { type: "image/png" }));
         }
     };
@@ -160,11 +136,12 @@ var GalleryProfilPage = /** @class */ (function () {
     };
     GalleryProfilPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-gallery-profil',template:/*ion-inline-start:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\gallery-profil\gallery-profil.html"*/'<!--\n  Generated template for the GalleryProfilPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar class="nav">\n    <ion-buttons start>\n      <!--<button ion-button>-->\n      <!--<ion-icon name="contact"></ion-icon>-->\n      <!--</button>-->\n    </ion-buttons>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      Menu\n    </ion-title>\n    <ion-title>\n      Najlepszy trener\n    </ion-title>\n    <ion-buttons end>\n      <button ion-button="" (click)="loadData()">load</button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <button ion-button (click)="backtoprofiles">\n    <ion-icon ios="ios-undo" md="md-undo"></ion-icon>\n\n  </button>\n  <!--<div class="images">-->\n\n\n  <!--<div class="one-image">-->\n  <!--<ion-item *ngFor ="let photo of photoArray">-->\n  <!--<img src="{{photo}}.png">-->\n  <!--</ion-item>-->\n  <!--</div>-->\n  <!--</div>-->\n\n\n  <ion-refresher (ionRefresh)="clearCache($event)">\n    <ion-refresher-content></ion-refresher-content>\n    >\n  </ion-refresher>\n  <div class="images">\n    <div class="one-image">\n      <ion-item *ngFor="let photo of photoArray">\n   <div (click)="getBig(photo)">\n     <img [src]="photo" />\n\n\n\n   </div>\n\n      </ion-item>\n\n    </div>\n\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\gallery-profil\gallery-profil.html"*/,
+            selector: 'page-gallery-profil',template:/*ion-inline-start:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\gallery-profil\gallery-profil.html"*/'<!--\n  Generated template for the GalleryProfilPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar class="nav">\n    <ion-buttons start>\n      <!--<button ion-button>-->\n      <!--<ion-icon name="contact"></ion-icon>-->\n      <!--</button>-->\n    </ion-buttons>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      Menu\n    </ion-title>\n    <ion-title>\n      Najlepszy trener\n    </ion-title>\n    <ion-buttons end>\n      <button ion-button="" (click)="loadData()">load</button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n<ion-content padding>\n  <button ion-button (click)="backtoprofiles">\n    <ion-icon ios="ios-undo" md="md-undo"></ion-icon>\n  </button>\n  <ion-refresher (ionRefresh)="clearCache($event)">\n    <ion-refresher-content></ion-refresher-content>\n  </ion-refresher>\n  <div class="images">\n    <div class="one-image">\n      <ion-item *ngFor="let photo of photoArray">\n        <div (click)="getBig(photo)">\n          <img [src]="photo"/>\n        </div>\n      </ion-item>\n    </div>\n  </div>\n</ion-content>\n'/*ion-inline-end:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\gallery-profil\gallery-profil.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_4__api_specificPhoto_service__["a" /* SpecificPhotoService */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_search_service_search_service__["a" /* SearchServiceProvider */],
-            __WEBPACK_IMPORTED_MODULE_3__api_profile_service__["a" /* ProfileService */], __WEBPACK_IMPORTED_MODULE_2__providers_search_service_search_service__["a" /* SearchServiceProvider */], __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser__["c" /* DomSanitizer */]])
+            __WEBPACK_IMPORTED_MODULE_3__api_profile_service__["a" /* ProfileService */], __WEBPACK_IMPORTED_MODULE_2__providers_search_service_search_service__["a" /* SearchServiceProvider */],
+            __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser__["c" /* DomSanitizer */]])
     ], GalleryProfilPage);
     return GalleryProfilPage;
 }());

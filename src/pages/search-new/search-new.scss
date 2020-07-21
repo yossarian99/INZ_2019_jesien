@@ -1,34 +1,30 @@
 page-search-new {
-.backcard{
-  background-color: #eeeeee;
+  .backcard {
+    background-color: #eeeeee;
 
-
-}
-  .ilosc{
+  }
+  .ilosc {
 
     text-align: right;
     text-align: end;
   }
-  .avatartext{
-   float:left;
-  //  aligin: right;
-   text-align: center;
+  .avatartext {
+    float: left;
+    //  aligin: right;
+    text-align: center;
     vertical-align: middle;
-    margin-left:9%;
-    margin-top:3%;
+    margin-left: 9%;
+    margin-top: 3%;
     font-size: larger;
 
+  }
+  .avatarbuuton {
+    float: left;
+    //  aligin: right;
 
-    }.avatarbuuton{
-       float:left;
-       //  aligin: right;
+    ion-content: start;
 
-      ion-content:start;
-
-
-
-
-     }
+  }
   .ion-grid {
     height: 100%;
 
@@ -36,5 +32,5 @@ page-search-new {
       height: 33.33%;
     }
   }
-  }
+}
 

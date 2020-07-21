@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 
 /**
  * Generated class for the PlacesProfilPage page.
@@ -21,11 +21,8 @@ export class PlacesProfilPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad PlacesProfilPage');
   }
-  backtoprofiles(){
 
+  backtoprofiles() {
     this.nav.pop();
-
-
-
   }
 }

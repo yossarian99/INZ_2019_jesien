@@ -123,12 +123,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-// import {createElementCssSelector} from "@angular/compiler";
 
+// import {createElementCssSelector} from "@angular/compiler";
 var AuthServiceProvider = /** @class */ (function () {
     function AuthServiceProvider() {
-        // currentUser: UserProfile;
-        // currentUser = { email: '', password: '' };
         this.currentUser = new __WEBPACK_IMPORTED_MODULE_3__models_user_model__["a" /* User */]('', '', '', '', '', '');
         this.usersGrid = [];
         this.userOld = new __WEBPACK_IMPORTED_MODULE_3__models_user_model__["a" /* User */]('', '', '', '', '', '');
@@ -213,9 +211,6 @@ var AuthServiceProvider = /** @class */ (function () {
                 }
             }
         });
-        // if((this.currentUser.email===email)&&(this.currentUser.password===pass)){
-        //   result=true;
-        // }
         return result;
     };
     AuthServiceProvider.prototype.GetUser = function () {
@@ -282,7 +277,6 @@ var ProfileListService = /** @class */ (function () {
         for (index = 0; index < this.UserProfileGrid.length; index++) {
             if (this.UserProfileGrid[index].name === trName) {
                 console.log("opinia 3 =", opinia);
-                debugger;
                 this.UserProfileGrid[index].tr_op.push(opinia);
             }
             else {
@@ -295,13 +289,9 @@ var ProfileListService = /** @class */ (function () {
     };
     ProfileListService.prototype.addItem = function (id, name, surname, gender, bdate, phone, email, facebook, instagram, page, description, rating, avatar, registerDate, facebook_id, tr_disc, tr_cert, tr_uni, tr_loc, tr_pl, tr_off, tr_op, tr_tr, tr_ph) {
         this.UserProfileGrid.push(new __WEBPACK_IMPORTED_MODULE_0__models_UserProfile_model__["a" /* UserProfile */](id, name, surname, gender, bdate, phone, email, facebook, instagram, description, rating, avatar, registerDate, facebook_id, tr_disc, tr_cert, tr_uni, tr_loc, tr_pl, tr_off, tr_op, tr_tr, tr_ph));
-        // [ { "name": "Adam", "surname": "Micniewicz", "gender": "M", "bdate": null, "phone": 457234098, "email": "adammicniewicz@wp.pl", "facebook": null, "instagram": null, "description": "Zapraszam.", "rating": 0, "avatar": null, "registerDate": "2018-05-01 22:03:52", "remember_token": null, "tr_disc": [ { "discipline_name": "Trener personalny" } ], "tr_cert": [ { "name_of_institution": "Akademia Trenerow Personalnych", "name_of_course": "Trener personalnyc", "begin_date": "2015-08-01", "end_date": "2016-03-10", "updated_at": "2018-05-28 23:35:42", "created_at": "2018-05-28 23:35:42" } ], "tr_uni": [], "tr_loc": [ { "city": "Pozna\u0144", "voivodeship": "Wielkopolskie", "updated_at": "-0001-11-30 00:00:00", "created_at": "-0001-11-30 00:00:00" } ], "tr_pl": [ { "place": "Fabryka Formy" }, { "place": "Slodkiewicz Gym" } ], "tr_off": [ { "name": "Trening indywidualny", "price": 50, "max_no_of_clients": 1, "updated_at": "2018-05-29 00:35:20", "created_at": "2018-05-29 00:35:20" }, { "name": "Trening grupowy", "price": 15, "max_no_of_clients": 4, "updated_at": "2018-05-29 00:35:20", "created_at": "2018-05-29 00:35:20" } ], "tr_op": [], "tr_tr": [] } ]
         console.log(this.UserProfileGrid);
     };
     ProfileListService.prototype.addItem_object = function (Obiekt) {
-        // let Dane:UserProfile={};
-        //
-        //  Dane=Obiekt;
         this.UserProfileGrid.push(new __WEBPACK_IMPORTED_MODULE_0__models_UserProfile_model__["a" /* UserProfile */](Obiekt.id, Obiekt.name, Obiekt.surname, Obiekt.gender, Obiekt.bdate, Obiekt.phone, Obiekt.email, Obiekt.facebook, Obiekt.instagram, Obiekt.description, Obiekt.rating, Obiekt.avatar, Obiekt.registerDate, Obiekt.facebook_id, Obiekt.tr_disc, Obiekt.tr_cert, Obiekt.tr_uni, Obiekt.tr_loc, Obiekt.tr_pl, Obiekt.tr_off, Obiekt.tr_op, Obiekt.tr_tr, Obiekt.tr_ph));
         console.log("array user ", this.UserProfileGrid);
     };
@@ -311,22 +301,6 @@ var ProfileListService = /** @class */ (function () {
     };
     ProfileListService.prototype.getItems = function (name1, surname1) {
         var tempProfil = {};
-        // let tempProfil:any;
-        // let tempProfil:UserProfile={};
-        // for(var i=0 ; i< this.UserProfileGrid.length;i++){
-        //   if(this.UserProfileGrid[i].name===name&&this.UserProfileGrid[i].surname===surname){
-        //     console.log("petal jest true");
-        //   }
-        //   if(this.UserProfileGrid[i].name===name&&this.UserProfileGrid[i].surname===surname){
-        //     debugger;
-        //     return  this.UserProfileGrid[i];
-        //     // Object.assign(tempProfil, this.UserProfileGrid.slice(i));
-        //
-        //
-        //   }else {
-        //     tempProfil={};
-        //   }
-        //  console.log("name1=",name);
         console.log("grid temp", this.UserProfileGrid);
         console.log("grid tempProfil", tempProfil);
         var error;
@@ -396,8 +370,6 @@ var StartPage = /** @class */ (function () {
         this.restProvider = restProvider;
         this.rest = rest;
         this.Dysciplines = [];
-        //idforms: FormGroup;
-        this.form_object = {};
         this.idforms = new __WEBPACK_IMPORTED_MODULE_5__angular_forms__["b" /* FormGroup */]({ Town: new __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormControl */]() });
         this.getDyscp();
     }
@@ -408,9 +380,6 @@ var StartPage = /** @class */ (function () {
         var _this = this;
         this.rest.getDyscyplines().subscribe(function (result) {
             Object.assign(_this.Dysciplines, result);
-            //  for(var i=0;i<result.length;++i){
-            //    this.Dyscyplines[i]=result[i].Name;
-            // }
             console.log("wczytane profils w wyszukiwaniu :");
             console.log("list of dysc =", _this.Dysciplines);
         });
@@ -424,7 +393,7 @@ var StartPage = /** @class */ (function () {
     };
     StartPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-start',template:/*ion-inline-start:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\start\start.html"*/'<!--\n  Generated template for the StartPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n<ion-header>\n\n  <ion-navbar class="nav" >\n    <ion-buttons start>\n      <button ion-button >\n        <ion-icon name="menu"></ion-icon>\n      </button>\n    </ion-buttons>\n\n    <ion-title style=" font-size:22px !important" >\n      Najlepszy trener\n    </ion-title>\n    <ion-buttons end>\n\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="getstart">\n  <ion-grid>\n\n<ion-row  justify-content-center>\n\n\n\n\n\n\n\n\n\n\n\n\n<ion-col col-12>\n\n<ion-row><P></P><P></P></ion-row>\n\n\n\n\n\n\n      <ion-row  align-items-start class="przesroczyste">\n        <div class="textdiv" text-center><p>Wyszukiwarka trenerów sportu.</p></div>\n      </ion-row >\n\n      <ion-row align-items-end class="przesroczyste" >\n        <div class="textdiv" text-center><p>Znajdz w szybki sposób trenera dysypliny</p></div>\n      </ion-row>\n\n\n\n\n<ion-row>\n  <ion-row>\n  </ion-row>\n\n\n\n\n\n   <ion-item  >\n     <ion-label>Dyscypliny</ion-label>\n     <ion-select [(ngModel)]=" dyscyplina"  [ngModelOptions]="{standalone: true}" >\n       <ion-option *ngFor="let  dyscyplina of  Dysciplines" [value]=" dyscyplina" >{{dyscyplina.name}}</ion-option>\n     </ion-select>\n   </ion-item>\n</ion-row>\n<ion-row class="tło_start2">\n  <p></p>\n</ion-row>\n\n  <form [formGroup]="idforms" (ngSubmit)=" Idform()"  >\n\n    <ion-list>\n<ion-row>\n      <ion-item col-12>\n\n        <ion-input  type="text" placeholder="Miasto..." [(ngModel)]="Town"\n                    formControlName="Town"   required></ion-input>\n\n\n      </ion-item>\n</ion-row>\n      <ion-row class="tło_start2">\n        <p></p>\n      </ion-row>\n<ion-row>\n      <ion-item class="przesroczyste">\n        <button  ion-button color="light" medium block type="submit" >Wczytaj profil</button>\n      </ion-item>\n\n</ion-row>\n    </ion-list>\n\n  </form>\n\n\n</ion-col>\n\n\n</ion-row>\n  </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\start\start.html"*/,
+            selector: 'page-start',template:/*ion-inline-start:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\start\start.html"*/'<!--\n  Generated template for the StartPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n<ion-header>\n\n  <ion-navbar class="nav">\n    <ion-buttons start>\n      <button ion-button>\n        <ion-icon name="menu"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title style=" font-size:22px !important">\n      Najlepszy trener\n    </ion-title>\n    <ion-buttons end>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n<ion-content class="getstart">\n  <ion-grid>\n    <ion-row justify-content-center>\n      <ion-col col-12>\n        <ion-row>\n          <P></P>\n          <P></P>\n        </ion-row>\n        <ion-row align-items-start class="przesroczyste">\n          <div class="textdiv" text-center><p>Wyszukiwarka trenerów sportu.</p></div>\n        </ion-row>\n        <ion-row align-items-end class="przesroczyste">\n          <div class="textdiv" text-center><p>Znajdz w szybki sposób trenera dysypliny</p></div>\n        </ion-row>\n        <ion-row>\n          <ion-row>\n          </ion-row>\n          <ion-item>\n            <ion-label>Dyscypliny</ion-label>\n            <ion-select [(ngModel)]=" dyscyplina" [ngModelOptions]="{standalone: true}">\n              <ion-option *ngFor="let  dyscyplina of  Dysciplines" [value]=" dyscyplina">{{dyscyplina.name}}\n              </ion-option>\n            </ion-select>\n          </ion-item>\n        </ion-row>\n        <ion-row class="tło_start2">\n          <p></p>\n        </ion-row>\n        <form [formGroup]="idforms" (ngSubmit)=" Idform()">\n          <ion-list>\n            <ion-row>\n              <ion-item col-12>\n                <ion-input type="text" placeholder="Miasto..." [(ngModel)]="Town"\n                           formControlName="Town" required></ion-input>\n              </ion-item>\n            </ion-row>\n            <ion-row class="tło_start2">\n              <p></p>\n            </ion-row>\n            <ion-row>\n              <ion-item class="przesroczyste">\n                <button ion-button color="light" medium block type="submit">Wczytaj profil</button>\n              </ion-item>\n            </ion-row>\n          </ion-list>\n        </form>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\start\start.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_search_service_search_service__["a" /* SearchServiceProvider */],
             __WEBPACK_IMPORTED_MODULE_2__providers_config_service_config_service__["a" /* ConfigServce */], __WEBPACK_IMPORTED_MODULE_4__providers_rest_rest__["a" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_6__api_dyscypline_service__["a" /* DyscyplineService */]])
@@ -1026,8 +995,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-// import {TimeHour} from "../../models/TimeHour";
 
+// import {TimeHour} from "../../models/TimeHour";
 /**
  * Generated class for the CallendarProfillPage page.
  *
@@ -1056,7 +1025,12 @@ var CallendarProfillPage = /** @class */ (function () {
     };
     CallendarProfillPage.prototype.addEvent = function (cal) {
         var date = new Date();
-        var options = { calendarId: cal.id, calendarName: cal.name, url: 'https://ionicacademy.com', firstReminderMinutes: 15 };
+        var options = {
+            calendarId: cal.id,
+            calendarName: cal.name,
+            url: 'https://ionicacademy.com',
+            firstReminderMinutes: 15
+        };
         this.calendar.createEventInteractivelyWithOptions('My new Event', 'Münster', 'Special Notes', date, date, options).then(function (res) {
         }, function (err) {
             console.log('err: ', err);
@@ -1127,9 +1101,10 @@ var CallendarProfillPage = /** @class */ (function () {
     };
     CallendarProfillPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-callendar-profill',template:/*ion-inline-start:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\callendar-profill\callendar-profill.html"*/'<!--\n  Generated template for the CallendarProfillPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title>Kalendarz</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <button ion-button (click)="setTime()" >\n    <ion-icon ios="ios-undo" md="md-undo"></ion-icon>\n  </button>\\n  <button ion-button (click)="SetForwardTime(true)" >\n    <ion-icon ios="ios-undo" md="md-undo"></ion-icon>\n  </button>\\n  <button ion-button (click)="SetBackTime(false)" >\n    <ion-icon ios="ios-undo" md="md-undo"></ion-icon>\n  </button>\\n  <ion-row\n    justify-content-center>\n    <ion-col col-12 text-center  style="border: 1px solid;border-radius: 5px">\n      <ion-card-content>\n        <ion-card>\n          kalendarz\n        </ion-card>\n      </ion-card-content>\n\n\n\n\n\n\n    </ion-col></ion-row>\n\n  <ion-list>\n    <ion-item *ngFor="let cal of calendars" tappable>\n      <button ion-button icon-only item-start clear (click)="addEvent(cal)">\n        <ion-icon name="add"></ion-icon>\n      </button>\n      {{ cal.name }}\n      <p>{{ cal.type }}</p>\n      <button ion-button icon-only item-end clear (click)="openCal(cal)">\n        <ion-icon name="arrow-forward"></ion-icon>\n      </button>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\callendar-profill\callendar-profill.html"*/,
+            selector: 'page-callendar-profill',template:/*ion-inline-start:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\callendar-profill\callendar-profill.html"*/'<!--\n  Generated template for the CallendarProfillPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title>Kalendarz</ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding>\n  <button ion-button (click)="setTime()">\n    <ion-icon ios="ios-undo" md="md-undo"></ion-icon>\n  </button>\n  \\n  <button ion-button (click)="SetForwardTime(true)">\n    <ion-icon ios="ios-undo" md="md-undo"></ion-icon>\n  </button>\n  \\n  <button ion-button (click)="SetBackTime(false)">\n    <ion-icon ios="ios-undo" md="md-undo"></ion-icon>\n  </button>\n  \\n  <ion-row\n    justify-content-center>\n    <ion-col col-12 text-center style="border: 1px solid;border-radius: 5px">\n      <ion-card-content>\n        <ion-card>\n          kalendarz\n        </ion-card>\n      </ion-card-content>\n    </ion-col>\n  </ion-row>\n  <ion-list>\n    <ion-item *ngFor="let cal of calendars" tappable>\n      <button ion-button icon-only item-start clear (click)="addEvent(cal)">\n        <ion-icon name="add"></ion-icon>\n      </button>\n      {{ cal.name }}\n      <p>{{ cal.type }}</p>\n      <button ion-button icon-only item-end clear (click)="openCal(cal)">\n        <ion-icon name="arrow-forward"></ion-icon>\n      </button>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\callendar-profill\callendar-profill.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_calendar_ngx__["a" /* Calendar */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_calendar_ngx__["a" /* Calendar */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */]])
     ], CallendarProfillPage);
     return CallendarProfillPage;
 }());
@@ -1165,14 +1140,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-// import {ProfileListService} from "../../services/Pfofile-list";
 
 
 
-// import {ReregisterPage} from "../reregister/reregister";
-// import {IdModel} from "../../models/id-model";
-// import {IdModelArray} from "../../models/id-array-model";
-// import {ShowSearchPage} from "../show-search/show-search";
 var HomePage = /** @class */ (function () {
     function HomePage(nav, auth, configServce, restProvider, profilsService) {
         this.nav = nav;
@@ -1181,7 +1151,6 @@ var HomePage = /** @class */ (function () {
         this.restProvider = restProvider;
         this.profilsService = profilsService;
         this.userProfil_temp = new __WEBPACK_IMPORTED_MODULE_7__models_UserProfile_model_no_constructor__["a" /* UserProfileN0c */]();
-        // userProfil_temp:UserProfile={};
         this.username = '';
         this.email = '';
         this.profil_temp = {};
@@ -1192,18 +1161,6 @@ var HomePage = /** @class */ (function () {
         // public IdArray: Array<ArrayID>=[] ;
         this.IdArray = [];
         this.checkshow = false;
-        // let info = this.auth.getUserInfo();
-        // this.Profil.UserName = info['UserName'];
-        // this.Profil.UserSurname = info['UserSurname'];
-        // this.Profil.UserPassword = info['UserPassword'];
-        // this.Profil.Gender = info['Gender'];
-        // this.Profil.UserPhone = info['UserPhone'];
-        // this.Profil.UserEmail = info['UserEmail'];
-        // this.Profil.UserDescription = info['UserDescription'];
-        // this.email = info['email'];
-        // this.profil_id='1';
-        // this.profil_temp = this.getUserProfile();
-        // // this.getUsers();
         this.showprofil = false;
         this.initializeIdform();
         this.initializeopinionforms();
@@ -1224,10 +1181,6 @@ var HomePage = /** @class */ (function () {
         var _this = this;
         this.configServce.getUserProfileService(this.profil_id).subscribe(function (result) {
             Object.assign(_this.userProfil_temp, result[0]);
-            // this.profilsService.addItem(this.profil_temp.name,this.profil_temp.surname,this.profil_temp.gender,this.profil_temp.bdate,this.profil_temp.phone
-            //   ,this.profil_temp.email,this.profil_temp.facebook,this.profil_temp.instagram,this.profil_temp.description,this.profil_temp.rating,this.profil_temp.avatar
-            //   ,this.profil_temp.registerDate,this.profil_temp.remember_token, this.profil_temp.tr_disc,this.profil_temp.tr_cert,this.profil_temp.tr_uni,this.profil_temp.tr_loc
-            //   ,this.profil_temp.tr_pl,this.profil_temp.tr_off,this.profil_temp.tr_op,this.profil_temp.tr_tr);
             console.log("result", _this.userProfil_temp);
             if (_this.checkshow === true) {
                 _this.profilsService.addItem_object(_this.userProfil_temp);
@@ -1253,12 +1206,10 @@ var HomePage = /** @class */ (function () {
     HomePage.prototype.addId = function () {
         console.log(this.profil_id);
         this.restProvider.setId(this.profil_id);
-        // console.log(this.users);
     };
     HomePage.prototype.Idform = function () {
         this.profil_id = this.form_object.ID.valueOf();
         this.addId();
-        // this.pp = Object.assign({},this.getUserProfile());
         this.getUserProfile();
         if (this.schowProfil(this.profil_id) != undefined) {
             var tempArrayID = {};
@@ -1270,21 +1221,10 @@ var HomePage = /** @class */ (function () {
         }
         else {
             if (this.schowProfil(this.profil_id) === undefined) {
-                // this.profilsService.addItem_object(this.userProfil_temp);
-                // this.IdArray.push(TempID);
-                // this.item = this.profilsService.getItems(this.userProfil_temp.name,this.userProfil_temp.surname);
-                //
                 this.checkshow = true;
                 console.log("item=", this.item);
             }
         }
-        // console.log(this.profil_temp[0].name);
-        // this.profilsService.addItem(this.profil_temp.name,this.profil_temp.surname,this.profil_temp.gender,this.profil_temp.bdate,this.profil_temp.phone
-        // ,this.profil_temp.email,this.profil_temp.facebook,this.profil_temp.instagram,this.profil_temp.description,this.profil_temp.rating,this.profil_temp.avatar
-        // ,this.profil_temp.registerDate,this.profil_temp.remember_token, this.profil_temp.tr_disc,this.profil_temp.tr_cert,this.profil_temp.tr_uni,this.profil_temp.tr_loc
-        // ,this.profil_temp.tr_pl,this.profil_temp.tr_off,this.profil_temp.tr_op,this.profil_temp.tr_tr);
-        // this.profilsService.addItem_object(this.profil_temp);
-        // this.Profils = this.profilsService.getItems();
         this.idforms.reset();
     };
     ;
@@ -1303,14 +1243,6 @@ var HomePage = /** @class */ (function () {
     };
     HomePage.prototype.schowProfil = function (id) {
         var temp = undefined;
-        // for(var i=0;i<this.IdArray.length;i++){
-        //   debugger;
-        //   if(this.IdArray[i].id===id){
-        //
-        //     return this.IdArray[i];
-        //   }
-        //
-        // }
         for (var _i = 0, _a = this.IdArray; _i < _a.length; _i++) {
             var A = _a[_i];
             if (A.id === id) {
@@ -1328,15 +1260,17 @@ var HomePage = /** @class */ (function () {
         });
     };
     HomePage.prototype.initializeopinionforms = function () {
-        this.opinionforms = new __WEBPACK_IMPORTED_MODULE_4__angular_forms__["b" /* FormGroup */]({ opinionuser: new __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormControl */](),
+        this.opinionforms = new __WEBPACK_IMPORTED_MODULE_4__angular_forms__["b" /* FormGroup */]({
+            opinionuser: new __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormControl */](),
             Opinionss: new __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormControl */](), email: new __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormControl */](), ocena: new __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormControl */]()
         });
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar color="dark">\n    <ion-title>\n      Member Area\n    </ion-title>\n    <ion-buttons end>\n      <button ion-button (click)="logout()">\n        <ion-icon name="log-out"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="home getstart" padding>\n  <form [formGroup]="idforms"  (ngSubmit)="Idform()" >\n    <ion-list>\n      <ion-item>\n\n        <ion-input type="text" placeholder="Podaj id profilu..." [(ngModel)]="form_object.ID"\n                   formControlName="id"   required></ion-input>\n\n\n      </ion-item>\n\n\n      <ion-item>\n        <button ion-button color="secondary" type="submit" [disabled]="!idforms.valid">Wczytaj profil</button>\n      </ion-item>\n\n\n    </ion-list>\n\n  </form>\n  <form>\n    <ion-item>\n      <button ion-button class="register-btn" block clear (click)="goToSearch()">Skorzystaj z wyszukiwarki</button>\n    </ion-item>\n    <ion-item>\n      <button ion-button class="register-btn" block clear (click)="recreateAccount()">Zmien dane urzytkownika</button>\n    </ion-item>\n  </form>\n  <form>\n\n    <ion-item *ngIf="showprofil === true" #slidingItem>\n    <ion-item>\n      <p>Trener Personalny </p>\n      <p>Imie: {{item.name}}</p>\n      <p>Nazwisko: {{item.surname}}</p>\n      <p>Płeć: {{item.gender}}</p>\n      <p>Numer telefonu:{{item.phone}}</p>\n      <p>Email:{{item.email}}</p>\n      <p>Opis: {{item.description}}</p>\n      <p>Data rejestracji:{{item.registerDate}}</p>\n      <p>Dyscypliny:{{item.tr_disc}}</p>\n\n      <ion-item *ngFor="let cert of item.tr_cert let i = index2" (click)="onCheckItem(i)">\n        <p> Certyfikat: </p>\n        <p>Zdobyte certyfikaty</p>\n        <p>Nazwa kursu: {{cert.name_of_institution}} </p>\n        <p>Umiejetnosci:{{cert. name_of_course}} </p>\n        <p>Data rozpoczecia:{{cert.begin_date}} </p>\n        <p>Data zakonczenia: {{cert.end_date}}</p>\n\n\n      </ion-item>\n      <ion-item *ngFor="let uni of item.tr_uni let i = index0" (click)="onCheckItem(i)">\n        <p>Zdobyte wykształcenie</p>\n        <p>Uniwersytet : {{uni.university}}</p>\n        <p>Kierunek: {{uni.course}}</p>\n        <p>Tytuł: {{uni.degree}}</p>\n        <p>Data rozpoczecia: {{uni.begin_date}}</p>\n        <p>Data zakonczenia:{{uni.end_date}}</p>\n        <p>Data utworzenia:{{uni.created_at}}</p>\n        <p>Data modyfikacji: {{uni.updated_at}}</p>\n      </ion-item>\n\n\n\n\n\n\n\n\n      <ion-item *ngFor="let loc of item.tr_loc let i = index3" (click)="onCheckItem(i)">\n        <p>Lokalizacja</p>\n        <P>Miasto : {{loc. city}}</P>\n        <P>Województwo: {{loc.voivodeship}}</P>\n        <P>Ostatnia data: {{loc.updated_at}}</P>\n        <P>Data utworzenie {{loc.created_at}}</P>\n      </ion-item>\n\n      <ion-item *ngFor="let loc of item.tr_pl let i = index4" (click)="onCheckItem(i)">\n        <p>Lokalizacja:{{loc.place}}</p>\n        <p></p>\n      </ion-item>\n\n      <ion-item *ngFor="let off of item.tr_off let i = index5" (click)="onCheckItem(i)">\n        <p>Oferta</p>\n        <p>Usługa: {{off.name}}</p>\n        <p>Cena: {{off.price}}</p>\n        <p>Maksymalna liczba klientów:{{off.max_no_of_clients}}</p>\n        <p>Data utworzenie:{{off.created_at}}</p>\n        <p>Data modyfikacji : {{off.updated_at}}</p>\n        <p></p>\n      </ion-item>\n      <ion-item *ngFor="let opp of item.tr_op let i = index6" (click)="onCheckItem(i)">\n\n        <div class="coment-box">\n          <h5 ion-text color="danger">Opinia: {{opp.opinion}}</h5>\n\n        <h5 ion-text color="danger">Opiniodawca: {{opp.opinionGiver}}</h5>\n\n\n        </div>\n      </ion-item>\n    </ion-item>\n\n  <!--<ion-item>-->\n    <!--<button ion-button color="secondary" type="submit">Resetuj profil</button>-->\n  <!--</ion-item>-->\n    <ion-item>\n      <button (click)=" resetform()"><ion-icon name="thrash"></ion-icon>Resetuj profil</button>\n\n    </ion-item>  </ion-item>\n\n  </form>\n\n\n\n\n  <form [formGroup]="opinionforms"  (ngSubmit)="Opinionform()" padding>\n    <ion-item>\n\n\n      <ion-label color="primary" stacked>Urzytkownik</ion-label>\n      <ion-input type="text" placeholder="Name..." [(ngModel)]="Opinions.opinionGiver" formControlName="opinionuser"\n                 required>\n      </ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label color="primary" stacked>Email</ion-label>\n      <ion-textarea placeholder="Enter a description" [(ngModel)]="Opinions.giveremail"\n                    formControlName="email"\n                    required></ion-textarea>\n\n    </ion-item>\n<ion-item>\n  <ion-label color="primary" stacked>Opinia Urzytkownika</ion-label>\n  <ion-textarea placeholder="Enter a description" [(ngModel)]="Opinions.opinion"\n                formControlName="Opinionss"\n                required></ion-textarea>\n\n</ion-item>\n\n    <ion-item>\n      <button ion-button color="secondary" type="submit"[disabled]="! opinionforms.valid">Dodaj Opinie</button>\n    </ion-item>\n\n\n  </form>\n\n\n</ion-content>\n'/*ion-inline-end:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\home\home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar color="dark">\n    <ion-title>\n      Member Area\n    </ion-title>\n    <ion-buttons end>\n      <button ion-button (click)="logout()">\n        <ion-icon name="log-out"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n<ion-content class="home getstart" padding>\n  <form [formGroup]="idforms" (ngSubmit)="Idform()">\n    <ion-list>\n      <ion-item>\n        <ion-input type="text" placeholder="Podaj id profilu..." [(ngModel)]="form_object.ID"\n                   formControlName="id" required></ion-input>\n      </ion-item>\n      <ion-item>\n        <button ion-button color="secondary" type="submit" [disabled]="!idforms.valid">Wczytaj profil</button>\n      </ion-item>\n    </ion-list>\n  </form>\n  <form>\n    <ion-item>\n      <button ion-button class="register-btn" block clear (click)="goToSearch()">Skorzystaj z wyszukiwarki</button>\n    </ion-item>\n    <ion-item>\n      <button ion-button class="register-btn" block clear (click)="recreateAccount()">Zmien dane urzytkownika</button>\n    </ion-item>\n  </form>\n  <form>\n    <ion-item *ngIf="showprofil === true" #slidingItem>\n      <ion-item>\n        <p>Trener Personalny </p>\n        <p>Imie: {{item.name}}</p>\n        <p>Nazwisko: {{item.surname}}</p>\n        <p>Płeć: {{item.gender}}</p>\n        <p>Numer telefonu:{{item.phone}}</p>\n        <p>Email:{{item.email}}</p>\n        <p>Opis: {{item.description}}</p>\n        <p>Data rejestracji:{{item.registerDate}}</p>\n        <p>Dyscypliny:{{item.tr_disc}}</p>\n        <ion-item *ngFor="let cert of item.tr_cert let i = index2" (click)="onCheckItem(i)">\n          <p> Certyfikat: </p>\n          <p>Zdobyte certyfikaty</p>\n          <p>Nazwa kursu: {{cert.name_of_institution}} </p>\n          <p>Umiejetnosci:{{cert. name_of_course}} </p>\n          <p>Data rozpoczecia:{{cert.begin_date}} </p>\n          <p>Data zakonczenia: {{cert.end_date}}</p>\n        </ion-item>\n        <ion-item *ngFor="let uni of item.tr_uni let i = index0" (click)="onCheckItem(i)">\n          <p>Zdobyte wykształcenie</p>\n          <p>Uniwersytet : {{uni.university}}</p>\n          <p>Kierunek: {{uni.course}}</p>\n          <p>Tytuł: {{uni.degree}}</p>\n          <p>Data rozpoczecia: {{uni.begin_date}}</p>\n          <p>Data zakonczenia:{{uni.end_date}}</p>\n          <p>Data utworzenia:{{uni.created_at}}</p>\n          <p>Data modyfikacji: {{uni.updated_at}}</p>\n        </ion-item>\n        <ion-item *ngFor="let loc of item.tr_loc let i = index3" (click)="onCheckItem(i)">\n          <p>Lokalizacja</p>\n          <P>Miasto : {{loc. city}}</P>\n          <P>Województwo: {{loc.voivodeship}}</P>\n          <P>Ostatnia data: {{loc.updated_at}}</P>\n          <P>Data utworzenie {{loc.created_at}}</P>\n        </ion-item>\n        <ion-item *ngFor="let loc of item.tr_pl let i = index4" (click)="onCheckItem(i)">\n          <p>Lokalizacja:{{loc.place}}</p>\n          <p></p>\n        </ion-item>\n        <ion-item *ngFor="let off of item.tr_off let i = index5" (click)="onCheckItem(i)">\n          <p>Oferta</p>\n          <p>Usługa: {{off.name}}</p>\n          <p>Cena: {{off.price}}</p>\n          <p>Maksymalna liczba klientów:{{off.max_no_of_clients}}</p>\n          <p>Data utworzenie:{{off.created_at}}</p>\n          <p>Data modyfikacji : {{off.updated_at}}</p>\n          <p></p>\n        </ion-item>\n        <ion-item *ngFor="let opp of item.tr_op let i = index6" (click)="onCheckItem(i)">\n          <div class="coment-box">\n            <h5 ion-text color="danger">Opinia: {{opp.opinion}}</h5>\n            <h5 ion-text color="danger">Opiniodawca: {{opp.opinionGiver}}</h5>\n          </div>\n        </ion-item>\n      </ion-item>\n      <!--<ion-item>-->\n      <!--<button ion-button color="secondary" type="submit">Resetuj profil</button>-->\n      <!--</ion-item>-->\n      <ion-item>\n        <button (click)=" resetform()">\n          <ion-icon name="thrash"></ion-icon>\n          Resetuj profil\n        </button>\n      </ion-item>\n    </ion-item>\n  </form>\n  <form [formGroup]="opinionforms" (ngSubmit)="Opinionform()" padding>\n    <ion-item>\n      <ion-label color="primary" stacked>Urzytkownik</ion-label>\n      <ion-input type="text" placeholder="Name..." [(ngModel)]="Opinions.opinionGiver" formControlName="opinionuser"\n                 required>\n\n      </ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label color="primary" stacked>Email</ion-label>\n      <ion-textarea placeholder="Enter a description" [(ngModel)]="Opinions.giveremail"\n                    formControlName="email"\n                    required></ion-textarea>\n\n    </ion-item>\n    <ion-item>\n      <ion-label color="primary" stacked>Opinia Urzytkownika</ion-label>\n      <ion-textarea placeholder="Enter a description" [(ngModel)]="Opinions.opinion"\n                    formControlName="Opinionss"\n                    required></ion-textarea>\n\n    </ion-item>\n    <ion-item>\n      <button ion-button color="secondary" type="submit" [disabled]="! opinionforms.valid">Dodaj Opinie</button>\n    </ion-item>\n  </form>\n</ion-content>\n'/*ion-inline-end:"E:\INZ_WORK\INZ_Wakacje2019_v3-create2019\INZ_Wakacje2019_v3-create2019\src\pages\home\home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_auth_service_auth_service__["a" /* AuthServiceProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_config_service_config_service__["a" /* ConfigServce */], __WEBPACK_IMPORTED_MODULE_5__providers_rest_rest__["a" /* RestProvider */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_auth_service_auth_service__["a" /* AuthServiceProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_config_service_config_service__["a" /* ConfigServce */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_rest_rest__["a" /* RestProvider */],
             __WEBPACK_IMPORTED_MODULE_6__services_Pfofile_list__["a" /* ProfileListService */]])
     ], HomePage);
     return HomePage;
@@ -2021,10 +1955,7 @@ var RestProvider = /** @class */ (function () {
         var _this = this;
         var httpOptions = {
             headers: new __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["c" /* HttpHeaders */]({
-                // 'Access-Control-Allow-Origin' : 'https://najlepszytrener.com.pl:443',
-                //'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT',
                 'Accept': 'application/json',
-                //      'content-type':'application/json',
                 'Content-Type': 'multipart/form-data; application/json; charset=UTF-8',
                 'content-type': 'application/x-www-form-urlencoded',
                 // let options = new RequestOptions({ headers:headers,withCredentials: true});
@@ -2094,11 +2025,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-///<reference path="../../../node_modules/rxjs/Observable.d.ts"/>
 
-// import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-// import {Dysyplina} from "../../models/dysycplins-model";
 var ConfigServce = /** @class */ (function () {
     function ConfigServce(http) {
         this.http = http;
@@ -2161,20 +2089,6 @@ var ConfigServce = /** @class */ (function () {
             console.log(" Error..");
         });
     };
-    // errorHandler(error: any): void {
-    //   console.log(error)
-    // }
-    // getUserProfileService(userProfile: UserProfile): Observable<UserProfile> {
-    //   let httpOptions = {
-    //     headers: new HttpHeaders({
-    //       'Content-Type': 'application/json'
-    //     })
-    //   };
-    //   return this.http.post<UserProfile>(this.GET_PROFILE, userProfile, httpOptions)
-    //     .pipe(
-    //       catchError(this.handleError)
-    //     ).map(res => res.json());
-    // }
     ConfigServce.prototype.getSearchPeofile = function (lokalizacja) {
         var httpOptions = {
             headers: new __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["c" /* HttpHeaders */]({

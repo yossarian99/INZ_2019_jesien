@@ -35,6 +35,7 @@ lower: 30, upper: 60
   ionViewDidLoad() {
     console.log('ionViewDidLoad Search2Page');
   }
+
   showRadio() {
     let alert = this.alertCtrl.create();
     alert.setTitle('Płeć');

@@ -57,56 +57,43 @@ export class SearchNewPage {
 
   constructor(public restdyscyp: DyscyplineService, private sanitizer: DomSanitizer, public getphoto: SpecificPhotoService, public trenersearch: TrainerService, public rest: ProfileService, public nav: NavController, public navParams: NavParams, private sea: SearchServiceProvider, private configServce: ConfigServce, private provilconfig: SearchServiceProvider, private  service: ProfileListService, public alertCtrl: AlertController) {
     this.change_rating(4);
-    debugger;
     this.showForm();
-
     this.profiles3 = this.sea.getProfiles();
     console.log("prifiles root", this.profiles3);
     console.log("prifiles root", this.profiles3.length);
     this.showFilters = true;
     this.getDyscp();
-
     this.Idform();
-    // this.loadPhoto();
-
     this.structure = {
       lower: 30, upper: 60
-
     };
     this.structure2 = {
       lower: 30, upper: 250
-
     };
   }
 
   Dysciplines: Array<Disciplines> = [];
   dyscyplina: Disciplines;
   Town: any;
+  rating: any;
   idforms = new FormGroup({Town: new FormControl()});
+  dualValue2: number;
+  genders = ["kobieta", "meżczyzna"];
+  plec: string;
+  gender: any;
+  testRadioOpen: boolean;
+  testRadioResult: any;
 
   public getDyscp() {
     this.restdyscyp.getDyscyplines().subscribe(result => {
-
       Object.assign(this.Dysciplines, result);
-
-
-      //  for(var i=0;i<result.length;++i){
-      //    this.Dyscyplines[i]=result[i].Name;
-      // }
       console.log("wczytane profils w wyszukiwaniu :");
-
       console.log("list of dysc =", this.Dysciplines);
-
-
     });
   }
 
-
-  rating: any;
-
   change_rating(x: any) {
     this.rating = x;
-
   }
 
   logRatingChange(rating) {
@@ -121,32 +108,24 @@ export class SearchNewPage {
     dysc: ''
   };
 
-
   public getSearch(miasto: string, dyscyplina: string) {
     this.trenersearch.getTrainers(dyscyplina, miasto).subscribe(result => {
       console.log(this.sciezka);
       if (result != undefined) {
         Object.assign(this.profiles1, result);
-        console.log("avatar2", result[0].avatar);
+        // console.log("avatar2", result[0].avatar);
         console.log("wczytane profils w wyszukiwaniu :");
         console.log(this.profiles1.length);
-        ;
         this.profiles2 = cloneDeep(this.profiles1);
         console.log(this.profiles2.length);
-        debugger;
         this.sea.setProfiles(this.profiles2);
         this.loadPhoto();
       }
       else {
         console.log("error showserach");
         this.showresult = false;
-
       }
-
-
     });
-
-
   }
 
   public getSearch2() {
@@ -156,15 +135,11 @@ export class SearchNewPage {
         Object.assign(this.profiles1, result);
         console.log("wczytane profils w wyszukiwaniu :");
         console.log(this.profiles1);
-
-
       }
       else {
         console.log("error showserach");
         this.showresult = false;
       }
-
-
     });
   }
 
@@ -173,12 +148,9 @@ export class SearchNewPage {
     if (this.searchParams.dysc === '' && this.searchParams.loc === '') {
       this.showsearch = false;
       console.log('pola sa puste');
-
     } else {
       if (this.searchParams.dysc != '' && this.searchParams.loc != '') {
         this.BASE_URL = 'http://najlepszytrener.com.pl/api/';
-        // this.GET_PROFILE = this.BASE_URL + 'profiles/';
-
         this.URl = this.BASE_URL + this.searchParams.dysc + '/' + this.searchParams.loc;
         this.sciezka = encodeURI(this.URl);
         this.getSearch(this.searchParams.loc, this.searchParams.dysc);
@@ -186,31 +158,17 @@ export class SearchNewPage {
         this.profiles3 = Array.from(this.profiles1);
         console.log("lll", this.profiles1.length);
         this.showsearch = true;
-
-
       }
-
     }
   }
 
   profilsite(profil: ProfileOut) {
-    // this.service.addItem_object(id);
     this.provilconfig.addprofilParams(profil);
     console.log("id333==", profil.id);
     this.provilconfig.addProfilById(profil.id);
     console.log("w srodku servisu");
-
     this.nav.push('ProfilViewMenuPage');
-
   }
-
-  dualValue2: number;
-  genders = ["kobieta", "meżczyzna"];
-  plec: string;
-  gender: any;
-  testRadioOpen: boolean;
-  testRadioResult: any;
-
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Search2Page');
@@ -219,15 +177,12 @@ export class SearchNewPage {
   showRadio() {
     let alert = this.alertCtrl.create();
     alert.setTitle('Płeć');
-
     alert.addInput({
       type: 'radio',
       label: 'kobieta',
       value: 'K',
       checked: true,
-
     });
-
     alert.addInput({
       type: 'radio',
       label: 'Meżczyzna',
@@ -247,7 +202,7 @@ export class SearchNewPage {
   knobValues: {
     upper: 100,
     lower: 50
-  }
+  };
 
   getAgeStr(dateString) {
     var myDate = new Date(dateString),
@@ -271,8 +226,6 @@ export class SearchNewPage {
   }
 
   Idform() {
-
-    // this.profiles3=this.sea.getProfiles()
     let plecSearch: boolean = false;
     let townSearch: boolean;
     let priceSearch: boolean;
@@ -285,11 +238,7 @@ export class SearchNewPage {
       else ageSearch = false;
       console.log("struture", this.structure);
       console.log("structure2", this.structure2);
-
       console.log("profiles", this.profiles2[i]);
-      // Object.assign(this.profiltest, this.profiles[i]);
-      // console.log("trroffer",this.profiltest.trOff);
-
       let offers = this.profiles2[i].tr_tr;
       for (let j = 0; j < offers.length; j++) {
         if (offers[j].place == this.Town) townSearch = true;
@@ -297,14 +246,10 @@ export class SearchNewPage {
         console.log("dys==name", offers[j].name);
         console.log("dysc name list ===", this.dyscyplina.name);
         if (offers[j].name == this.dyscyplina.name) dyscSearch = true;
-
         else dyscSearch = false;
-
         if (offers[j].price >= this.structure2.lower && offers[j].price <= this.structure2.upper)
           priceSearch = true;
         else priceSearch = false;
-
-
         if (this.profiles2[i].gender == this.testRadioResult) plecSearch = true; else plecSearch = false;
         console.log("agesearch", ageSearch);
         console.log("dyscysearch", dyscSearch);
@@ -314,21 +259,15 @@ export class SearchNewPage {
         if ((ageSearch && dyscSearch && plecSearch && priceSearch && townSearch) == true) {
           console.log("splice ====== true");
           this.profilesFiltered.push(this.profiles2[i]);
-          // this.profiles.splice(i+1,1);
         }
-
         console.log("Profile filtered", this.profilesFiltered);
       }
-
     }
-
     if (this.profilesFiltered.length > 0) {
       this.showFilters = true;
-
       this.loadPhoto2();
     }
     else this.showFilters = false;
-
   }
 
   myFunction(item) {
@@ -339,13 +278,8 @@ export class SearchNewPage {
     this.profiles2 = this.sea.getProfiles();
     console.log("profiles", this.profiles2);
     console.log(this.profiles2.length);
-    // for(let i=0;i<this.profiles2.length;i++) {
-    debugger;
     for (let i = 0; i < this.profiles2.length; i++) {
-
-
       var index: number;
-
       index = JSON.parse(this.profiles2[i].avatar);
       console.log("index", index);
       if (index == undefined) {
@@ -357,20 +291,11 @@ export class SearchNewPage {
           this.singlephoto = this.getphoto.photoServiceGetPhoto(index).subscribe(result => {
             this.createImageFromBlob(result);
             this.avatarShow.push("good");
-
           });
           console.log("photoarray", this.photoArray);
         }
-
-
       }
-      // let binaryData = [];
-      // binaryData.push(this.singlephoto);
-      //
-      // this.photoArray.push(this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(new Blob(binaryData, {type: "application/png"}))));
-      // debugger;
     }
-
   }
 
   createImageFromBlob(image: Blob) {
@@ -379,50 +304,26 @@ export class SearchNewPage {
       this.photoArray.push(this.sanitizer.bypassSecurityTrustUrl(reader.result));
     }, false);
     if (image) {
-
       let binaryData = [];
       binaryData.push(image);
-      // this.photoArray.push(image);
-      //
-      // this.photoArray.push(this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(new Blob(binaryData, {type: "application/png"}))));
-
       reader.readAsDataURL(new Blob(binaryData, {type: "image/png"}));
-
-      // this.photoArray.push(reader);
     }
-
-
   }
 
   loadPhoto2() {
-
     for (let i = 0; i < this.profilesFiltered.length; ++i) {
       var index: number;
-
-
-      // console.log("data=",data);
       index = JSON.parse(this.profilesFiltered[i].avatar);
-      if (index == null) {
+      if (index == undefined) {
         this.photoArray2.push(null);
         this.avatarShow2.push(null);
       } else {
-
         this.singlephoto = this.getphoto.photoServiceGetPhoto(index).subscribe(result => {
           this.createImageFromBlob2(result);
           this.avatarShow2.push("good");
-
         });
-
       }
-
     }
-
-
-    // let binaryData = [];
-    // binaryData.push(this.singlephoto);
-    //
-    // this.photoArray.push(this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(new Blob(binaryData, {type: "application/png"}))));
-    // debugger;
   }
 
 
@@ -432,20 +333,10 @@ export class SearchNewPage {
       this.photoArray2.push(this.sanitizer.bypassSecurityTrustUrl(reader.result));
     }, false);
     if (image) {
-
       let binaryData = [];
       binaryData.push(image);
-      // this.photoArray.push(image);
-      //
-      // this.photoArray.push(this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(new Blob(binaryData, {type: "application/png"}))));
-
       reader.readAsDataURL(new Blob(binaryData, {type: "image/png"}));
-
-      // this.photoArray.push(reader);
     }
-
-
   }
-
 }
 

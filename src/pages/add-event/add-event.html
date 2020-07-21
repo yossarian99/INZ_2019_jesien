@@ -8,125 +8,95 @@
 
   <ion-navbar class="nav">
     <ion-buttons start>
-      <button ion-button >
+      <button ion-button>
         <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
-
-    <ion-title  >
+    <ion-title>
       Najlepszy trener
     </ion-title>
     <ion-buttons end>
-
     </ion-buttons>
   </ion-navbar>
-
 </ion-header>
-
 <ion-content padding>
-
-    <ion-grid>
-
-
-      <ion-row
-        justify-content-center>
-        <ion-col col-12 text-center  style="border: 1px solid;border-radius: 5px">
-          <!--<button ion-button (click)="backtoprofiles" ></button>-->
-          <!--<ion-icon ios="ios-undo" md="md-undo"></ion-icon>-->
-          <ion-row justify-content-center>
-            <ion-col col-6="" >
-
-              <img style="width: 200px; height: 200px;" src="./assets/imgs/silacz.jpg"/>
-
-
-            </ion-col>
-
-
-
-          </ion-row>
-          <ion-row>
-            <ion-card>
-              <ion-card-header>
-                <ion-icon ios="ios-book" md="md-book"></ion-icon>
-                Zapisz sie na trening.
-              </ion-card-header>
-
-            </ion-card>
-
-
-            <form [formGroup]="setTrening" (ngSubmit)="setTreningNew()" padding>
-
-              <ion-row>
-                <ion-col>
-                  <ion-item>
-                    <ion-label stacked>Imie :</ion-label>
-                    <ion-input type="text" placeholder="" [(ngModel)]="tr.name" formControlName="namess"
-                               required>
-                    </ion-input>
-                  </ion-item>
-                </ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col>
-                  <ion-item>
-                    <ion-label stacked>Nazwisko</ion-label>
-                    <ion-input type="text" placeholder="" [(ngModel)]="tr.surname" formControlName="surnamess"
-                               required>
-                    </ion-input>
-                  </ion-item>
-                </ion-col>
-              </ion-row>
-
-              <ion-row>
-                <ion-col>
-                  <ion-item>
-                    <ion-label stacked>Email:</ion-label>
-                    <ion-input  type="text" placeholder="" [(ngModel)]="tr.email"
-                    formControlName="emailss"
-                               required>
-                    </ion-input>
-                  </ion-item>
-                </ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col>
-                  <ion-item>
-                    <ion-label stacked>Phone:</ion-label>
-                    <ion-input  type="text" placeholder="" [(ngModel)]="tr.phone"
-                    formControlName="phoness"
-                    required>
-                    </ion-input>
-                  </ion-item>
-                </ion-col>
-              </ion-row>
-
-              <ion-item>
-                <ion-label stacked>Opinia Urzytkownika</ion-label>
-                <ion-textarea placeholder="" [(ngModel)]="tr.comment"
-
-                              formControlName="commentss"
-                              required></ion-textarea>
-
-              </ion-item>
-              <ion-row>
-                <ion-col text-right>
-
-                  <button ion-button color="secondary" color="light" type="submit" [disabled]="!setTrening.valid">Zapisz sie na trening
-                  </button>
-
-
-                </ion-col>
-
-
-              </ion-row>
-
-
-            </form>
-
-          </ion-row>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-
-
+  <ion-grid>
+    <ion-row
+      justify-content-center>
+      <ion-col col-12 text-center style="border: 1px solid;border-radius: 5px">
+        <!--<button ion-button (click)="backtoprofiles" ></button>-->
+        <!--<ion-icon ios="ios-undo" md="md-undo"></ion-icon>-->
+        <ion-row justify-content-center>
+          <ion-col col-6="">
+            <img style="width: 200px; height: 200px;" src="./assets/imgs/silacz.jpg"/>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-card>
+            <ion-card-header>
+              <ion-icon ios="ios-book" md="md-book"></ion-icon>
+              Zapisz sie na trening.
+            </ion-card-header>
+          </ion-card>
+          <form [formGroup]="setTrening" (ngSubmit)="setTreningNew()" padding>
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label stacked>Imie :</ion-label>
+                  <ion-input type="text" placeholder="" [(ngModel)]="tr.name" formControlName="namess"
+                             required>
+                  </ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label stacked>Nazwisko</ion-label>
+                  <ion-input type="text" placeholder="" [(ngModel)]="tr.surname" formControlName="surnamess"
+                             required>
+                  </ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label stacked>Email:</ion-label>
+                  <ion-input type="text" placeholder="" [(ngModel)]="tr.email"
+                             formControlName="emailss"
+                             required>
+                  </ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label stacked>Phone:</ion-label>
+                  <ion-input type="text" placeholder="" [(ngModel)]="tr.phone"
+                             formControlName="phoness"
+                             required>
+                  </ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <ion-item>
+              <ion-label stacked>Opinia Urzytkownika</ion-label>
+              <ion-textarea placeholder="" [(ngModel)]="tr.comment"
+                            formControlName="commentss"
+                            required></ion-textarea>
+            </ion-item>
+            <ion-row>
+              <ion-col text-right>
+                <button ion-button color="secondary" color="light" type="submit" [disabled]="!setTrening.valid">Zapisz
+                  sie na trening
+                </button>
+              </ion-col>
+            </ion-row>
+          </form>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

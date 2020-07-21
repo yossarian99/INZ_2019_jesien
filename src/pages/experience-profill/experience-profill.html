@@ -12,37 +12,29 @@
       <!--</button>-->
     </ion-buttons>
     <!--<button ion-button menuToggle>-->
-      <!--<ion-icon name="menu"></ion-icon>-->
+    <!--<ion-icon name="menu"></ion-icon>-->
     <!--</button>-->
     <ion-title>
       Menu
     </ion-title>
-    <ion-title >
+    <ion-title>
       Najlepszy trener
     </ion-title>
     <ion-buttons end>
-
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <!--<button ion-button (click)="backtoprofiles" ></button>-->
-    <!--<ion-icon ios="ios-undo" md="md-undo"></ion-icon>-->
-    <ion-row justify-content-center>
-      <ion-col col-6="" >
-
-        <img style="width: 200px; height: 200px;" src="./assets/imgs/silacz.jpg"/>
-
-
-      </ion-col>
-
-
-
-    </ion-row>
+  <!--<ion-icon ios="ios-undo" md="md-undo"></ion-icon>-->
+  <ion-row justify-content-center>
+    <ion-col col-6="">
+      <img style="width: 200px; height: 200px;" src="./assets/imgs/silacz.jpg"/>
+    </ion-col>
+  </ion-row>
   <ion-row>
     <ion-card>
-
       <ion-card-header>
         <ion-icon ios="ios-bookmark" md="md-bookmark"></ion-icon>
         Doświadczenie i umiejetności.
@@ -52,36 +44,17 @@
         <ion-row>
           <ion-col text-left="">
             Umiejetności.
-
-
           </ion-col>
         </ion-row>
         <ion-row>
-
-
-
           <ion-col col-12="">
-
-
-
             <ion-item *ngFor="let dyscc of item.tr_disc let i= index">
-
-
-
-
-
-
-              <ion-icon  ios="ios-checkbox" md="md-checkbox"></ion-icon> {{dyscc.disciplineName}}
-
-
-
-
+              <ion-icon ios="ios-checkbox" md="md-checkbox"></ion-icon>
+              {{dyscc.disciplineName}}
             </ion-item>
           </ion-col>
-
         </ion-row>
-
       </ion-card-content>
     </ion-card>
-    </ion-row>
+  </ion-row>
 </ion-content>

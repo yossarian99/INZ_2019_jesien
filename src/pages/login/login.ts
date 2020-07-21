@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { NavController, AlertController, LoadingController, Loading, IonicPage } from 'ionic-angular';
-import {AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import {Component} from '@angular/core';
+import {AlertController, IonicPage, Loading, LoadingController, NavController} from 'ionic-angular';
+import {AuthServiceProvider} from '../../providers/auth-service/auth-service';
 // import {UserProfile} from "../../models/UserProfile-model";
 import {User} from "../../models/user-model";
 
@@ -12,14 +12,15 @@ import {User} from "../../models/user-model";
 export class LoginPage {
   loading: Loading;
   // registerCredentials = { email: '', password: '' };
-  registerCredentials:User={name:'',email:'',password:''};
+  registerCredentials: User = {name: '', email: '', password: ''};
   // registerCredentials:UserProfile;
   // registerCredentials= new UserProfile('','','','',0,'','')
-  constructor(private nav: NavController, private auth: AuthServiceProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController) { }
+  constructor(private nav: NavController, private auth: AuthServiceProvider, private alertCtrl: AlertController,
+              private loadingCtrl: LoadingController) {
+  }
 
   public createAccount() {
     this.nav.push('RegisterPage');
-
   }
 
   public login() {
@@ -54,6 +55,5 @@ export class LoginPage {
       buttons: ['OK']
     });
     alert.present(alert);
-    // this.nav.present(alert);
   }
 }

@@ -8,7 +8,7 @@
   <ion-navbar class="nav">
     <ion-buttons start>
       <!--<button ion-button>-->
-        <!--<ion-icon name="contact"></ion-icon>-->
+      <!--<ion-icon name="contact"></ion-icon>-->
       <!--</button>-->
     </ion-buttons>
     <button ion-button menuToggle>
@@ -17,15 +17,13 @@
     <ion-title>
       Menu
     </ion-title>
-    <ion-title >
+    <ion-title>
       Najlepszy trener
     </ion-title>
     <ion-buttons end>
-
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding class="setPicture">
   <ion-menu [content]="mycontent" [persistent]="true" [enabled]="true">
     <ion-content>
@@ -34,34 +32,28 @@
           Dane Podstawowe
         </button>
         <button expand="block" color="success" ion-item (click)="openPage('EducationPorfilPage')">
-        Wykształcenie
-      </button>
+          Wykształcenie
+        </button>
         <button expand="block" color="success" ion-item (click)="openPage('ExperienceProfillPage')">
           Doświadczenie
         </button>
-
-
         <button expand="block" color="success" ion-item (click)="openPage('GalleryProfilPage')">
           Galeria
         </button>
-        <button expand="block"  color="success" ion-item (click)="openPage('OpinionProfillPage')">
+        <button expand="block" color="success" ion-item (click)="openPage('OpinionProfillPage')">
           Opinie
-        </button> <button expand="block"  color="success" ion-item (click)="openPage('TreningListPage')">
-        Zapisy na treningi
-      </button>
-
-        <button expand="block"  color="success" ion-item (click)="closeMenu()">
+        </button>
+        <button expand="block" color="success" ion-item (click)="openPage('TreningListPage')">
+          Zapisy na treningi
+        </button>
+        <button expand="block" color="success" ion-item (click)="closeMenu()">
           Close Menu
         </button>
       </ion-list>
     </ion-content>
   </ion-menu>
-
   <ion-nav #mycontent [root]="ProfilViewMenuPage"></ion-nav>
   <ion-grid>
-
   </ion-grid>
-
-
 </ion-content>
 

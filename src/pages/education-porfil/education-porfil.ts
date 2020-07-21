@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {SearchServiceProvider} from "../../providers/search-service/search-service";
 import {ProfileService} from "../../api/profile.service";
 import {ProfileOut} from "../../model/profileOut";
@@ -17,9 +17,11 @@ import {ProfileOut} from "../../model/profileOut";
   templateUrl: 'education-porfil.html',
 })
 export class EducationPorfilPage {
-  id:number;
-  item:ProfileOut={};
-  constructor(public nav: NavController,private provilconfig: SearchServiceProvider, public navParams: NavParams,public sea:SearchServiceProvider,public ProfillRest:ProfileService) {
+  id: number;
+  item: ProfileOut = {};
+
+  constructor(public nav: NavController, private provilconfig: SearchServiceProvider,
+              public navParams: NavParams, public sea: SearchServiceProvider, public ProfillRest: ProfileService) {
     this.id = this.provilconfig.getId2();
     this.getUsers(this.id);
 
@@ -28,19 +30,14 @@ export class EducationPorfilPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad EducationPorfilPage');
   }
-  backtoprofiles(){
 
+  backtoprofiles() {
     this.nav.pop();
-
-
-
   }
-  getUsers(id:number) {
 
+  getUsers(id: number) {
     this.ProfillRest.getProfile(id).subscribe(result => {
-
       Object.assign(this.item, result);
-
     });
   }
 }

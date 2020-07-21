@@ -25,41 +25,20 @@
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding>
   <button ion-button (click)="backtoprofiles">
     <ion-icon ios="ios-undo" md="md-undo"></ion-icon>
-
   </button>
-  <!--<div class="images">-->
-
-
-  <!--<div class="one-image">-->
-  <!--<ion-item *ngFor ="let photo of photoArray">-->
-  <!--<img src="{{photo}}.png">-->
-  <!--</ion-item>-->
-  <!--</div>-->
-  <!--</div>-->
-
-
   <ion-refresher (ionRefresh)="clearCache($event)">
     <ion-refresher-content></ion-refresher-content>
-    >
   </ion-refresher>
   <div class="images">
     <div class="one-image">
       <ion-item *ngFor="let photo of photoArray">
-   <div (click)="getBig(photo)">
-     <img [src]="photo" />
-
-
-
-   </div>
-
+        <div (click)="getBig(photo)">
+          <img [src]="photo"/>
+        </div>
       </ion-item>
-
     </div>
-
   </div>
-
 </ion-content>

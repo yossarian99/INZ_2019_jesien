@@ -17,119 +17,92 @@
     <ion-title>
       Menu
     </ion-title>
-    <ion-title >
+    <ion-title>
       Najlepszy trener
     </ion-title>
     <ion-buttons end>
-
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding>
   <ion-grid>
-
-
     <ion-row
       justify-content-center>
-      <ion-col col-12 text-center  style="border: 1px solid;border-radius: 5px">
-  <!--<button ion-button (click)="backtoprofiles" ></button>-->
-  <!--<ion-icon ios="ios-undo" md="md-undo"></ion-icon>-->
-  <ion-row justify-content-center>
-    <ion-col col-6="" >
-
-      <img style="width: 200px; height: 200px;" src="./assets/imgs/silacz.jpg"/>
-
-
-    </ion-col>
-
-
-
-  </ion-row>
-  <ion-row>
-    <ion-card>
-      <ion-card-header>
-        <ion-icon ios="ios-book" md="md-book"></ion-icon>
-        Opinie na temat trenera
-      </ion-card-header>
-      <ion-card-content>
-
-        <ion-item *ngFor="let opp of this.item.tr_op; let i = index">
-
+      <ion-col col-12 text-center style="border: 1px solid;border-radius: 5px">
+        <!--<button ion-button (click)="backtoprofiles" ></button>-->
+        <!--<ion-icon ios="ios-undo" md="md-undo"></ion-icon>-->
+        <ion-row justify-content-center>
+          <ion-col col-6="">
+            <img style="width: 200px; height: 200px;" src="./assets/imgs/silacz.jpg"/>
+          </ion-col>
+        </ion-row>
+        <ion-row>
           <ion-card>
             <ion-card-header>
-              <h5 ion-text color="danger">Opiniodawca: {{opp.name}}</h5>
+              <ion-icon ios="ios-book" md="md-book"></ion-icon>
+              Opinie na temat trenera
             </ion-card-header>
             <ion-card-content>
-              <h5 ion-text color="danger">Opinia: {{opp.description}}</h5>
+              <ion-item *ngFor="let opp of this.item.tr_op; let i = index">
+                <ion-card>
+                  <ion-card-header>
+                    <h5 ion-text color="danger">Opiniodawca: {{opp.name}}</h5>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <h5 ion-text color="danger">Opinia: {{opp.description}}</h5>
+                  </ion-card-content>
+                </ion-card>
+              </ion-item>
             </ion-card-content>
           </ion-card>
-        </ion-item>
-      </ion-card-content>
-    </ion-card>
+          <form [formGroup]="opinionforms" (ngSubmit)="Opinionform()" padding>
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label stacked>Imie :</ion-label>
+                  <ion-input type="text" placeholder="" [(ngModel)]="Opinions.name" formControlName="opinionuser"
+                             required>
+                  </ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label stacked>Email:</ion-label>
+                  <ion-input type="text" placeholder="" [(ngModel)]="Opinions.email" formControlName="email"
+                             required>
+                  </ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label stacked>Ocena:</ion-label>
+                  <ion-input type="number" clearInput=true min="1" max="5" placeholder="" [(ngModel)]="Opinions.rating"
+                             formControlName="ocena"
+                             required>
+                  </ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <ion-item>
+              <ion-label stacked>Opinia Urzytkownika</ion-label>
+              <ion-textarea placeholder="" [(ngModel)]="Opinions.description"
 
-
-    <form [formGroup]="opinionforms" (ngSubmit)="Opinionform()" padding>
-
-      <ion-row>
-        <ion-col>
-          <ion-item>
-            <ion-label stacked>Imie :</ion-label>
-            <ion-input type="text" placeholder="" [(ngModel)]="Opinions.name" formControlName="opinionuser"
-                       required>
-            </ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item>
-            <ion-label stacked>Email:</ion-label>
-            <ion-input type="text" placeholder="" [(ngModel)]="Opinions.email" formControlName="email"
-                       required>
-            </ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-
-      <ion-row>
-        <ion-col>
-          <ion-item>
-            <ion-label stacked>Ocena:</ion-label>
-            <ion-input type="number" clearInput=true min="1" max="5" placeholder="" [(ngModel)]="Opinions.rating"
-                       formControlName="ocena"
-                       required>
-            </ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-
-
-      <ion-item>
-        <ion-label stacked>Opinia Urzytkownika</ion-label>
-        <ion-textarea placeholder="" [(ngModel)]="Opinions.description"
-
-                      formControlName="Opinionss"
-                      required></ion-textarea>
-
-      </ion-item>
-      <ion-row>
-        <ion-col text-right>
-
-          <button ion-button color="secondary" color="light" type="submit" [disabled]="! opinionforms.valid">Dodaj
-            Opinie
-          </button>
-
-
-        </ion-col>
-
-
-      </ion-row>
-
-
-    </form>
-
-  </ion-row>
+                            formControlName="Opinionss"
+                            required></ion-textarea>
+            </ion-item>
+            <ion-row>
+              <ion-col text-right>
+                <button ion-button color="secondary" color="light" type="submit" [disabled]="! opinionforms.valid">Dodaj
+                  Opinie
+                </button>
+              </ion-col>
+            </ion-row>
+          </form>
+        </ion-row>
       </ion-col>
     </ion-row>
   </ion-grid>
