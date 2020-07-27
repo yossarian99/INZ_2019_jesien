@@ -35,6 +35,7 @@ export class SearchNewPage {
   Avatarphoto: any;
   photoArray = [];
   photoArray2 = [];
+  photoArray3 = [];
   singlephoto: any;
   binaryData = [];
   avatarShow = [];
@@ -282,7 +283,7 @@ export class SearchNewPage {
       var index: number;
       index = JSON.parse(this.profiles2[i].avatar);
       console.log("index", index);
-      if (index == undefined) {
+      if (index === undefined) {
         this.photoArray.push(null);
         this.avatarShow.push(null);
       } else {
@@ -311,15 +312,15 @@ export class SearchNewPage {
   }
 
   loadPhoto2() {
-    for (let i = 0; i < this.profilesFiltered.length; ++i) {
-      var index: number;
-      index = JSON.parse(this.profilesFiltered[i].avatar);
-      if (index == undefined) {
+    for (let i = 0; i < this.profilesFiltered.length;i++) {
+      var index2: number;
+      index2 = JSON.parse(this.profilesFiltered[i].avatar);
+      if (index2 === undefined) {
         this.photoArray2.push(null);
         this.avatarShow2.push(null);
       } else {
-        this.singlephoto = this.getphoto.photoServiceGetPhoto(index).subscribe(result => {
-          this.createImageFromBlob2(result);
+        this.singlephoto = this.getphoto.photoServiceGetPhoto(index2).subscribe(result => {
+          this.createImageFromBlob3(result);
           this.avatarShow2.push("good");
         });
       }
@@ -331,6 +332,17 @@ export class SearchNewPage {
     let reader = new FileReader();
     reader.addEventListener("load", () => {
       this.photoArray2.push(this.sanitizer.bypassSecurityTrustUrl(reader.result));
+    }, false);
+    if (image) {
+      let binaryData = [];
+      binaryData.push(image);
+      reader.readAsDataURL(new Blob(binaryData, {type: "image/png"}));
+    }
+  }
+  createImageFromBlob3(image: Blob) {
+    let reader = new FileReader();
+    reader.addEventListener("load", () => {
+      this.photoArray3.push(this.sanitizer.bypassSecurityTrustUrl(reader.result));
     }, false);
     if (image) {
       let binaryData = [];
